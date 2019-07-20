@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>BlogOfWangWei</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://LoveXWen.github.io/"/>
+  <updated>2019-07-19T13:06:19.609Z</updated>
+  <id>https://LoveXWen.github.io/</id>
+  
+  <author>
+    <name>WangWei</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测试页面2</title>
+    <link href="https://LoveXWen.github.io/2019/07/19/ce-shi-ye-mian-2/"/>
+    <id>https://LoveXWen.github.io/2019/07/19/ce-shi-ye-mian-2/</id>
+    <published>2019-07-19T13:06:19.000Z</published>
+    <updated>2019-07-19T13:06:19.609Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>测试页面</title>
+    <link href="https://LoveXWen.github.io/2019/07/17/ce-shi-ye-mian/"/>
+    <id>https://LoveXWen.github.io/2019/07/17/ce-shi-ye-mian/</id>
+    <published>2019-07-17T03:17:36.000Z</published>
+    <updated>2019-07-17T03:20:34.906Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;测试页面&quot;&gt;&lt;a href=&quot;#测试页面&quot; class=&quot;headerlink&quot; title=&quot;测试页面&quot;&gt;&lt;/a&gt;测试页面&lt;/h1&gt;&lt;h2 id=&quot;我的第一个页面&quot;&gt;&lt;a href=&quot;#我的第一个页面&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="测试" scheme="https://LoveXWen.github.io/categories/%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="测试" scheme="https://LoveXWen.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="第一个页面" scheme="https://LoveXWen.github.io/tags/%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%A1%B5%E9%9D%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://LoveXWen.github.io/2019/07/17/hello-world/"/>
+    <id>https://LoveXWen.github.io/2019/07/17/hello-world/</id>
+    <published>2019-07-17T03:17:36.000Z</published>
+    <updated>2019-07-19T10:21:23.143Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="测试" scheme="https://LoveXWen.github.io/categories/%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="测试" scheme="https://LoveXWen.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="第一个页面" scheme="https://LoveXWen.github.io/tags/%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%A1%B5%E9%9D%A2/"/>
+    
+  </entry>
+  
+</feed>
