@@ -1,0 +1,1307 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Servlet中request与respose, Changing Learning Drawing">
+    <meta name="description" content="概述本文主要讲解了Servlet中的请求与响应的相关知识，首先通过HTTP协议引出Request与Response，
+1.HTTP与Request、Response的联系
+2.通过浏览器调试工具看懂请求与响应的参数、组成
+3.通过Java ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Servlet中request与respose | ソーナンス</title>
+    <link rel="icon" type="image/jpeg" href="/favicon.jpg">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.jpg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">ソーナンス</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">ソーナンス</div>
+        <div class="logo-desc">
+            
+            Changing Learning Drawing
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/LoveXWen" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/LoveXWen" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Servlet中request与respose
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Servlet/" target="_blank">
+                                <span class="chip bg-color">Servlet</span>
+                            </a>
+                        
+                            <a href="/tags/Java-Web/" target="_blank">
+                                <span class="chip bg-color">Java Web</span>
+                            </a>
+                        
+                            <a href="/tags/Request/" target="_blank">
+                                <span class="chip bg-color">Request</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Java-Web/" class="post-category" target="_blank">
+                                Java Web
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-07-24
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        2.2k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        9 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>本文主要讲解了Servlet中的请求与响应的相关知识，首先通过HTTP协议引出Request与Response，</p>
+<p>1.HTTP与Request、Response的联系</p>
+<p>2.通过浏览器调试工具看懂请求与响应的参数、组成</p>
+<p>3.通过Java API获取各种请求参数</p>
+<p>4.GET与POST请求区别</p>
+<h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h2 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h2><p>Hyper Text Transfer Protocol超文本传输协议</p>
+<h2 id="传输协议"><a href="#传输协议" class="headerlink" title="传输协议"></a>传输协议</h2><p>定义了客户端与服务器端通信时，发送的<strong>数据的格式</strong></p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>1.基于TCP/IP的高级协议</p>
+<p>2.默认端口号：80</p>
+<p>3.基于<strong>请求/响应</strong>模型：一次请求对应一次响应</p>
+<p>4.无状态：每次响应相互独立，不能交换数据</p>
+<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><p>HTTP是基于请求/响应模型，接着介绍请求与响应的数据格式。</p>
+<h1 id="请求"><a href="#请求" class="headerlink" title="请求"></a>请求</h1><h2 id="请求消息的数据组成"><a href="#请求消息的数据组成" class="headerlink" title="请求消息的数据组成"></a>请求消息的数据组成</h2><h3 id="1-请求行"><a href="#1-请求行" class="headerlink" title="1 请求行"></a>1 请求行</h3><h4 id="1-1-格式"><a href="#1-1-格式" class="headerlink" title="1.1 格式"></a>1.1 格式</h4><p>格式：<code>请求方式    请求URL    请求协议/版本</code></p>
+<p>例子： <code>GET    /login.html  HTTP /1.1</code></p>
+<h4 id="1-2-请求方式"><a href="#1-2-请求方式" class="headerlink" title="1.2 请求方式"></a>1.2 请求方式</h4><ul>
+<li><p>HTTP协议有7中请求方式，常用的有2种</p>
+<ul>
+<li><p>GET</p>
+<ul>
+<li>请求参数在请求行中，在URL后紧跟（例如：localhost/demo3<strong>?username=zhangsan</strong>)</li>
+<li>请求的url长度有限制</li>
+<li>不太安全</li>
+</ul>
+</li>
+<li><p>POST</p>
+<ul>
+<li>请求参数在请求体中</li>
+<li>请求的url长度没有限制</li>
+<li>较安全</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>GET与POST请求方式的区别</p>
+<ul>
+<li>参数位置不同：GET请求参数在请求行中，POST请求参数在请求体中</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>GET</th>
+<th>POST</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>后退按钮/刷新</td>
+<td>无害</td>
+<td>数据会被重新提交（浏览器应该告知用户数据会被重新提交）。</td>
+</tr>
+<tr>
+<td>书签</td>
+<td>可收藏为书签</td>
+<td>不可收藏为书签</td>
+</tr>
+<tr>
+<td>缓存</td>
+<td>能被缓存</td>
+<td>不能缓存</td>
+</tr>
+<tr>
+<td>编码类型</td>
+<td>application/x-www-form-urlencoded</td>
+<td>application/x-www-form-urlencoded 或 multipart/form-data。为二进制数据使用多重编码。</td>
+</tr>
+<tr>
+<td>历史</td>
+<td>参数保留在浏览器历史中。</td>
+<td>参数不会保存在浏览器历史中。</td>
+</tr>
+<tr>
+<td>对数据长度的限制</td>
+<td>是的。当发送数据时，GET 方法向 URL 添加数据；URL 的长度是受限制的（URL 的最大长度是 2048 个字符）。</td>
+<td>无限制。</td>
+</tr>
+<tr>
+<td>对数据类型的限制</td>
+<td>只允许 ASCII 字符。</td>
+<td>没有限制。也允许二进制数据。</td>
+</tr>
+<tr>
+<td>安全性</td>
+<td>与 POST 相比，GET 的安全性较差，因为所发送的数据是 URL 的一部分。 在发送密码或其他敏感信息时绝不要使用 GET ！</td>
+<td>POST 比 GET 更安全，因为参数不会被保存在浏览器历史或 web 服务器日志中。</td>
+</tr>
+<tr>
+<td>可见性</td>
+<td>数据在 URL 中对所有人都是可见的。</td>
+<td>数据不会显示在 URL 中。</td>
+</tr>
+</tbody></table>
+</blockquote>
+<ul>
+<li>哪些是GET请求与哪些是POST请求方式</li>
+</ul>
+<h4 id="1-3-请求协议版本"><a href="#1-3-请求协议版本" class="headerlink" title="1.3 请求协议版本"></a>1.3 请求协议版本</h4><pre><code>+ HTTP1.0：每一次请求响应都会建立新的连接
+
++ HTTP1.1：复用连接</code></pre><h3 id="2-请求头"><a href="#2-请求头" class="headerlink" title="2 请求头"></a>2 请求头</h3><h4 id="2-1-格式"><a href="#2-1-格式" class="headerlink" title="2.1 格式"></a>2.1 格式</h4><p>格式：<code>请求头名称： 请求头值</code></p>
+<p>例子： </p>
+<pre><code>Host: start.firefoxchina.cn
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Cookie: Hm_lvt_dd4738b5fb302cb062ef19107df5d2e4=1563503173; uid=rBADnV01Ana3AXyPe2C8Ag==
+Upgrade-Insecure-Requests: 1
+Cache-Control: max-age=0</code></pre><h4 id="2-2-常见请求头"><a href="#2-2-常见请求头" class="headerlink" title="2.2 常见请求头"></a>2.2 常见请求头</h4><ul>
+<li><p>Host:请求的主机地址</p>
+</li>
+<li><p>User-Agent：浏览器告诉服务器，我访问你使用的浏览器版本信息</p>
+</li>
+<li><p>可以在服务器端获取该头的信息，解决浏览器的<strong>兼容性问题</strong></p>
+</li>
+<li><p>Accept：浏览器告诉告诉服务器，服务器可以<strong>响应什么样的数据格式</strong>给浏览器</p>
+</li>
+<li><p>Accept-Language: 浏览器可以支持的语言环境</p>
+</li>
+<li><p>Accept-Encoding：浏览器可以支持的压缩格式</p>
+</li>
+<li><p>Referer：</p>
+<pre><code>* 告诉服务器，我(当前请求)从哪里来？
+
+    * 作用：
+
+         1. 防盗链：
+         2. 统计工作：</code></pre></li>
+<li><p>Connection:是否可以复用连接</p>
+<ul>
+<li>值为keep-alive表示可以被复用(HTTP1.1)</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-请求空行"><a href="#3-请求空行" class="headerlink" title="3 请求空行"></a>3 请求空行</h3><p>空行</p>
+<pre><code>用于分割POST请求头与请求体的</code></pre><h3 id="4-请求体（正文）"><a href="#4-请求体（正文）" class="headerlink" title="4 请求体（正文）"></a>4 请求体（正文）</h3><ul>
+<li><p>封装POST请求消息的请求参数的</p>
+<p>GET方式没有请求体</p>
+</li>
+</ul>
+<h2 id="请求字符串总格式"><a href="#请求字符串总格式" class="headerlink" title="请求字符串总格式"></a>请求字符串总格式</h2><pre><code>POST  /login.html  HTTP /1.1
+Host: start.firefoxchina.cn
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Cookie: Hm_lvt_dd4738b5fb302cb062ef19107df5d2e4=1563503173; uid=rBADnV01Ana3AXyPe2C8Ag==
+Upgrade-Insecure-Requests: 1
+Cache-Control: max-age=0
+
+username=zhangsan</code></pre><h2 id="浏览器查看请求与响应"><a href="#浏览器查看请求与响应" class="headerlink" title="浏览器查看请求与响应"></a>浏览器查看请求与响应</h2><h1 id="request对象"><a href="#request对象" class="headerlink" title="request对象"></a>request对象</h1><h2 id="1-request对象和response对象的原理"><a href="#1-request对象和response对象的原理" class="headerlink" title="1 request对象和response对象的原理"></a>1 request对象和response对象的原理</h2><ol>
+<li>request和response对象是由<strong>服务器创建</strong>的。我们来使用它们</li>
+<li>request对象作用是来获取请求消息，response对象是来设置响应消息</li>
+</ol>
+<p><img src="/2019/07/24/servlet-zhong-request-yu-respose/request&response%E5%AF%B9%E8%B1%A1%E5%8E%9F%E7%90%86.png" alt="request&amp;response对象原理"></p>
+<h2 id="2-request对象继承体系结构"><a href="#2-request对象继承体系结构" class="headerlink" title="2 request对象继承体系结构"></a>2 request对象继承体系结构</h2><pre><code>ServletRequest        --    接口
+    |    继承
+HttpServletRequest    -- 接口
+    |    实现
+org.apache.catalina.connector.RequestFacade 类(tomcat)</code></pre><h2 id="3-request对象功能"><a href="#3-request对象功能" class="headerlink" title="3 request对象功能"></a>3 request对象功能</h2><h3 id="3-1-获取请求消息的数据"><a href="#3-1-获取请求消息的数据" class="headerlink" title="3.1 获取请求消息的数据"></a>3.1 获取请求消息的数据</h3><h4 id="3-1-1-获取请求行数据"><a href="#3-1-1-获取请求行数据" class="headerlink" title="3.1.1 获取请求行数据"></a>3.1.1 获取请求行数据</h4><pre class=" language-java"><code class="language-java">    <span class="token operator">*</span> GET <span class="token operator">/</span>day14<span class="token operator">/</span>demo1<span class="token operator">?</span>name<span class="token operator">=</span>zhangsan<span class="token operator">&amp;</span>age<span class="token operator">=</span><span class="token number">12</span> HTTP<span class="token operator">/</span><span class="token number">1.1</span>
+    <span class="token operator">*</span> 方法：
+        <span class="token number">1</span><span class="token punctuation">.</span> 获取请求方式 ：GET
+            <span class="token operator">*</span> String <span class="token function">getMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  
+        <span class="token number">2</span><span class="token punctuation">.</span> <span class="token punctuation">(</span><span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span><span class="token punctuation">)</span>获取虚拟目录：<span class="token operator">/</span>day14
+            <span class="token operator">*</span> String <span class="token function">getContextPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token number">3</span><span class="token punctuation">.</span> 获取Servlet路径<span class="token operator">:</span> <span class="token operator">/</span>demo1
+            <span class="token operator">*</span> String <span class="token function">getServletPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token number">4</span><span class="token punctuation">.</span> 获取get方式请求参数：name<span class="token operator">=</span>zhangsan<span class="token operator">&amp;</span>age<span class="token operator">=</span><span class="token number">12</span>
+            <span class="token operator">*</span> String <span class="token function">getQueryString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token number">5</span><span class="token punctuation">.</span> <span class="token punctuation">(</span><span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span><span class="token punctuation">)</span>获取请求URI：<span class="token operator">/</span>day14<span class="token operator">/</span>demo1
+            <span class="token operator">*</span> String <span class="token function">getRequestURI</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span>        <span class="token operator">/</span>day14<span class="token operator">/</span>demo1
+            <span class="token operator">*</span> StringBuffer <span class="token function">getRequestURL</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token operator">:</span>http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>localhost<span class="token operator">/</span>day14<span class="token operator">/</span>demo1
+
+            <span class="token operator">*</span> URL<span class="token operator">:</span>统一资源定位符 ： http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>localhost<span class="token operator">/</span>day14<span class="token operator">/</span>demo1    中华人民共和国
+            <span class="token operator">*</span> URI：统一资源标识符 <span class="token operator">:</span> <span class="token operator">/</span>day14<span class="token operator">/</span>demo1                    共和国
+
+        <span class="token number">6</span><span class="token punctuation">.</span> 获取协议及版本：HTTP<span class="token operator">/</span><span class="token number">1.1</span>
+            <span class="token operator">*</span> String <span class="token function">getProtocol</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token number">7</span><span class="token punctuation">.</span> 获取客户机的IP地址：
+            <span class="token operator">*</span> String <span class="token function">getRemoteAddr</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h4 id="3-1-2-获取请求头数据"><a href="#3-1-2-获取请求头数据" class="headerlink" title="3.1.2 获取请求头数据"></a>3.1.2 获取请求头数据</h4><pre class=" language-java"><code class="language-java">        <span class="token operator">*</span> 方法：
+            <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span><span class="token punctuation">)</span>String <span class="token function">getHeader</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span><span class="token operator">:</span>通过请求头的名称获取请求头的值
+            <span class="token operator">*</span> Enumeration<span class="token operator">&lt;</span>String<span class="token operator">></span> <span class="token function">getHeaderNames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span>获取所有的请求头名称</code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 判断agent的浏览器版本  </span>
+String agent <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getHeader</span><span class="token punctuation">(</span><span class="token string">"user-agent"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//判断agent的浏览器版本</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>agent<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"Chrome"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//谷歌</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"谷歌来了..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>agent<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"Firefox"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//火狐</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"火狐来了..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span></code></pre>
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//演示获取请求头数据:referer</span>
+
+    String referer <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getHeader</span><span class="token punctuation">(</span><span class="token string">"referer"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>referer<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//http://localhost/day14/login.html</span>
+
+    <span class="token comment" spellcheck="true">//防盗链</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>referer <span class="token operator">!=</span> null <span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>referer<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"/day14"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//正常访问</span>
+           <span class="token comment" spellcheck="true">// System.out.println("播放电影....");</span>
+            response<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span><span class="token string">"text/html;charset=utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            response<span class="token punctuation">.</span><span class="token function">getWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"播放电影...."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//盗链</span>
+            <span class="token comment" spellcheck="true">//System.out.println("想看电影吗？来优酷吧...");</span>
+            response<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span><span class="token string">"text/html;charset=utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            response<span class="token punctuation">.</span><span class="token function">getWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"想看电影吗？来优酷吧..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span></code></pre>
+<h4 id="3-1-3-获取请求体数据"><a href="#3-1-3-获取请求体数据" class="headerlink" title="3.1.3 获取请求体数据"></a>3.1.3 获取请求体数据</h4><pre class=" language-java"><code class="language-java">        <span class="token operator">*</span> 请求体：只有POST请求方式，才有请求体，在请求体中封装了POST请求的请求参数
+        <span class="token operator">*</span> 步骤：
+            <span class="token number">1</span><span class="token punctuation">.</span> 获取流对象
+                <span class="token operator">*</span>  BufferedReader <span class="token function">getReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span>：获取字符输入流，只能操作字符数据
+                <span class="token operator">*</span>  ServletInputStream <span class="token function">getInputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>：获取字节输入流，可以操作所有类型数据
+                    <span class="token operator">*</span> 在文件上传知识点后讲解
+
+            <span class="token number">2</span><span class="token punctuation">.</span> 再从流对象中拿数据</code></pre>
+<pre class=" language-java"><code class="language-java">   <span class="token comment" spellcheck="true">//获取请求消息体--请求参数</span>
+
+    <span class="token comment" spellcheck="true">//1.获取字符流</span>
+    BufferedReader br <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//2.读取数据</span>
+    String line <span class="token operator">=</span> null<span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>line <span class="token operator">=</span> br<span class="token punctuation">.</span><span class="token function">readLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span></code></pre>
+<h3 id="3-2-其他功能"><a href="#3-2-其他功能" class="headerlink" title="3.2 其他功能"></a>3.2 其他功能</h3><pre class=" language-java"><code class="language-java">    <span class="token number">1</span><span class="token punctuation">.</span> 获取请求参数通用方式：不论get还是post请求方式都可以使用下列方法来获取请求参数
+        <span class="token number">1</span><span class="token punctuation">.</span> String <span class="token function">getParameter</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span><span class="token operator">:</span>根据参数名称获取参数值    username<span class="token operator">=</span>zs<span class="token operator">&amp;</span>password<span class="token operator">=</span><span class="token number">123</span>
+        <span class="token number">2</span><span class="token punctuation">.</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">getParameterValues</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span><span class="token operator">:</span>根据参数名称获取参数值的数组<span class="token punctuation">(</span>复选框<span class="token punctuation">)</span>  hobby<span class="token operator">=</span>xx<span class="token operator">&amp;</span>hobby<span class="token operator">=</span>game
+        <span class="token number">3</span><span class="token punctuation">.</span> Enumeration<span class="token operator">&lt;</span>String<span class="token operator">></span> <span class="token function">getParameterNames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span>获取所有请求的参数名称
+        <span class="token number">4</span><span class="token punctuation">.</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span> <span class="token function">getParameterMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span>获取所有参数的map集合
+        <span class="token operator">*</span> 中文乱码问题：
+            <span class="token operator">*</span> get方式：tomcat <span class="token number">8</span> 已经将get方式乱码问题解决了
+            <span class="token operator">*</span> post方式：会乱码
+                <span class="token operator">*</span> 解决：在获取参数前，设置request的编码request<span class="token punctuation">.</span><span class="token function">setCharacterEncoding</span><span class="token punctuation">(</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//post 获取请求参数</span>
+
+    <span class="token comment" spellcheck="true">//根据参数名称获取参数值</span>
+    String username <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token comment" spellcheck="true">/* System.out.println("post");
+    System.out.println(username);*/</span>
+
+   <span class="token comment" spellcheck="true">//根据参数名称获取参数值的数组</span>
+    String<span class="token punctuation">[</span><span class="token punctuation">]</span> hobbies <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getParameterValues</span><span class="token punctuation">(</span><span class="token string">"hobby"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/*for (String hobby : hobbies) {
+        System.out.println(hobby);
+    }*/</span>
+
+    <span class="token comment" spellcheck="true">//获取所有请求的参数名称</span>
+
+    Enumeration<span class="token operator">&lt;</span>String<span class="token operator">></span> parameterNames <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getParameterNames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/*while(parameterNames.hasMoreElements()){
+        String name = parameterNames.nextElement();
+        System.out.println(name);
+        String value = request.getParameter(name);//只能获取多选框的一个值
+        System.out.println(value);
+        System.out.println("----------------");
+    }*/</span>
+
+    <span class="token comment" spellcheck="true">// 获取所有参数的map集合</span>
+    Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span> parameterMap <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getParameterMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//遍历</span>
+    Set<span class="token operator">&lt;</span>String<span class="token operator">></span> keyset <span class="token operator">=</span> parameterMap<span class="token punctuation">.</span><span class="token function">keySet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>String name <span class="token operator">:</span> keyset<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token comment" spellcheck="true">//获取键获取值</span>
+        String<span class="token punctuation">[</span><span class="token punctuation">]</span> values <span class="token operator">=</span> parameterMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>String value <span class="token operator">:</span> values<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"-----------------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token number">2</span><span class="token punctuation">.</span> 请求转发：一种在服务器内部的资源跳转方式
+        <span class="token number">1</span><span class="token punctuation">.</span> 步骤：
+            <span class="token number">1</span><span class="token punctuation">.</span> 通过request对象获取请求转发器对象：RequestDispatcher <span class="token function">getRequestDispatcher</span><span class="token punctuation">(</span>String path<span class="token punctuation">)</span>
+            <span class="token number">2</span><span class="token punctuation">.</span> 使用RequestDispatcher对象来进行转发：<span class="token function">forward</span><span class="token punctuation">(</span>ServletRequest request<span class="token punctuation">,</span> ServletResponse response<span class="token punctuation">)</span> 
+
+        <span class="token number">2</span><span class="token punctuation">.</span> 特点：
+            <span class="token number">1</span><span class="token punctuation">.</span> 浏览器地址栏路径不发生变化
+            <span class="token number">2</span><span class="token punctuation">.</span> 只能转发到当前服务器内部资源中。
+            <span class="token number">3</span><span class="token punctuation">.</span> 转发是一次请求
+    <span class="token number">3</span><span class="token punctuation">.</span> 共享数据：
+        <span class="token operator">*</span> 域对象：一个有作用范围的对象，可以在范围内共享数据
+        <span class="token operator">*</span> request域：代表一次请求的范围，一般用于请求转发的多个资源中共享数据
+        <span class="token operator">*</span> 方法：
+            <span class="token number">1</span><span class="token punctuation">.</span> <span class="token keyword">void</span> <span class="token function">setAttribute</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span>Object obj<span class="token punctuation">)</span><span class="token operator">:</span>存储数据
+            <span class="token number">2</span><span class="token punctuation">.</span> Object <span class="token function">getAttitude</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span><span class="token operator">:</span>通过键获取值
+            <span class="token number">3</span><span class="token punctuation">.</span> <span class="token keyword">void</span> <span class="token function">removeAttribute</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span><span class="token operator">:</span>通过键移除键值对
+
+    <span class="token number">4</span><span class="token punctuation">.</span> 获取ServletContext：
+        <span class="token operator">*</span> ServletContext <span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《Servlet中request与respose》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/07/24/servlet-zhong-request-yu-respose/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                WangWei
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+    <div class="livere-card card" data-aos="fade-up">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" class="card-content" data-id="city" data-uid="MTAyMC80NTQ1Ny8yMTk2OQ==">
+        <script type="text/javascript">
+            (function (d, s) {
+                let j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') {
+                    return;
+                }
+
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript。</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</div>
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/07/24/servlet-shi-xian-deng-lu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Servlet实现登录">
+                        
+                        <span class="card-title">Servlet实现登录</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            需求用户登录案例需求：
+1.编写login.html登录页面
+    username &amp; password 两个输入框
+2.使用Druid数据库连接池技术,操作mysql，day14数据库中user表
+3.使用JdbcTempla
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-24
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java-Web/" class="post-category" target="_blank">
+                                    Java Web
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/黑马/" target="_blank">
+                        <span class="chip bg-color">黑马</span>
+                    </a>
+                    
+                    <a href="/tags/Servlet/" target="_blank">
+                        <span class="chip bg-color">Servlet</span>
+                    </a>
+                    
+                    <a href="/tags/登录/" target="_blank">
+                        <span class="chip bg-color">登录</span>
+                    </a>
+                    
+                    <a href="/tags/Druid-JdbcTemplate/" target="_blank">
+                        <span class="chip bg-color">Druid JdbcTemplate</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/07/22/python-huan-jing-an-zhuang/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Python环境安装">
+                        
+                        <span class="card-title">Python环境安装</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            软件安装下载地址Python官网安装地址 : https://www.python.org/downloads
+以安装Python 3.7.4为例
+安装包选项安装包选项如下：
+
+
+Version
+Operating System
+Descr
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            WangWei
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Python/" target="_blank">
+                        <span class="chip bg-color">Python</span>
+                    </a>
+                    
+                    <a href="/tags/环境安装/" target="_blank">
+                        <span class="chip bg-color">环境安装</span>
+                    </a>
+                    
+                    <a href="/tags/绿色开发软件/" target="_blank">
+                        <span class="chip bg-color">绿色开发软件</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">WangWei</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">4.4k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/LoveXWen" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:3289605396@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3289605396" class="tooltipped" data-tooltip="QQ联系我: 3289605396" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-144201146-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-144201146-1');
+</script>
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

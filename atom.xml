@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>BlogOfWangWei</title>
+  <title>ソーナンス</title>
   
-  
+  <subtitle>Love what you do, do what you love!!</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://LoveXWen.github.io/"/>
-  <updated>2019-07-19T13:06:19.609Z</updated>
+  <updated>2019-07-24T12:51:29.278Z</updated>
   <id>https://LoveXWen.github.io/</id>
   
   <author>
@@ -17,16 +17,94 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>测试页面2</title>
-    <link href="https://LoveXWen.github.io/2019/07/19/ce-shi-ye-mian-2/"/>
-    <id>https://LoveXWen.github.io/2019/07/19/ce-shi-ye-mian-2/</id>
-    <published>2019-07-19T13:06:19.000Z</published>
-    <updated>2019-07-19T13:06:19.609Z</updated>
+    <title>Servlet实现登录</title>
+    <link href="https://LoveXWen.github.io/2019/07/24/servlet-shi-xian-deng-lu/"/>
+    <id>https://LoveXWen.github.io/2019/07/24/servlet-shi-xian-deng-lu/</id>
+    <published>2019-07-24T11:25:37.000Z</published>
+    <updated>2019-07-24T12:51:29.278Z</updated>
     
     <summary type="html">
     
+      
+      
+        
+        
+          &lt;h1 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot; title=&quot;需求&quot;&gt;&lt;/a&gt;需求&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;用户登录案例需求：
+1.编写login.html登录页面
+    username &amp;amp; password
+        
+      
+    
     </summary>
     
+      <category term="Java Web" scheme="https://LoveXWen.github.io/categories/Java-Web/"/>
+    
+    
+      <category term="黑马" scheme="https://LoveXWen.github.io/tags/%E9%BB%91%E9%A9%AC/"/>
+    
+      <category term="Servlet" scheme="https://LoveXWen.github.io/tags/Servlet/"/>
+    
+      <category term="登录" scheme="https://LoveXWen.github.io/tags/%E7%99%BB%E5%BD%95/"/>
+    
+      <category term="Druid JdbcTemplate" scheme="https://LoveXWen.github.io/tags/Druid-JdbcTemplate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Servlet中request与respose</title>
+    <link href="https://LoveXWen.github.io/2019/07/24/servlet-zhong-request-yu-respose/"/>
+    <id>https://LoveXWen.github.io/2019/07/24/servlet-zhong-request-yu-respose/</id>
+    <published>2019-07-24T07:26:29.000Z</published>
+    <updated>2019-07-24T12:18:59.097Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Java Web" scheme="https://LoveXWen.github.io/categories/Java-Web/"/>
+    
+    
+      <category term="Servlet" scheme="https://LoveXWen.github.io/tags/Servlet/"/>
+    
+      <category term="Java Web" scheme="https://LoveXWen.github.io/tags/Java-Web/"/>
+    
+      <category term="Request" scheme="https://LoveXWen.github.io/tags/Request/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python环境安装</title>
+    <link href="https://LoveXWen.github.io/2019/07/22/python-huan-jing-an-zhuang/"/>
+    <id>https://LoveXWen.github.io/2019/07/22/python-huan-jing-an-zhuang/</id>
+    <published>2019-07-22T00:59:43.000Z</published>
+    <updated>2019-07-23T07:50:27.153Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;软件安装&quot;&gt;&lt;a href=&quot;#软件安装&quot; class=&quot;headerlink&quot; title=&quot;软件安装&quot;&gt;&lt;/a&gt;软件安装&lt;/h1&gt;&lt;h2 id=&quot;下载地址&quot;&gt;&lt;a href=&quot;#下载地址&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="https://LoveXWen.github.io/tags/Python/"/>
+    
+      <category term="环境安装" scheme="https://LoveXWen.github.io/tags/%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/"/>
+    
+      <category term="绿色开发软件" scheme="https://LoveXWen.github.io/tags/%E7%BB%BF%E8%89%B2%E5%BC%80%E5%8F%91%E8%BD%AF%E4%BB%B6/"/>
     
   </entry>
   

@@ -12,12 +12,12 @@ function LabelAjax()
 }
 function getlabeltag(){
     var labelItem = document.getElementsByTagName("span"); 
-    for(var i=0; i<labelitem.length; i++){ var obj="labelItem[i];" if (typeof(obj.id)!="undefined" &&(obj.id.substring(0,2)="="ks"||obj.id.substring(0,3)=="SQL"))" { (obj.id.substring(0,2)="="ks")" idarr="obj.id.split('_');" labelid="idarr[0].replace("ks","");" typeid="idarr[1];" classid="idarr[2];" infoid="idarr[3];" channelid="idarr[4];" try{ getlabelcontent("plus ajax.asp",obj,labelid,"label",typeid,channelid,classid,infoid) }catch(e){} } else (obj.id.substring(0,3)="="SQL")" p="obj.id.substring(obj.id.indexOf("ksr")+3);" parr="p.split('p');" (p! ) try{getlabelcontent("plus ajax.asp",obj,obj.id,"sql",0,channelid,classid,infoid); function getlabelcontent(posturl,obj,labelid,action,typeid,channelid,classid,infoid) ksxhr="new" labelajax(); senddata="?action=" +action+"&labelid="+escape(labelid)+" &labtype="+typeid+" &channelid=" +channelid+" &classid="+classid+" &infoid="+infoid+getUrlParam();
+    for(var i=0; i<labelitem.length; i++){ var obj="labelItem[i];" if (typeof(obj.id)!="undefined" &&(obj.id.substring(0,2)="=" ks"||obj.id.substring(0,3)="="SQL"))"" { (obj.id.substring(0,2)="=" ks")" idarr="obj.id.split('_');" labelid="idarr[0].replace(" ks","");" typeid="idarr[1];" classid="idarr[2];" infoid="idarr[3];" channelid="idarr[4];" try{ getlabelcontent("plus ajax.asp",obj,labelid,"label",typeid,channelid,classid,infoid) }catch(e){} } else (obj.id.substring(0,3)="=" sql")" p="obj.id.substring(obj.id.indexOf(" ksr")+3);" parr="p.split('p');" (p! ) try{getlabelcontent("plus ajax.asp",obj,obj.id,"sql",0,channelid,classid,infoid); function getlabelcontent(posturl,obj,labelid,action,typeid,channelid,classid,infoid) ksxhr="new" labelajax(); senddata="?action=" +action+"&labelid="+escape(labelid)+" &labtype="+typeid+" &channelid=" +channelid+" &classid="+classid+" &infoid="+infoid+getUrlParam();
 	ksxhr.open(" get",installdir+posturl+senddata,true); ksxhr.onreadystatechange="function(){" if(ksxhr.readystate="=1)" obj.innerhtml="<span align='center'><img src='" +installdir+"images loading.gif'>正在加载数据...";
 				  }
 				  else if(ksxhr.readyState==2 || ksxhr.readyState==3)
 				  {
-				   obj.innerHTML="<span align="center"><img src=""+installdir+"images/loading.gif">正在读取数据...</span>";
+				   obj.innerHTML="<span align="center"><img src +installdir+"images loading.gif">正在读取数据...</span>";
 				   }
 				  else if(ksxhr.readyState==4)
 				  {
