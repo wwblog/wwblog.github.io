@@ -17,8 +17,8 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Servlet实现登录 | ソーナンス</title>
-    <link rel="icon" type="image/jpeg" href="/favicon.jpg">
+    <title>Servlet实现登录 | ソーナンス</title><meta name="robots" content="noindex">
+    <link rel="icon" type="image/jpeg" href="/medias/favicon.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -35,15 +35,15 @@
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
-<body>
-
+<body >
+<div class="contentleft">
 <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="/medias/logo.jpg" class="logo-img" alt="LOGO">
+                    <img src="/medias/favicon.jpg" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">ソーナンス</span>
                 </a>
@@ -63,7 +63,7 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/tags" class="waves-effect waves-light">
+        <a href="/tags/" class="waves-effect waves-light">
             
             <i class="fa fa-tags"></i>
             
@@ -72,7 +72,7 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/categories" class="waves-effect waves-light">
+        <a href="/categories/" class="waves-effect waves-light">
             
             <i class="fa fa-bookmark"></i>
             
@@ -81,7 +81,7 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/archives" class="waves-effect waves-light">
+        <a href="/archives/" class="waves-effect waves-light">
             
             <i class="fa fa-archive"></i>
             
@@ -90,7 +90,7 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/about" class="waves-effect waves-light">
+        <a href="/about/" class="waves-effect waves-light">
             
             <i class="fa fa-user-circle-o"></i>
             
@@ -99,7 +99,7 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
+        <a href="/friends/" class="waves-effect waves-light">
             
             <i class="fa fa-address-book"></i>
             
@@ -118,7 +118,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
+        <img src="/medias/favicon.jpg" class="logo-img circle responsive-img">
         
         <div class="logo-name">ソーナンス</div>
         <div class="logo-desc">
@@ -142,7 +142,7 @@
         </li>
         
         <li>
-            <a href="/tags" class="waves-effect waves-light">
+            <a href="/tags/" class="waves-effect waves-light">
                 
                 <i class="fa fa-fw fa-tags"></i>
                 
@@ -151,7 +151,7 @@
         </li>
         
         <li>
-            <a href="/categories" class="waves-effect waves-light">
+            <a href="/categories/" class="waves-effect waves-light">
                 
                 <i class="fa fa-fw fa-bookmark"></i>
                 
@@ -160,7 +160,7 @@
         </li>
         
         <li>
-            <a href="/archives" class="waves-effect waves-light">
+            <a href="/archives/" class="waves-effect waves-light">
                 
                 <i class="fa fa-fw fa-archive"></i>
                 
@@ -169,7 +169,7 @@
         </li>
         
         <li>
-            <a href="/about" class="waves-effect waves-light">
+            <a href="/about/" class="waves-effect waves-light">
                 
                 <i class="fa fa-fw fa-user-circle-o"></i>
                 
@@ -178,7 +178,7 @@
         </li>
         
         <li>
-            <a href="/friends" class="waves-effect waves-light">
+            <a href="/friends/" class="waves-effect waves-light">
                 
                 <i class="fa fa-fw fa-address-book"></i>
                 
@@ -260,6 +260,8 @@
 
 </header>
 
+</div>
+<div class="contentMain">
 
 
 
@@ -381,12 +383,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/黑马/" target="_blank">
-                                <span class="chip bg-color">黑马</span>
-                            </a>
-                        
                             <a href="/tags/Servlet/" target="_blank">
                                 <span class="chip bg-color">Servlet</span>
+                            </a>
+                        
+                            <a href="/tags/黑马/" target="_blank">
+                                <span class="chip bg-color">黑马</span>
                             </a>
                         
                             <a href="/tags/登录/" target="_blank">
@@ -609,81 +611,76 @@ PASSWORD <span class="token keyword">VARCHAR</span><span class="token punctuatio
   <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
   <span class="token punctuation">}</span></code></pre>
-<ol start="6">
-<li><p>编写cn.itcast.web.servlet.LoginServlet类</p>
-<pre class=" language-java"><code class="language-java">  <span class="token keyword">package</span> cn<span class="token punctuation">.</span>itcast<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">;</span>
+<p>6.编写cn.itcast.web.servlet.LoginServlet类</p>
+<pre class=" language-java"><code class="language-java">     <span class="token keyword">package</span> cn<span class="token punctuation">.</span>itcast<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">;</span>
 
- <span class="token keyword">import</span> cn<span class="token punctuation">.</span>itcast<span class="token punctuation">.</span>dao<span class="token punctuation">.</span>UserDao<span class="token punctuation">;</span>
- <span class="token keyword">import</span> cn<span class="token punctuation">.</span>itcast<span class="token punctuation">.</span>domain<span class="token punctuation">.</span>User<span class="token punctuation">;</span>
+    <span class="token keyword">import</span> cn<span class="token punctuation">.</span>itcast<span class="token punctuation">.</span>dao<span class="token punctuation">.</span>UserDao<span class="token punctuation">;</span>
+    <span class="token keyword">import</span> cn<span class="token punctuation">.</span>itcast<span class="token punctuation">.</span>domain<span class="token punctuation">.</span>User<span class="token punctuation">;</span>
 
- <span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletException<span class="token punctuation">;</span>
- <span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>WebServlet<span class="token punctuation">;</span>
- <span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServlet<span class="token punctuation">;</span>
- <span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServletRequest<span class="token punctuation">;</span>
- <span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServletResponse<span class="token punctuation">;</span>
- <span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>IOException<span class="token punctuation">;</span>
-         <span class="token annotation punctuation">@WebServlet</span><span class="token punctuation">(</span><span class="token string">"/loginServlet"</span><span class="token punctuation">)</span>
- <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LoginServlet</span> <span class="token keyword">extends</span> <span class="token class-name">HttpServlet</span> <span class="token punctuation">{</span>
-         <span class="token annotation punctuation">@Override</span>
-         <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doGet</span><span class="token punctuation">(</span>HttpServletRequest req<span class="token punctuation">,</span> HttpServletResponse resp<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token punctuation">{</span>
-             <span class="token comment" spellcheck="true">//1.设置编码</span>
-             req<span class="token punctuation">.</span><span class="token function">setCharacterEncoding</span><span class="token punctuation">(</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-             <span class="token comment" spellcheck="true">//2.获取请求参数</span>
-             String username <span class="token operator">=</span> req<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-             String password <span class="token operator">=</span> req<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"password"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-             <span class="token comment" spellcheck="true">//3.封装user对象</span>
-             User loginUser <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-             loginUser<span class="token punctuation">.</span><span class="token function">setUsername</span><span class="token punctuation">(</span>username<span class="token punctuation">)</span><span class="token punctuation">;</span>
-             loginUser<span class="token punctuation">.</span><span class="token function">setPassword</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletException<span class="token punctuation">;</span>
+    <span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>WebServlet<span class="token punctuation">;</span>
+    <span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServlet<span class="token punctuation">;</span>
+    <span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServletRequest<span class="token punctuation">;</span>
+    <span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServletResponse<span class="token punctuation">;</span>
+    <span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>IOException<span class="token punctuation">;</span>
+            <span class="token annotation punctuation">@WebServlet</span><span class="token punctuation">(</span><span class="token string">"/loginServlet"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LoginServlet</span> <span class="token keyword">extends</span> <span class="token class-name">HttpServlet</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doGet</span><span class="token punctuation">(</span>HttpServletRequest req<span class="token punctuation">,</span> HttpServletResponse resp<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//1.设置编码</span>
+                req<span class="token punctuation">.</span><span class="token function">setCharacterEncoding</span><span class="token punctuation">(</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//2.获取请求参数</span>
+                String username <span class="token operator">=</span> req<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                String password <span class="token operator">=</span> req<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"password"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//3.封装user对象</span>
+                User loginUser <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                loginUser<span class="token punctuation">.</span><span class="token function">setUsername</span><span class="token punctuation">(</span>username<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                loginUser<span class="token punctuation">.</span><span class="token function">setPassword</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-             <span class="token comment" spellcheck="true">//4.调用UserDao的login方法</span>
-             UserDao dao <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">UserDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-             User user <span class="token operator">=</span> dao<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>loginUser<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//4.调用UserDao的login方法</span>
+                UserDao dao <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">UserDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                User user <span class="token operator">=</span> dao<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>loginUser<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-             <span class="token comment" spellcheck="true">//5.判断user</span>
-             <span class="token keyword">if</span><span class="token punctuation">(</span>user <span class="token operator">==</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
-                 <span class="token comment" spellcheck="true">//登录失败</span>
-                 req<span class="token punctuation">.</span><span class="token function">getRequestDispatcher</span><span class="token punctuation">(</span><span class="token string">"/failServlet"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forward</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span>resp<span class="token punctuation">)</span><span class="token punctuation">;</span>
-             <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
-                 <span class="token comment" spellcheck="true">//登录成功</span>
-                 <span class="token comment" spellcheck="true">//存储数据</span>
-                 req<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">,</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                 <span class="token comment" spellcheck="true">//转发</span>
-                 req<span class="token punctuation">.</span><span class="token function">getRequestDispatcher</span><span class="token punctuation">(</span><span class="token string">"/successServlet"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forward</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span>resp<span class="token punctuation">)</span><span class="token punctuation">;</span>
-             <span class="token punctuation">}</span>
+                <span class="token comment" spellcheck="true">//5.判断user</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>user <span class="token operator">==</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">//登录失败</span>
+                    req<span class="token punctuation">.</span><span class="token function">getRequestDispatcher</span><span class="token punctuation">(</span><span class="token string">"/failServlet"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forward</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span>resp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">//登录成功</span>
+                    <span class="token comment" spellcheck="true">//存储数据</span>
+                    req<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">,</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token comment" spellcheck="true">//转发</span>
+                    req<span class="token punctuation">.</span><span class="token function">getRequestDispatcher</span><span class="token punctuation">(</span><span class="token string">"/successServlet"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forward</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span>resp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
 
-         <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
 
-         <span class="token annotation punctuation">@Override</span>
-         <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doPost</span><span class="token punctuation">(</span>HttpServletRequest req<span class="token punctuation">,</span> HttpServletResponse resp<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token punctuation">{</span>
-             <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">doGet</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span>resp<span class="token punctuation">)</span><span class="token punctuation">;</span>
-         <span class="token punctuation">}</span>
-     <span class="token punctuation">}</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doPost</span><span class="token punctuation">(</span>HttpServletRequest req<span class="token punctuation">,</span> HttpServletResponse resp<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">doGet</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span>resp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
 
 
 </code></pre>
-</li>
-</ol>
-<pre><code>
-​    7. 编写FailServlet和SuccessServlet类
+<p>7.编写FailServlet和SuccessServlet类</p>
+<pre class=" language-java"><code class="language-java">
+        <span class="token annotation punctuation">@WebServlet</span><span class="token punctuation">(</span><span class="token string">"/successServlet"</span><span class="token punctuation">)</span>
+        <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SuccessServlet</span> <span class="token keyword">extends</span> <span class="token class-name">HttpServlet</span> <span class="token punctuation">{</span>
+            <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doPost</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//获取request域中共享的user对象</span>
+                User user <span class="token operator">=</span> <span class="token punctuation">(</span>User<span class="token punctuation">)</span> request<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  ```java
+                <span class="token keyword">if</span><span class="token punctuation">(</span>user <span class="token operator">!=</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">//给页面写一句话</span>
 
-        @WebServlet(&quot;/successServlet&quot;)
-        public class SuccessServlet extends HttpServlet {
-            protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-                //获取request域中共享的user对象
-                User user = (User) request.getAttribute(&quot;user&quot;);
-
-                if(user != null){
-                    //给页面写一句话
-
-                    //设置编码
-                    response.setContentType(&quot;text/html;charset=utf-8&quot;);
-                    //输出
-                    response.getWriter().write(&quot;登录成功！&quot;+user.getUsername()+&quot;,欢迎您&quot;);
-                }
- }</code></pre><pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@WebServlet</span><span class="token punctuation">(</span><span class="token string">"/failServlet"</span><span class="token punctuation">)</span>
+                    <span class="token comment" spellcheck="true">//设置编码</span>
+                    response<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span><span class="token string">"text/html;charset=utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token comment" spellcheck="true">//输出</span>
+                    response<span class="token punctuation">.</span><span class="token function">getWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"登录成功！"</span><span class="token operator">+</span>user<span class="token punctuation">.</span><span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">",欢迎您"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+ <span class="token punctuation">}</span></code></pre>
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@WebServlet</span><span class="token punctuation">(</span><span class="token string">"/failServlet"</span><span class="token punctuation">)</span>
     <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">FailServlet</span> <span class="token keyword">extends</span> <span class="token class-name">HttpServlet</span> <span class="token punctuation">{</span>
         <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doPost</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token punctuation">{</span>
             <span class="token comment" spellcheck="true">//给页面写一句话</span>
@@ -719,7 +716,7 @@ PASSWORD <span class="token keyword">VARCHAR</span><span class="token punctuatio
         <span class="token number">1</span><span class="token punctuation">.</span> <span class="token function">setProperty</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
         <span class="token number">2</span><span class="token punctuation">.</span> <span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
         <span class="token number">3</span><span class="token punctuation">.</span> <span class="token function">populate</span><span class="token punctuation">(</span>Object obj <span class="token punctuation">,</span> Map map<span class="token punctuation">)</span><span class="token operator">:</span>将map集合的键值对信息，封装到对应的JavaBean对象中</code></pre>
-
+<!-- flag of hidden posts -->
             </div>
             <hr/>
 
@@ -985,12 +982,12 @@ PASSWORD <span class="token keyword">VARCHAR</span><span class="token punctuatio
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/黑马/" target="_blank">
-                        <span class="chip bg-color">黑马</span>
-                    </a>
-                    
                     <a href="/tags/Servlet/" target="_blank">
                         <span class="chip bg-color">Servlet</span>
+                    </a>
+                    
+                    <a href="/tags/黑马/" target="_blank">
+                        <span class="chip bg-color">黑马</span>
                     </a>
                     
                     <a href="/tags/登录/" target="_blank">
@@ -1009,25 +1006,26 @@ PASSWORD <span class="token keyword">VARCHAR</span><span class="token punctuatio
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
             </div>
             <div class="card">
-                <a href="/2019/07/24/servlet-zhong-request-yu-respose/">
+                <a href="/2019/07/24/servlet-shi-xian-deng-lu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Servlet中request与respose">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Servlet实现登录">
                         
-                        <span class="card-title">Servlet中request与respose</span>
+                        <span class="card-title">Servlet实现登录</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            概述本文主要讲解了Servlet中的请求与响应的相关知识，首先通过HTTP协议引出Request与Response，
-1.HTTP与Request、Response的联系
-2.通过浏览器调试工具看懂请求与响应的参数、组成
-3.通过Java 
+                            需求用户登录案例需求：
+1.编写login.html登录页面
+    username &amp; password 两个输入框
+2.使用Druid数据库连接池技术,操作mysql，day14数据库中user表
+3.使用JdbcTempla
                         
                     </div>
                     <div class="publish-info">
@@ -1046,6 +1044,7 @@ PASSWORD <span class="token keyword">VARCHAR</span><span class="token punctuatio
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1053,12 +1052,16 @@ PASSWORD <span class="token keyword">VARCHAR</span><span class="token punctuatio
                         <span class="chip bg-color">Servlet</span>
                     </a>
                     
-                    <a href="/tags/Java-Web/" target="_blank">
-                        <span class="chip bg-color">Java Web</span>
+                    <a href="/tags/黑马/" target="_blank">
+                        <span class="chip bg-color">黑马</span>
                     </a>
                     
-                    <a href="/tags/Request/" target="_blank">
-                        <span class="chip bg-color">Request</span>
+                    <a href="/tags/登录/" target="_blank">
+                        <span class="chip bg-color">登录</span>
+                    </a>
+                    
+                    <a href="/tags/Druid-JdbcTemplate/" target="_blank">
+                        <span class="chip bg-color">Druid JdbcTemplate</span>
                     </a>
                     
                 </div>
@@ -1170,6 +1173,8 @@ PASSWORD <span class="token keyword">VARCHAR</span><span class="token punctuatio
 </main>
 
 
+</div>
+<div class="contentleft">
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
@@ -1179,7 +1184,7 @@ PASSWORD <span class="token keyword">VARCHAR</span><span class="token punctuatio
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">4.4k</span>
+                <span class="white-color">3.7k</span>
             
 
             
@@ -1253,6 +1258,9 @@ $(function () {
     </a>
 </div>
 
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 
 <script src="/libs/materialize/materialize.min.js"></script>
 <script src="/libs/masonry/masonry.pkgd.min.js"></script>
@@ -1260,7 +1268,7 @@ $(function () {
 <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
 <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
 <script src="/js/matery.js"></script>
-
+<script src="https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144201146-1"></script>
@@ -1276,11 +1284,55 @@ $(function () {
 
 
 
+
     <script src="/libs/others/clicklove.js"></script>
 
 
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
+ 
+                        
+
+<link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<div class="music-player contentleft">
+    
+    <div class="row">
+        <div class="col l8 offset-l2 m10 offset-m1 s12">
+            <div id="aplayer" class="music"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script>
+$(function () {
+    new APlayer({
+        container: document.getElementById('aplayer'),
+        fixed: 'true' === 'true',
+        autoplay: 'false' === 'true',
+        theme: '#42b983',
+        loop: 'all',
+        order: 'list',
+        preload: 'auto',
+        volume: Number('0.7'),
+        listFolded: 'false' === 'true',
+        listMaxHeight: '5',
+        audio: JSON.parse('[{"name":"陈洁丽 - 诺言","artist":"陈洁丽","url":"/medias/music/陈洁丽 - 诺言.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"RAM WIRE - 僕らの手には何もないけど、","artist":"RAM WIRE","url":"/medias/music/RAM WIRE - 僕らの手には何もないけど、.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"陈洁丽  - 茶之花","artist":"陈洁丽","url":"/medias/music/陈洁丽  - 茶之花.mp3","cover":"http://xxx.com/music-cover1.png"},{"name":"陈洁丽 - 绿色的旋律(Live) - live","artist":"陈洁丽","url":"/medias/music/陈洁丽 - 绿色的旋律(Live) - live.mp3","cover":"http://xxx.com/music-cover1.png"},{"name":"相思","artist":"毛阿敏","url":"/medias/music/相思.mp3","cover":"/medias/music/cover2.png"},{"name":"S.H.E - 恋人未满","artist":"S.H.E","url":"/medias/music/S.H.E - 恋人未满.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"莫文蔚 - 外面的世界","artist":"莫文蔚","url":"/medias/music/莫文蔚 - 外面的世界.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"コアラモード. - 七色シンフォニー","artist":"コアラモード","url":"/medias/music/コアラモード. - 七色シンフォニー.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"S.H.E-你曾是少年(电影《少年班》主题曲)","artist":"S.H.E","url":"/medias/music/S.H.E-你曾是少年(电影《少年班》主题曲).mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"潘广益-凌晨两点半","artist":"潘广益","url":"/medias/music/潘广益-凌晨两点半.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"咖啡因乐队 - 成长的路口","artist":"咖啡因乐队","url":"/medias/music/咖啡因乐队 - 成长的路口.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"7!! - オレンジ","artist":"7!!","url":"/medias/music/7!! - オレンジ.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"西野カナ-トリセツ  ","artist":"西野カナ","url":"/medias/music/西野カナ-トリセツ  .mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"杨宗纬 - 一场恋爱","artist":"杨宗纬","url":"/medias/music/杨宗纬 - 一场恋爱.mp3","cover":"http://xxx.com/music-cover3.png"}]')
+    });
+      $(document).pjax('a[target!=_blank]', '#contentleft', {fragment:'#contentleft', timeout:8000});
+      $(document).pjax('a[target!=_blank]', '.contentleft', {fragment:'.contentleft', timeout:8000});
+
+    
+    
+});
+</script>
+                    
+                    
+    
 
 </body>
+  <script>                 $(document).pjax('a[target!=_blank]', '.contentMain', {fragment:'.contentMain', timeout:8000});
+
+      </script>
+
 </html>

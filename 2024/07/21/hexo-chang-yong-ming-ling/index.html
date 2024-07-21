@@ -1,0 +1,1055 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="hexo博客编写常用命令, Changing Learning Drawing">
+    <meta name="description" content="
+
+  
+  
+    Please enter the password to read.
+    
+  
+
+Incorrect Password!
+No content to display!
+
+U2FsdGVkX1+ph7VwQd56">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>hexo博客编写常用命令 | ソーナンス</title>
+    <link rel="icon" type="image/jpeg" href="/medias/favicon.jpg">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body >
+<div class="contentleft">
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/favicon.jpg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">ソーナンス</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags/" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories/" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives/" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about/" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends/" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/favicon.jpg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">ソーナンス</div>
+        <div class="logo-desc">
+            
+            Changing Learning Drawing
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/LoveXWen" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/LoveXWen" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+</div>
+<div class="contentMain">
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        hexo博客编写常用命令
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/hexo/" target="_blank">
+                                <span class="chip bg-color">hexo</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2024-07-21
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        264
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        1 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<div id="hbe-security">
+  <div class="hbe-input-container">
+  <input type="password" class="hbe-form-control" id="pass" placeholder="Please enter the password to read.">
+    <label for="pass">Please enter the password to read.</label>
+    <div class="bottom-line"></div>
+  </div>
+</div>
+<div id="decryptionError" style="display: none;">Incorrect Password!</div>
+<div id="noContentError" style="display: none;">No content to display!</div>
+<div id="encrypt-blog" style="display:none">
+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
+</div>
+<script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《hexo博客编写常用命令》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2024/07/21/hexo-chang-yong-ming-ling/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                WangWei
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+    <div class="livere-card card" data-aos="fade-up">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" class="card-content" data-id="city" data-uid="MTAyMC80NTQ1Ny8yMTk2OQ==">
+        <script type="text/javascript">
+            (function (d, s) {
+                let j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') {
+                    return;
+                }
+
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript。</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</div>
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2024/07/21/hexo-chang-yong-ming-ling/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="hexo博客编写常用命令">
+                        
+                        <span class="card-title">hexo博客编写常用命令</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+
+  
+  
+    Please enter the password to read.
+    
+  
+
+Incorrect Password!
+No content to display!
+
+U2FsdGVkX1+ph7VwQd56
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-07-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            WangWei
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/hexo/" target="_blank">
+                        <span class="chip bg-color">hexo</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/10/25/python-xue-xi-zhi-python-bian-cheng-gui-fan/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Python学习之Python编程规范">
+                        
+                        <span class="card-title">Python学习之Python编程规范</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            前言问题为什么Python编程需要规范？
+规范的要求有那几个方面？
+不规范的后果有哪些？
+书写规范的标准
+命名规范1.标识符命名规则
+以字母、下划线、数字组成，且不能以数字开头
+不能是关键字与保留字
+注：python3标识符可以存在汉字，不
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python基础/" class="post-category" target="_blank">
+                                    Python基础
+                                </a>
+                            
+                            <a href="/categories/Python基础/Python命名规范/" class="post-category" target="_blank">
+                                    Python命名规范
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Python/" target="_blank">
+                        <span class="chip bg-color">Python</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+</div>
+<div class="contentleft">
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">WangWei</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">3.7k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/LoveXWen" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:3289605396@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3289605396" class="tooltipped" data-tooltip="QQ联系我: 3289605396" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+<script src="https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-144201146-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-144201146-1');
+</script>
+
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+ 
+                        
+
+<link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<div class="music-player contentleft">
+    
+    <div class="row">
+        <div class="col l8 offset-l2 m10 offset-m1 s12">
+            <div id="aplayer" class="music"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script>
+$(function () {
+    new APlayer({
+        container: document.getElementById('aplayer'),
+        fixed: 'true' === 'true',
+        autoplay: 'false' === 'true',
+        theme: '#42b983',
+        loop: 'all',
+        order: 'list',
+        preload: 'auto',
+        volume: Number('0.7'),
+        listFolded: 'false' === 'true',
+        listMaxHeight: '5',
+        audio: JSON.parse('[{"name":"陈洁丽 - 诺言","artist":"陈洁丽","url":"/medias/music/陈洁丽 - 诺言.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"RAM WIRE - 僕らの手には何もないけど、","artist":"RAM WIRE","url":"/medias/music/RAM WIRE - 僕らの手には何もないけど、.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"陈洁丽  - 茶之花","artist":"陈洁丽","url":"/medias/music/陈洁丽  - 茶之花.mp3","cover":"http://xxx.com/music-cover1.png"},{"name":"陈洁丽 - 绿色的旋律(Live) - live","artist":"陈洁丽","url":"/medias/music/陈洁丽 - 绿色的旋律(Live) - live.mp3","cover":"http://xxx.com/music-cover1.png"},{"name":"相思","artist":"毛阿敏","url":"/medias/music/相思.mp3","cover":"/medias/music/cover2.png"},{"name":"S.H.E - 恋人未满","artist":"S.H.E","url":"/medias/music/S.H.E - 恋人未满.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"莫文蔚 - 外面的世界","artist":"莫文蔚","url":"/medias/music/莫文蔚 - 外面的世界.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"コアラモード. - 七色シンフォニー","artist":"コアラモード","url":"/medias/music/コアラモード. - 七色シンフォニー.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"S.H.E-你曾是少年(电影《少年班》主题曲)","artist":"S.H.E","url":"/medias/music/S.H.E-你曾是少年(电影《少年班》主题曲).mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"潘广益-凌晨两点半","artist":"潘广益","url":"/medias/music/潘广益-凌晨两点半.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"咖啡因乐队 - 成长的路口","artist":"咖啡因乐队","url":"/medias/music/咖啡因乐队 - 成长的路口.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"7!! - オレンジ","artist":"7!!","url":"/medias/music/7!! - オレンジ.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"西野カナ-トリセツ  ","artist":"西野カナ","url":"/medias/music/西野カナ-トリセツ  .mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"杨宗纬 - 一场恋爱","artist":"杨宗纬","url":"/medias/music/杨宗纬 - 一场恋爱.mp3","cover":"http://xxx.com/music-cover3.png"}]')
+    });
+      $(document).pjax('a[target!=_blank]', '#contentleft', {fragment:'#contentleft', timeout:8000});
+      $(document).pjax('a[target!=_blank]', '.contentleft', {fragment:'.contentleft', timeout:8000});
+
+    
+    
+});
+</script>
+                    
+                    
+    
+
+</body>
+  <script>                 $(document).pjax('a[target!=_blank]', '.contentMain', {fragment:'.contentMain', timeout:8000});
+
+      </script>
+
+</html>

@@ -5,10 +5,10 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Servlet中request与respose, Changing Learning Drawing">
-    <meta name="description" content="概述本文主要讲解了Servlet中的请求与响应的相关知识，首先通过HTTP协议引出Request与Response，
+    <meta name="description" content="yi概述一、概述本文主要讲解了Servlet中的请求与响应的相关知识，首先通过HTTP协议引出Request与Response，
 1.HTTP与Request、Response的联系
 2.通过浏览器调试工具看懂请求与响应的参数、组成
-3.通过Java ">
+3.通">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,8 +16,8 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Servlet中request与respose | ソーナンス</title>
-    <link rel="icon" type="image/jpeg" href="/favicon.jpg">
+    <title>Servlet中request与respose | ソーナンス</title><meta name="robots" content="noindex">
+    <link rel="icon" type="image/jpeg" href="/medias/favicon.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -34,15 +34,15 @@
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
-<body>
-
+<body >
+<div class="contentleft">
 <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="/medias/logo.jpg" class="logo-img" alt="LOGO">
+                    <img src="/medias/favicon.jpg" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">ソーナンス</span>
                 </a>
@@ -62,7 +62,7 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/tags" class="waves-effect waves-light">
+        <a href="/tags/" class="waves-effect waves-light">
             
             <i class="fa fa-tags"></i>
             
@@ -71,7 +71,7 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/categories" class="waves-effect waves-light">
+        <a href="/categories/" class="waves-effect waves-light">
             
             <i class="fa fa-bookmark"></i>
             
@@ -80,7 +80,7 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/archives" class="waves-effect waves-light">
+        <a href="/archives/" class="waves-effect waves-light">
             
             <i class="fa fa-archive"></i>
             
@@ -89,7 +89,7 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/about" class="waves-effect waves-light">
+        <a href="/about/" class="waves-effect waves-light">
             
             <i class="fa fa-user-circle-o"></i>
             
@@ -98,7 +98,7 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
+        <a href="/friends/" class="waves-effect waves-light">
             
             <i class="fa fa-address-book"></i>
             
@@ -117,7 +117,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
+        <img src="/medias/favicon.jpg" class="logo-img circle responsive-img">
         
         <div class="logo-name">ソーナンス</div>
         <div class="logo-desc">
@@ -141,7 +141,7 @@
         </li>
         
         <li>
-            <a href="/tags" class="waves-effect waves-light">
+            <a href="/tags/" class="waves-effect waves-light">
                 
                 <i class="fa fa-fw fa-tags"></i>
                 
@@ -150,7 +150,7 @@
         </li>
         
         <li>
-            <a href="/categories" class="waves-effect waves-light">
+            <a href="/categories/" class="waves-effect waves-light">
                 
                 <i class="fa fa-fw fa-bookmark"></i>
                 
@@ -159,7 +159,7 @@
         </li>
         
         <li>
-            <a href="/archives" class="waves-effect waves-light">
+            <a href="/archives/" class="waves-effect waves-light">
                 
                 <i class="fa fa-fw fa-archive"></i>
                 
@@ -168,7 +168,7 @@
         </li>
         
         <li>
-            <a href="/about" class="waves-effect waves-light">
+            <a href="/about/" class="waves-effect waves-light">
                 
                 <i class="fa fa-fw fa-user-circle-o"></i>
                 
@@ -177,7 +177,7 @@
         </li>
         
         <li>
-            <a href="/friends" class="waves-effect waves-light">
+            <a href="/friends/" class="waves-effect waves-light">
                 
                 <i class="fa fa-fw fa-address-book"></i>
                 
@@ -259,6 +259,8 @@
 
 </header>
 
+</div>
+<div class="contentMain">
 
 
 
@@ -380,12 +382,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Servlet/" target="_blank">
-                                <span class="chip bg-color">Servlet</span>
-                            </a>
-                        
                             <a href="/tags/Java-Web/" target="_blank">
                                 <span class="chip bg-color">Java Web</span>
+                            </a>
+                        
+                            <a href="/tags/Servlet/" target="_blank">
+                                <span class="chip bg-color">Servlet</span>
                             </a>
                         
                             <a href="/tags/Request/" target="_blank">
@@ -400,8 +402,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Java-Web/" class="post-category" target="_blank">
-                                Java Web
+                            <a href="/categories/Java-Web一概述/" class="post-category" target="_blank">
+                                Java Web一概述
                             </a>
                         
                     </div>
@@ -419,14 +421,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2.2k
+                        3.4k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        9 分
+                        13 分
                     </div>
                     
                 
@@ -442,19 +444,19 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>本文主要讲解了Servlet中的请求与响应的相关知识，首先通过HTTP协议引出Request与Response，</p>
+                <h1 id="yi概述"><a href="#yi概述" class="headerlink" title="yi概述"></a>yi概述</h1><h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><p>本文主要讲解了Servlet中的请求与响应的相关知识，首先通过HTTP协议引出Request与Response，</p>
 <p>1.HTTP与Request、Response的联系</p>
 <p>2.通过浏览器调试工具看懂请求与响应的参数、组成</p>
 <p>3.通过Java API获取各种请求参数</p>
 <p>4.GET与POST请求区别</p>
-<h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h2 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h2><p>Hyper Text Transfer Protocol超文本传输协议</p>
-<h2 id="传输协议"><a href="#传输协议" class="headerlink" title="传输协议"></a>传输协议</h2><p>定义了客户端与服务器端通信时，发送的<strong>数据的格式</strong></p>
-<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>1.基于TCP/IP的高级协议</p>
+<h1 id="二、HTTP"><a href="#二、HTTP" class="headerlink" title="二、HTTP"></a>二、HTTP</h1><h2 id="1-概念："><a href="#1-概念：" class="headerlink" title="1. 概念："></a>1. 概念：</h2><p>Hyper Text Transfer Protocol超文本传输协议</p>
+<h2 id="2-传输协议"><a href="#2-传输协议" class="headerlink" title="2. 传输协议"></a>2. 传输协议</h2><p>定义了客户端与服务器端通信时，发送的<strong>数据的格式</strong></p>
+<h2 id="3-特点"><a href="#3-特点" class="headerlink" title="3. 特点"></a>3. 特点</h2><p>1.基于TCP/IP的高级协议，应用层协议</p>
 <p>2.默认端口号：80</p>
-<p>3.基于<strong>请求/响应</strong>模型：一次请求对应一次响应</p>
+<p>3.基于<strong>请求/响应</strong>模型：一次请求对应一次响应，只有请求才有相应，服务器无法主动发起响应</p>
 <p>4.无状态：每次响应相互独立，不能交换数据</p>
-<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><p>HTTP是基于请求/响应模型，接着介绍请求与响应的数据格式。</p>
-<h1 id="请求"><a href="#请求" class="headerlink" title="请求"></a>请求</h1><h2 id="请求消息的数据组成"><a href="#请求消息的数据组成" class="headerlink" title="请求消息的数据组成"></a>请求消息的数据组成</h2><h3 id="1-请求行"><a href="#1-请求行" class="headerlink" title="1 请求行"></a>1 请求行</h3><h4 id="1-1-格式"><a href="#1-1-格式" class="headerlink" title="1.1 格式"></a>1.1 格式</h4><p>格式：<code>请求方式    请求URL    请求协议/版本</code></p>
+<h2 id="4-备注"><a href="#4-备注" class="headerlink" title="4. 备注"></a>4. 备注</h2><p>HTTP是基于请求/响应模型，接着介绍请求与响应的数据格式。</p>
+<h1 id="三、请求"><a href="#三、请求" class="headerlink" title="三、请求"></a>三、请求</h1><h2 id="1）请求消息的数据组成—-请求行、请求头、请求空行、请求体"><a href="#1）请求消息的数据组成—-请求行、请求头、请求空行、请求体" class="headerlink" title="1）请求消息的数据组成—-请求行、请求头、请求空行、请求体"></a>1）请求消息的数据组成—-请求行、请求头、请求空行、请求体</h2><h3 id="1-请求行"><a href="#1-请求行" class="headerlink" title="1 请求行"></a>1 请求行</h3><h4 id="1-1-格式"><a href="#1-1-格式" class="headerlink" title="1.1 格式"></a>1.1 格式</h4><p>格式：<code>请求方式    请求URL    请求协议/版本</code></p>
 <p>例子： <code>GET    /login.html  HTTP /1.1</code></p>
 <h4 id="1-2-请求方式"><a href="#1-2-请求方式" class="headerlink" title="1.2 请求方式"></a>1.2 请求方式</h4><ul>
 <li><p>HTTP协议有7中请求方式，常用的有2种</p>
@@ -563,19 +565,23 @@ Cache-Control: max-age=0</code></pre><h4 id="2-2-常见请求头"><a href="#2-2-
 </li>
 <li><p>Accept-Language: 浏览器可以支持的语言环境</p>
 </li>
-<li><p>Accept-Encoding：浏览器可以支持的压缩格式</p>
+<li><p>Accept-Encoding：浏览器可以支持的压缩格式，为了节省带宽，服务器一般先将数据压缩再发给客户端，客户端再解压，我们看不见</p>
+</li>
+<li><p>If-Modified-Since:浏览器告诉服务器，缓存数据的时间</p>
 </li>
 <li><p>Referer：</p>
 <pre><code>* 告诉服务器，我(当前请求)从哪里来？
 
-    * 作用：
+         * 作用：防爬虫
 
-         1. 防盗链：
-         2. 统计工作：</code></pre></li>
+             1. 防盗链：
+               2. 统计工作：</code></pre></li>
 <li><p>Connection:是否可以复用连接</p>
 <ul>
 <li>值为keep-alive表示可以被复用(HTTP1.1)</li>
 </ul>
+</li>
+<li><p>X-Requested-With:XMLHttpRequest表示是通过Ajax发起的请求</p>
 </li>
 </ul>
 <h3 id="3-请求空行"><a href="#3-请求空行" class="headerlink" title="3 请求空行"></a>3 请求空行</h3><p>空行</p>
@@ -584,7 +590,7 @@ Cache-Control: max-age=0</code></pre><h4 id="2-2-常见请求头"><a href="#2-2-
 <p>GET方式没有请求体</p>
 </li>
 </ul>
-<h2 id="请求字符串总格式"><a href="#请求字符串总格式" class="headerlink" title="请求字符串总格式"></a>请求字符串总格式</h2><pre><code>POST  /login.html  HTTP /1.1
+<h2 id="2）请求字符串总格式"><a href="#2）请求字符串总格式" class="headerlink" title="2）请求字符串总格式"></a>2）请求字符串总格式</h2><pre><code>POST  /login.html  HTTP /1.1
 Host: start.firefoxchina.cn
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
@@ -595,7 +601,51 @@ Cookie: Hm_lvt_dd4738b5fb302cb062ef19107df5d2e4=1563503173; uid=rBADnV01Ana3AXyP
 Upgrade-Insecure-Requests: 1
 Cache-Control: max-age=0
 
-username=zhangsan</code></pre><h2 id="浏览器查看请求与响应"><a href="#浏览器查看请求与响应" class="headerlink" title="浏览器查看请求与响应"></a>浏览器查看请求与响应</h2><h1 id="request对象"><a href="#request对象" class="headerlink" title="request对象"></a>request对象</h1><h2 id="1-request对象和response对象的原理"><a href="#1-request对象和response对象的原理" class="headerlink" title="1 request对象和response对象的原理"></a>1 request对象和response对象的原理</h2><ol>
+username=zhangsan</code></pre><h1 id="三、响应"><a href="#三、响应" class="headerlink" title="三、响应"></a>三、响应</h1><pre><code>1. 请求消息：客户端发送给服务器端的数据
+   - 数据格式：
+     1. 请求行
+     2. 请求头
+     3. 请求空行
+     4. 请求体
+2. 响应消息：服务器端发送给客户端的数据
+   - 数据格式：
+     1. 响应行
+        1. 组成：协议/版本 响应状态码 状态码描述
+        2. 响应状态码：服务器告诉客户端浏览器本次请求和响应的一个状态。
+           1. 状态码都是3位数字 
+           2. 分类：
+              1. 1xx：服务器就收客户端消息，但没有接受完成，等待一段时间后，发送1xx多状态码
+              2. 2xx：成功。代表：200
+              3. 3xx：重定向。代表：302(重定向)，304(访问缓存)
+              4. 4xx：客户端错误。
+                 - 代表：
+                   - 404（请求路径没有对应的资源） 
+                   - 405：请求方式没有对应的doXxx方法
+              5. 5xx：服务器端错误。代表：500(服务器内部出现异常)</code></pre><pre><code>    2. 响应头：
+        1. 格式：头名称： 值
+        2. 常见的响应头：
+            1. Content-Type：服务器告诉客户端本次响应体数据格式以及编码格式
+            2. Content-disposition：服务器告诉客户端以什么格式打开响应体数据
+                * 值：
+                    * in-line:默认值,在当前页面内打开
+                    * attachment;filename=xxx：以附件形式打开响应体。文件下载
+    3. 响应空行
+    4. 响应体:传输的数据
+
+* 响应字符串格式
+    HTTP/1.1 200 OK
+    Content-Type: text/html;charset=UTF-8
+    Content-Length: 101
+    Date: Wed, 06 Jun 2018 07:08:42 GMT
+
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;$Title$&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+      hello , response
+      &lt;/body&gt;
+    &lt;/html&gt;</code></pre><h1 id="四、浏览器查看请求与响应"><a href="#四、浏览器查看请求与响应" class="headerlink" title="四、浏览器查看请求与响应"></a>四、浏览器查看请求与响应</h1><h1 id="五、request对象"><a href="#五、request对象" class="headerlink" title="五、request对象"></a>五、request对象</h1><h2 id="1-request对象和response对象的原理"><a href="#1-request对象和response对象的原理" class="headerlink" title="1 request对象和response对象的原理"></a>1 request对象和response对象的原理</h2><ol>
 <li>request和response对象是由<strong>服务器创建</strong>的。我们来使用它们</li>
 <li>request对象作用是来获取请求消息，response对象是来设置响应消息</li>
 </ol>
@@ -742,7 +792,80 @@ String agent <span class="token operator">=</span> request<span class="token pun
 
     <span class="token number">4</span><span class="token punctuation">.</span> 获取ServletContext：
         <span class="token operator">*</span> ServletContext <span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h1 id="六、response对象"><a href="#六、response对象" class="headerlink" title="六、response对象"></a>六、response对象</h1><pre><code>功能：设置响应消息
 
+1. 设置响应行
+   1. 格式：HTTP/1.1 200 ok
+   2. 设置状态码：setStatus(int sc) 
+2. 设置响应头：setHeader(String name, String value) 
+3. 设置响应体：
+   - 使用步骤：
+     1. 获取输出流
+        - 字符输出流：PrintWriter getWriter()
+        - 字节输出流：ServletOutputStream getOutputStream()
+     2. 使用输出流，将数据输出到客户端浏览器</code></pre><pre><code>案例：
+
+1. 完成重定向
+   - 重定向：资源跳转的方式
+   - 代码实现：
+     //1. 设置状态码为302
+        response.setStatus(302);
+        //2.设置响应头location
+        response.setHeader(&quot;location&quot;,&quot;/day15/responseDemo2&quot;);</code></pre><pre><code>        //简单的重定向方法
+        response.sendRedirect(&quot;/day15/responseDemo2&quot;);
+
+    * 重定向的特点:redirect
+        1. 地址栏发生变化
+        2. 重定向可以访问其他站点(服务器)的资源
+        3. 重定向是两次请求。不能使用request对象来共享数据
+    * 转发的特点：forward
+        1. 转发地址栏路径不变
+        2. 转发只能访问当前服务器下的资源
+        3. 转发是一次请求，可以使用request对象来共享数据
+
+    * forward 和  redirect 区别
+
+    * 路径写法：
+        1. 路径分类
+            1. 相对路径：通过相对路径不可以确定唯一资源
+                * 如：./index.html
+                * 不以/开头，以.开头路径
+
+                * 规则：找到当前资源和目标资源之间的相对位置关系
+                    * ./：当前目录
+                    * ../:后退一级目录
+            2. 绝对路径：通过绝对路径可以确定唯一资源
+                * 如：http://localhost/day15/responseDemo2        /day15/responseDemo2
+                * 以/开头的路径
+
+                * 规则：判断定义的路径是给谁用的？判断请求将来从哪儿发出
+                    * 给客户端浏览器使用：需要加虚拟目录(项目的访问路径)
+                        * 建议虚拟目录动态获取：request.getContextPath()
+                        * &lt;a&gt; , &lt;form&gt; 重定向...
+                    * 给服务器使用：不需要加虚拟目录
+                        * 转发路径
+2. 服务器输出字符数据到浏览器
+    * 步骤：
+        1. 获取字符输出流
+        2. 输出数据
+
+    * 注意：
+        * 乱码问题：
+            1. PrintWriter pw = response.getWriter();获取的流的默认编码是ISO-8859-1
+            2. 设置该流的默认编码
+            3. 告诉浏览器响应体使用的编码
+
+            //简单的形式，设置编码，是在获取流之前设置
+            response.setContentType(&quot;text/html;charset=utf-8&quot;);
+3. 服务器输出字节数据到浏览器
+    * 步骤：
+        1. 获取字节输出流
+        2. 输出数据
+
+4. 验证码
+    1. 本质：图片
+    2. 目的：防止恶意表单注册</code></pre><h1 id="七、参考资料"><a href="#七、参考资料" class="headerlink" title="七、参考资料"></a>七、参考资料</h1><p><a href="https://www.bilibili.com/video/av47886776/?p=257&amp;t=43" target="_blank" rel="noopener">https://www.bilibili.com/video/av47886776/?p=257&amp;t=43</a></p>
+<!-- flag of hidden posts -->
             </div>
             <hr/>
 
@@ -964,62 +1087,59 @@ String agent <span class="token operator">=</span> request<span class="token pun
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/07/24/servlet-shi-xian-deng-lu/">
+                <a href="/2019/07/24/servlet-zhong-request-yu-respose/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Servlet实现登录">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Servlet中request与respose">
                         
-                        <span class="card-title">Servlet实现登录</span>
+                        <span class="card-title">Servlet中request与respose</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            需求用户登录案例需求：
-1.编写login.html登录页面
-    username &amp; password 两个输入框
-2.使用Druid数据库连接池技术,操作mysql，day14数据库中user表
-3.使用JdbcTempla
+                            yi概述一、概述本文主要讲解了Servlet中的请求与响应的相关知识，首先通过HTTP协议引出Request与Response，
+1.HTTP与Request、Response的联系
+2.通过浏览器调试工具看懂请求与响应的参数、组成
+3.通
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java-Web/" class="post-category" target="_blank">
-                                    Java Web
+                            <a href="/categories/Java-Web一概述/" class="post-category" target="_blank">
+                                    Java Web一概述
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/黑马/" target="_blank">
-                        <span class="chip bg-color">黑马</span>
+                    <a href="/tags/Java-Web/" target="_blank">
+                        <span class="chip bg-color">Java Web</span>
                     </a>
                     
                     <a href="/tags/Servlet/" target="_blank">
                         <span class="chip bg-color">Servlet</span>
                     </a>
                     
-                    <a href="/tags/登录/" target="_blank">
-                        <span class="chip bg-color">登录</span>
-                    </a>
-                    
-                    <a href="/tags/Druid-JdbcTemplate/" target="_blank">
-                        <span class="chip bg-color">Druid JdbcTemplate</span>
+                    <a href="/tags/Request/" target="_blank">
+                        <span class="chip bg-color">Request</span>
                     </a>
                     
                 </div>
@@ -1030,56 +1150,57 @@ String agent <span class="token operator">=</span> request<span class="token pun
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
             </div>
             <div class="card">
-                <a href="/2019/07/22/python-huan-jing-an-zhuang/">
+                <a href="/2019/07/24/servlet-zhong-request-yu-respose/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Python环境安装">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Servlet中request与respose">
                         
-                        <span class="card-title">Python环境安装</span>
+                        <span class="card-title">Servlet中request与respose</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            软件安装下载地址Python官网安装地址 : https://www.python.org/downloads
-以安装Python 3.7.4为例
-安装包选项安装包选项如下：
-
-
-Version
-Operating System
-Descr
+                            yi概述一、概述本文主要讲解了Servlet中的请求与响应的相关知识，首先通过HTTP协议引出Request与Response，
+1.HTTP与Request、Response的联系
+2.通过浏览器调试工具看懂请求与响应的参数、组成
+3.通
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-22
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-24
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            WangWei
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java-Web一概述/" class="post-category" target="_blank">
+                                    Java Web一概述
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Python/" target="_blank">
-                        <span class="chip bg-color">Python</span>
+                    <a href="/tags/Java-Web/" target="_blank">
+                        <span class="chip bg-color">Java Web</span>
                     </a>
                     
-                    <a href="/tags/环境安装/" target="_blank">
-                        <span class="chip bg-color">环境安装</span>
+                    <a href="/tags/Servlet/" target="_blank">
+                        <span class="chip bg-color">Servlet</span>
                     </a>
                     
-                    <a href="/tags/绿色开发软件/" target="_blank">
-                        <span class="chip bg-color">绿色开发软件</span>
+                    <a href="/tags/Request/" target="_blank">
+                        <span class="chip bg-color">Request</span>
                     </a>
                     
                 </div>
@@ -1191,6 +1312,8 @@ Descr
 </main>
 
 
+</div>
+<div class="contentleft">
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
@@ -1200,7 +1323,7 @@ Descr
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">4.4k</span>
+                <span class="white-color">3.7k</span>
             
 
             
@@ -1274,6 +1397,9 @@ $(function () {
     </a>
 </div>
 
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 
 <script src="/libs/materialize/materialize.min.js"></script>
 <script src="/libs/masonry/masonry.pkgd.min.js"></script>
@@ -1281,7 +1407,7 @@ $(function () {
 <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
 <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
 <script src="/js/matery.js"></script>
-
+<script src="https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144201146-1"></script>
@@ -1297,11 +1423,55 @@ $(function () {
 
 
 
+
     <script src="/libs/others/clicklove.js"></script>
 
 
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
+ 
+                        
+
+<link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<div class="music-player contentleft">
+    
+    <div class="row">
+        <div class="col l8 offset-l2 m10 offset-m1 s12">
+            <div id="aplayer" class="music"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script>
+$(function () {
+    new APlayer({
+        container: document.getElementById('aplayer'),
+        fixed: 'true' === 'true',
+        autoplay: 'false' === 'true',
+        theme: '#42b983',
+        loop: 'all',
+        order: 'list',
+        preload: 'auto',
+        volume: Number('0.7'),
+        listFolded: 'false' === 'true',
+        listMaxHeight: '5',
+        audio: JSON.parse('[{"name":"陈洁丽 - 诺言","artist":"陈洁丽","url":"/medias/music/陈洁丽 - 诺言.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"RAM WIRE - 僕らの手には何もないけど、","artist":"RAM WIRE","url":"/medias/music/RAM WIRE - 僕らの手には何もないけど、.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"陈洁丽  - 茶之花","artist":"陈洁丽","url":"/medias/music/陈洁丽  - 茶之花.mp3","cover":"http://xxx.com/music-cover1.png"},{"name":"陈洁丽 - 绿色的旋律(Live) - live","artist":"陈洁丽","url":"/medias/music/陈洁丽 - 绿色的旋律(Live) - live.mp3","cover":"http://xxx.com/music-cover1.png"},{"name":"相思","artist":"毛阿敏","url":"/medias/music/相思.mp3","cover":"/medias/music/cover2.png"},{"name":"S.H.E - 恋人未满","artist":"S.H.E","url":"/medias/music/S.H.E - 恋人未满.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"莫文蔚 - 外面的世界","artist":"莫文蔚","url":"/medias/music/莫文蔚 - 外面的世界.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"コアラモード. - 七色シンフォニー","artist":"コアラモード","url":"/medias/music/コアラモード. - 七色シンフォニー.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"S.H.E-你曾是少年(电影《少年班》主题曲)","artist":"S.H.E","url":"/medias/music/S.H.E-你曾是少年(电影《少年班》主题曲).mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"潘广益-凌晨两点半","artist":"潘广益","url":"/medias/music/潘广益-凌晨两点半.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"咖啡因乐队 - 成长的路口","artist":"咖啡因乐队","url":"/medias/music/咖啡因乐队 - 成长的路口.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"7!! - オレンジ","artist":"7!!","url":"/medias/music/7!! - オレンジ.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"西野カナ-トリセツ  ","artist":"西野カナ","url":"/medias/music/西野カナ-トリセツ  .mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"杨宗纬 - 一场恋爱","artist":"杨宗纬","url":"/medias/music/杨宗纬 - 一场恋爱.mp3","cover":"http://xxx.com/music-cover3.png"}]')
+    });
+      $(document).pjax('a[target!=_blank]', '#contentleft', {fragment:'#contentleft', timeout:8000});
+      $(document).pjax('a[target!=_blank]', '.contentleft', {fragment:'.contentleft', timeout:8000});
+
+    
+    
+});
+</script>
+                    
+                    
+    
 
 </body>
+  <script>                 $(document).pjax('a[target!=_blank]', '.contentMain', {fragment:'.contentMain', timeout:8000});
+
+      </script>
+
 </html>

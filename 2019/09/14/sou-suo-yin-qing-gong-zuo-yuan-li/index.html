@@ -1,0 +1,1104 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="搜索引擎工作原理, Changing Learning Drawing">
+    <meta name="description" content="搜索引擎工作原理1 问题搜索引擎发展史
+搜索引擎的分类及典型代表
+为什么研究搜索引擎工作原理？
+使用工作原理完成哪些事情？
+2 搜索引擎的发展历程2.1总体历程搜索引擎的发展总体经历了分类目录时代、文本检索时代、整合分析时代、用户中心时代
+">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>搜索引擎工作原理 | ソーナンス</title><meta name="robots" content="noindex">
+    <link rel="icon" type="image/jpeg" href="/medias/favicon.jpg">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body >
+<div class="contentleft">
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/favicon.jpg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">ソーナンス</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags/" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories/" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives/" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about/" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends/" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/favicon.jpg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">ソーナンス</div>
+        <div class="logo-desc">
+            
+            Changing Learning Drawing
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/LoveXWen" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/LoveXWen" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+</div>
+<div class="contentMain">
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        搜索引擎工作原理
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/搜索引擎/" target="_blank">
+                                <span class="chip bg-color">搜索引擎</span>
+                            </a>
+                        
+                            <a href="/tags/爬虫/" target="_blank">
+                                <span class="chip bg-color">爬虫</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/爬虫/" class="post-category" target="_blank">
+                                爬虫
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-09-14
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        2.2k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        7 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="搜索引擎工作原理"><a href="#搜索引擎工作原理" class="headerlink" title="搜索引擎工作原理"></a>搜索引擎工作原理</h1><h2 id="1-问题"><a href="#1-问题" class="headerlink" title="1 问题"></a>1 问题</h2><p>搜索引擎发展史</p>
+<p>搜索引擎的分类及典型代表</p>
+<p>为什么研究搜索引擎工作原理？</p>
+<p>使用工作原理完成哪些事情？</p>
+<h2 id="2-搜索引擎的发展历程"><a href="#2-搜索引擎的发展历程" class="headerlink" title="2 搜索引擎的发展历程"></a>2 搜索引擎的发展历程</h2><h3 id="2-1总体历程"><a href="#2-1总体历程" class="headerlink" title="2.1总体历程"></a>2.1总体历程</h3><p>搜索引擎的发展总体经历了分类目录时代、文本检索时代、整合分析时代、用户中心时代</p>
+<h3 id="2-2-各个时代的代表"><a href="#2-2-各个时代的代表" class="headerlink" title="2.2 各个时代的代表"></a>2.2 各个时代的代表</h3><h4 id="2-2-1-分类目录"><a href="#2-2-1-分类目录" class="headerlink" title="2.2.1 分类目录"></a>2.2.1 分类目录</h4><p>导航网站、网站分类、hao123</p>
+<p>这个网站是一个导航网站，也可以说分类目录网站，用户可以从这个分类目录里找到自己想要的东西，这就是搜索引擎第一代分类目录,代表作如:<a href="http://www.hao123.com" target="_blank" rel="noopener">www.hao123.com</a> 。</p>
+<p><img src="/2019/09/14/sou-suo-yin-qing-gong-zuo-yuan-li/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%5C%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B1-%E5%88%86%E7%B1%BB%E7%9B%AE%E5%BD%95.jpg" alt="发展历程1-分类目录"></p>
+<h4 id="2-2-2-文本检索"><a href="#2-2-2-文本检索" class="headerlink" title="2.2.2 文本检索"></a>2.2.2 文本检索</h4><p>关键字相关度排序</p>
+<p>文本检索时代，搜索引擎查询信息的方法则是通过用户所输入的查询信息提交给服务器，服务器通过查阅，返回给用户一些相关程度高的信息。这就是搜索引擎第二代。</p>
+<p><img src="/2019/09/14/sou-suo-yin-qing-gong-zuo-yuan-li/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%5C%E6%96%87%E6%9C%AC%E6%A3%80%E7%B4%A2.png" alt="文本检索"></p>
+<h4 id="2-2-3-整合分析时代"><a href="#2-2-3-整合分析时代" class="headerlink" title="2.2.3 整合分析时代"></a>2.2.3 <strong>整合分析时代</strong></h4><p>外联数量与质量排序、外部投票。</p>
+<p>　　整合分析时代的搜索引擎所使用的方法大概是和我们今天的网站的外部链接形式基本相同，在当时，外部链接代表的是一种推荐的含义，通过每个网站的推荐链接的数量来判断一个网站的流行性和重要性。然后搜索引擎再结合网页内容的重要性来和相似程度来改善用户搜索的信息质量</p>
+<p><img src="/2019/09/14/sou-suo-yin-qing-gong-zuo-yuan-li/%5C%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%5C%E6%95%B4%E5%90%88%E5%88%86%E6%9E%90.jpg" alt="整合分析"></p>
+<h4 id="2-2-4-用户中心时代"><a href="#2-2-4-用户中心时代" class="headerlink" title="2.2.4 用户中心时代"></a>2.2.4 用户中心时代</h4><p>受人物身份、时间、地点不同影响，以用户需求为中心。</p>
+<p>当用户输入查询的请求时候，同一个查询的请求关键词在用户的背后可能是不同查询要求。例如用户输入的是“苹果”，那么作为一个想要购买iPhone的用户和一个果农来说，那么要求就是大大的不一样。甚至是同一个用户，所查询的关键词一样，也会因为所在的时间和所在的场合不同而返回的结果不同,所有主流搜索引擎都在致力于解决同一个问题：怎样才能从用户所输入的一个简短的关键词来判断用户的真正查询请求。这一代搜索引擎主要是以用户为中心。这就是用户中心时代。</p>
+<p><img src="/2019/09/14/sou-suo-yin-qing-gong-zuo-yuan-li/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%5C%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83.jpg" alt="用户中心"></p>
+<h2 id="3-研究搜索引擎的作用"><a href="#3-研究搜索引擎的作用" class="headerlink" title="3 研究搜索引擎的作用"></a>3 研究搜索引擎的作用</h2><h3 id="3-1-爬虫技术"><a href="#3-1-爬虫技术" class="headerlink" title="3.1 爬虫技术"></a>3.1 爬虫技术</h3><p>搜索引擎使用的是爬虫技术，了解搜索引擎的工作原理有利于对爬虫基础知识的了解。</p>
+<h3 id="3-2-SEO优化，网站排名提高"><a href="#3-2-SEO优化，网站排名提高" class="headerlink" title="3.2 SEO优化，网站排名提高"></a>3.2 SEO优化，网站排名提高</h3><p>了解搜索引擎的工作原理能够优化自己的网站被百度谷歌等搜索引擎的排名。</p>
+<h2 id="4-搜索引擎工作过程"><a href="#4-搜索引擎工作过程" class="headerlink" title="4 搜索引擎工作过程"></a>4 搜索引擎工作过程</h2><h3 id="4-1-搜索引擎总的工作过程"><a href="#4-1-搜索引擎总的工作过程" class="headerlink" title="4.1 搜索引擎总的工作过程"></a>4.1 搜索引擎总的工作过程</h3><p><strong>1：抓取建库</strong></p>
+<p><strong>2：检索排序</strong></p>
+<p><strong>3：外部投票</strong></p>
+<p><strong>4：结果展现</strong></p>
+<h3 id="4-2-详细过程"><a href="#4-2-详细过程" class="headerlink" title="4.2 详细过程"></a>4.2 详细过程</h3><h4 id="4-2-1-抓取建库"><a href="#4-2-1-抓取建库" class="headerlink" title="4.2.1 抓取建库"></a>4.2.1 抓取建库</h4><p>　　数据搜集阶段：首先搜索引擎爬虫Spider顺着网页中的<strong>超链接</strong>，从这个网站爬到另一个网站，通过超链接分析连续访问抓取更多网页,搜索引擎抓到网页后，还要做大量的<strong>预处理工作</strong>，才能提供检索服务。其中，<strong>最重要的就是提取关键词</strong>，<strong>建立索引库和索引</strong>, 流程如下图:</p>
+<p><img src="/2019/09/14/sou-suo-yin-qing-gong-zuo-yuan-li/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%5C%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%861-%E6%8A%93%E5%8F%96%E5%BB%BA%E5%BA%93.jpg" alt="工作原理1-抓取建库"></p>
+<pre><code>问：抓取哪些网页？哪些预处理工作？
+这是搜索引擎抓取数据的二大策略？
+</code></pre><h4 id="4-2-2-检索排序"><a href="#4-2-2-检索排序" class="headerlink" title="4.2.2 检索排序"></a>4.2.2 <strong>检索排序</strong></h4><p>如果能知道用户查找的关键词(query(查询)切词后)都出现在哪些页面中，那么用户检索的处理过程即可以想象为包含了query(查询)中切词后不同部分的页面集合求交的过程，而检索即变成了页面名称之间的比较、求交。这样，在毫秒内以亿为单位的检索成为了可能。这就是通常所说的<strong>倒排索引及求交检索</strong>的过程。如下为建立倒排索引的基本过程：</p>
+<p><img src="/2019/09/14/sou-suo-yin-qing-gong-zuo-yuan-li/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%5C%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%862-%E6%A3%80%E7%B4%A2%E6%8E%92%E5%BA%8F.jpg" alt="工作原理2-检索排序"></p>
+<p>页面分析的过程实际上是将原始页面的不同部分进行识别并标记，例如：title、keywords、content、link、anchor、评论、其他非重要区域等等,分词的过程实际上包括了切词分词同义词转换同义词替换等等，以对某页面title分词为例，得到的将是这样的数据：term文本、termid(标识)、词类、词性等等,之前的准备工作完成后，接下来即是建立倒排索引，形成{termàdoc}(文档集合)，下图即是索引系统中的倒排索引过程</p>
+<p><img src="/2019/09/14/sou-suo-yin-qing-gong-zuo-yuan-li/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%5C%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%862-%E6%A3%80%E7%B4%A2%E6%8E%92%E5%BA%8F02.jpg" alt="工作原理2-检索排序"></p>
+<p>　　索引系统在建立倒排索引的最后还需要有一个入库写库的过程，而为了提高效率这个过程还需要将全部term以及偏移量保存在文件头部，并且对数据进行压缩，这涉及到的过于技术化在此就不多提了。在此简要给大家介绍一下索引之后的检索系统</p>
+<p><img src="/2019/09/14/sou-suo-yin-qing-gong-zuo-yuan-li/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%5C%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%862-%E6%A3%80%E7%B4%A2%E6%8E%92%E5%BA%8F03.jpg" alt="工作原理2-检索排序"></p>
+<p>(1) Query串切词分词即将用户的查询词进行分词，对之后的查询做准备，以“10号线地铁故障”为例，可能的分词如下:</p>
+<p>　　10 0x123abc</p>
+<p>　　号 0x13445d</p>
+<p>　　线 0x234d</p>
+<p>　　地铁 0x145cf</p>
+<p>　　故障 0x354df</p>
+<p>　　(2)查出含每个term的文档集合，即找出待选集合，如下：</p>
+<p>　　10 1 2 3 4 7 9…..</p>
+<p>　　号 2 5 8 9 10 11……</p>
+<p>　　(3)求交，上述求交，文档2和文档9可能是我们需要找的，整个求交过程实际上关系着整个系统的性能，这里面包含了使用缓存等等手段进行性能优化;</p>
+<p>　　(4)各种过滤，举例可能包含过滤掉死链、重复数据、色情、垃圾结果以及你懂的;</p>
+<p>　　(5)最终排序，将最能满足用户需求的结果排序在最前，可能包括的有用信息如：网站的整体评价、网页质量、内容质量、资源质量、匹配程度、分散度、时效性等等</p>
+<h3 id="4-2-3-外部投票"><a href="#4-2-3-外部投票" class="headerlink" title="4.2.3 外部投票"></a>4.2.3 外部投票</h3><p>　　曾经，“内容为王超链为皇”的说法流行了很多年，通过超链计算得分来体现网页的相关性和重要性，的确曾经是搜索引擎用来评估网页的重要参考因素之一，会直接参与搜索结果排序计算。但随着该技术被越来越多的SEO人员了解，超链已经逐渐失去作为投票的重要意义，无论是谷歌还是百度，对超链数据的依赖程度都越来越低。那么，在现在，超链在发挥着怎样的作用?</p>
+<p>　　<strong>1， 吸引蜘蛛抓取：</strong>虽然百度在挖掘新好站点方面下了很大工夫，开放了多个数据提交入口，开避了社会化发现渠道，但超链依然是发现收录链接的最重要入口。</p>
+<p>　　<strong>2， 向搜索引擎传递相关性信息：</strong>百度除了通过TITLE、页面关键词、H标签等对网页内容进行判断外，还会通过锚文本进行铺助判断。使用图片作为点击入口的超链，也可以通过alt属性和title标签向百度传情达意。</p>
+<p>　　<strong>3， 提升排名：</strong>百度搜索引擎虽然降低了对超链的依赖，但对超链的识别力度从未下降，制定出更加严格的优质链接、正常链接、垃圾链接和作弊链接标准。对于作弊链接，除了对链接进行过滤清理外，也对链接的受益站进行一定程度的惩罚。相应的，对优质链接，百度依然持欢迎的态度。</p>
+<p>　　<strong>4， 内容分享，获取口碑：</strong>优质内容被广泛传播，网站借此获得的流量可能并不多，但如果内容做得足够，也可以树立自己的品牌效应。严格来讲，这并不属于超链的作用。在百度眼里，网站的品牌比超链要重要得多。</p>
+<h4 id="4-2-4-结果展现"><a href="#4-2-4-结果展现" class="headerlink" title="4.2.4 结果展现"></a>4.2.4 结果展现</h4><p>　　这一步看似简单，其实是最复杂难度最大的,从我们输入搜索词到我们看到的结果,中间经历了非常多的计算.包含了前面三步,抓取建库,检索排序,外部投票.但我们看到的仅仅是搜索引擎返回给我们一个搜索结果展现,这里就不再多说了,了解即可</p>
+<h1 id="5-参考资料"><a href="#5-参考资料" class="headerlink" title="5 参考资料"></a>5 参考资料</h1><p><a href="http://www.shangeedu.com/seojs/122.html" target="_blank" rel="noopener">http://www.shangeedu.com/seojs/122.html</a></p>
+<p><a href="https://blog.csdn.net/aoyoujj/article/details/88689896" target="_blank" rel="noopener">关于搜索引擎原理的详细解读</a>（ <a href="https://blog.csdn.net/aoyoujj/article/details/88689896）" target="_blank" rel="noopener">https://blog.csdn.net/aoyoujj/article/details/88689896）</a></p>
+<p><a href="https://www.bilibili.com/video/av63444833" target="_blank" rel="noopener">https://www.bilibili.com/video/av63444833</a></p>
+<!-- flag of hidden posts -->
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《搜索引擎工作原理》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/14/sou-suo-yin-qing-gong-zuo-yuan-li/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                WangWei
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+    <div class="livere-card card" data-aos="fade-up">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" class="card-content" data-id="city" data-uid="MTAyMC80NTQ1Ny8yMTk2OQ==">
+        <script type="text/javascript">
+            (function (d, s) {
+                let j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') {
+                    return;
+                }
+
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript。</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</div>
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2019/09/14/sou-suo-yin-qing-gong-zuo-yuan-li/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="搜索引擎工作原理">
+                        
+                        <span class="card-title">搜索引擎工作原理</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            搜索引擎工作原理1 问题搜索引擎发展史
+搜索引擎的分类及典型代表
+为什么研究搜索引擎工作原理？
+使用工作原理完成哪些事情？
+2 搜索引擎的发展历程2.1总体历程搜索引擎的发展总体经历了分类目录时代、文本检索时代、整合分析时代、用户中心时代
+
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/爬虫/" class="post-category" target="_blank">
+                                    爬虫
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/搜索引擎/" target="_blank">
+                        <span class="chip bg-color">搜索引擎</span>
+                    </a>
+                    
+                    <a href="/tags/爬虫/" target="_blank">
+                        <span class="chip bg-color">爬虫</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/09/14/sou-suo-yin-qing-gong-zuo-yuan-li/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="搜索引擎工作原理">
+                        
+                        <span class="card-title">搜索引擎工作原理</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            搜索引擎工作原理1 问题搜索引擎发展史
+搜索引擎的分类及典型代表
+为什么研究搜索引擎工作原理？
+使用工作原理完成哪些事情？
+2 搜索引擎的发展历程2.1总体历程搜索引擎的发展总体经历了分类目录时代、文本检索时代、整合分析时代、用户中心时代
+
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/爬虫/" class="post-category" target="_blank">
+                                    爬虫
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/搜索引擎/" target="_blank">
+                        <span class="chip bg-color">搜索引擎</span>
+                    </a>
+                    
+                    <a href="/tags/爬虫/" target="_blank">
+                        <span class="chip bg-color">爬虫</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+</div>
+<div class="contentleft">
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">WangWei</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">3.7k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/LoveXWen" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:3289605396@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3289605396" class="tooltipped" data-tooltip="QQ联系我: 3289605396" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+<script src="https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-144201146-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-144201146-1');
+</script>
+
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+ 
+                        
+
+<link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<div class="music-player contentleft">
+    
+    <div class="row">
+        <div class="col l8 offset-l2 m10 offset-m1 s12">
+            <div id="aplayer" class="music"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script>
+$(function () {
+    new APlayer({
+        container: document.getElementById('aplayer'),
+        fixed: 'true' === 'true',
+        autoplay: 'false' === 'true',
+        theme: '#42b983',
+        loop: 'all',
+        order: 'list',
+        preload: 'auto',
+        volume: Number('0.7'),
+        listFolded: 'false' === 'true',
+        listMaxHeight: '5',
+        audio: JSON.parse('[{"name":"陈洁丽 - 诺言","artist":"陈洁丽","url":"/medias/music/陈洁丽 - 诺言.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"RAM WIRE - 僕らの手には何もないけど、","artist":"RAM WIRE","url":"/medias/music/RAM WIRE - 僕らの手には何もないけど、.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"陈洁丽  - 茶之花","artist":"陈洁丽","url":"/medias/music/陈洁丽  - 茶之花.mp3","cover":"http://xxx.com/music-cover1.png"},{"name":"陈洁丽 - 绿色的旋律(Live) - live","artist":"陈洁丽","url":"/medias/music/陈洁丽 - 绿色的旋律(Live) - live.mp3","cover":"http://xxx.com/music-cover1.png"},{"name":"相思","artist":"毛阿敏","url":"/medias/music/相思.mp3","cover":"/medias/music/cover2.png"},{"name":"S.H.E - 恋人未满","artist":"S.H.E","url":"/medias/music/S.H.E - 恋人未满.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"莫文蔚 - 外面的世界","artist":"莫文蔚","url":"/medias/music/莫文蔚 - 外面的世界.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"コアラモード. - 七色シンフォニー","artist":"コアラモード","url":"/medias/music/コアラモード. - 七色シンフォニー.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"S.H.E-你曾是少年(电影《少年班》主题曲)","artist":"S.H.E","url":"/medias/music/S.H.E-你曾是少年(电影《少年班》主题曲).mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"潘广益-凌晨两点半","artist":"潘广益","url":"/medias/music/潘广益-凌晨两点半.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"咖啡因乐队 - 成长的路口","artist":"咖啡因乐队","url":"/medias/music/咖啡因乐队 - 成长的路口.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"7!! - オレンジ","artist":"7!!","url":"/medias/music/7!! - オレンジ.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"西野カナ-トリセツ  ","artist":"西野カナ","url":"/medias/music/西野カナ-トリセツ  .mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"杨宗纬 - 一场恋爱","artist":"杨宗纬","url":"/medias/music/杨宗纬 - 一场恋爱.mp3","cover":"http://xxx.com/music-cover3.png"}]')
+    });
+      $(document).pjax('a[target!=_blank]', '#contentleft', {fragment:'#contentleft', timeout:8000});
+      $(document).pjax('a[target!=_blank]', '.contentleft', {fragment:'.contentleft', timeout:8000});
+
+    
+    
+});
+</script>
+                    
+                    
+    
+
+</body>
+  <script>                 $(document).pjax('a[target!=_blank]', '.contentMain', {fragment:'.contentMain', timeout:8000});
+
+      </script>
+
+</html>

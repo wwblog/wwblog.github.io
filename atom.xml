@@ -5,9 +5,9 @@
   <subtitle>Love what you do, do what you love!!</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://LoveXWen.github.io/"/>
-  <updated>2019-07-24T13:22:23.402Z</updated>
-  <id>https://LoveXWen.github.io/</id>
+  <link href="https://wwblog.github.io/"/>
+  <updated>2024-07-21T08:06:38.569Z</updated>
+  <id>https://wwblog.github.io/</id>
   
   <author>
     <name>WangWei</name>
@@ -17,45 +17,29 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Servlet实现登录</title>
-    <link href="https://LoveXWen.github.io/2019/07/24/servlet-shi-xian-deng-lu/"/>
-    <id>https://LoveXWen.github.io/2019/07/24/servlet-shi-xian-deng-lu/</id>
-    <published>2019-07-24T11:25:37.000Z</published>
-    <updated>2019-07-24T13:22:23.402Z</updated>
+    <title>hexo博客编写常用命令</title>
+    <link href="https://wwblog.github.io/2024/07/21/hexo-chang-yong-ming-ling/"/>
+    <id>https://wwblog.github.io/2024/07/21/hexo-chang-yong-ming-ling/</id>
+    <published>2024-07-21T01:50:00.000Z</published>
+    <updated>2024-07-21T08:06:38.569Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h1 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot; title=&quot;需求&quot;&gt;&lt;/a&gt;需求&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;用户登录案例需求：
-1.编写login.html登录页面
-    username &amp;amp; password
-        
-      
+      the content has been encrypted, enter the password to read.&lt;br&gt;
     
     </summary>
     
-      <category term="Java Web" scheme="https://LoveXWen.github.io/categories/Java-Web/"/>
     
-    
-      <category term="黑马" scheme="https://LoveXWen.github.io/tags/%E9%BB%91%E9%A9%AC/"/>
-    
-      <category term="Servlet" scheme="https://LoveXWen.github.io/tags/Servlet/"/>
-    
-      <category term="登录" scheme="https://LoveXWen.github.io/tags/%E7%99%BB%E5%BD%95/"/>
-    
-      <category term="Druid JdbcTemplate" scheme="https://LoveXWen.github.io/tags/Druid-JdbcTemplate/"/>
+      <category term="hexo" scheme="https://wwblog.github.io/tags/hexo/"/>
     
   </entry>
   
   <entry>
-    <title>Servlet中request与respose</title>
-    <link href="https://LoveXWen.github.io/2019/07/24/servlet-zhong-request-yu-respose/"/>
-    <id>https://LoveXWen.github.io/2019/07/24/servlet-zhong-request-yu-respose/</id>
-    <published>2019-07-24T07:26:29.000Z</published>
-    <updated>2019-07-24T12:18:59.097Z</updated>
+    <title>Python学习之Python编程规范</title>
+    <link href="https://wwblog.github.io/2019/10/25/python-xue-xi-zhi-python-bian-cheng-gui-fan/"/>
+    <id>https://wwblog.github.io/2019/10/25/python-xue-xi-zhi-python-bian-cheng-gui-fan/</id>
+    <published>2019-10-25T08:40:19.000Z</published>
+    <updated>2019-10-26T05:16:50.697Z</updated>
     
     <summary type="html">
     
@@ -63,27 +47,55 @@
       
         
         
-          &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot;
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
-      <category term="Java Web" scheme="https://LoveXWen.github.io/categories/Java-Web/"/>
+      <category term="Python基础" scheme="https://wwblog.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="Python命名规范" scheme="https://wwblog.github.io/categories/Python%E5%9F%BA%E7%A1%80/Python%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/"/>
     
     
-      <category term="Servlet" scheme="https://LoveXWen.github.io/tags/Servlet/"/>
+      <category term="Python" scheme="https://wwblog.github.io/tags/Python/"/>
     
-      <category term="Java Web" scheme="https://LoveXWen.github.io/tags/Java-Web/"/>
+  </entry>
+  
+  <entry>
+    <title>Python学习之模块与包的导入</title>
+    <link href="https://wwblog.github.io/2019/10/25/python-xue-xi-zhi-mo-kuai-yu-bao-de-dao-ru/"/>
+    <id>https://wwblog.github.io/2019/10/25/python-xue-xi-zhi-mo-kuai-yu-bao-de-dao-ru/</id>
+    <published>2019-10-25T08:14:10.000Z</published>
+    <updated>2019-10-26T05:20:56.719Z</updated>
     
-      <category term="Request" scheme="https://LoveXWen.github.io/tags/Request/"/>
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Python基础" scheme="https://wwblog.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="sys模块" scheme="https://wwblog.github.io/categories/Python%E5%9F%BA%E7%A1%80/sys%E6%A8%A1%E5%9D%97/"/>
+    
+      <category term="__init__.py" scheme="https://wwblog.github.io/categories/Python%E5%9F%BA%E7%A1%80/sys%E6%A8%A1%E5%9D%97/init-py/"/>
+    
+    
+      <category term="Python" scheme="https://wwblog.github.io/tags/Python/"/>
     
   </entry>
   
   <entry>
     <title>Python环境安装</title>
-    <link href="https://LoveXWen.github.io/2019/07/22/python-huan-jing-an-zhuang/"/>
-    <id>https://LoveXWen.github.io/2019/07/22/python-huan-jing-an-zhuang/</id>
+    <link href="https://wwblog.github.io/2019/07/22/python-huan-jing-an-zhuang/"/>
+    <id>https://wwblog.github.io/2019/07/22/python-huan-jing-an-zhuang/</id>
     <published>2019-07-22T00:59:43.000Z</published>
     <updated>2019-07-23T07:50:27.153Z</updated>
     
@@ -100,46 +112,18 @@
     </summary>
     
     
-      <category term="Python" scheme="https://LoveXWen.github.io/tags/Python/"/>
+      <category term="Python" scheme="https://wwblog.github.io/tags/Python/"/>
     
-      <category term="环境安装" scheme="https://LoveXWen.github.io/tags/%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/"/>
+      <category term="环境安装" scheme="https://wwblog.github.io/tags/%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/"/>
     
-      <category term="绿色开发软件" scheme="https://LoveXWen.github.io/tags/%E7%BB%BF%E8%89%B2%E5%BC%80%E5%8F%91%E8%BD%AF%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测试页面</title>
-    <link href="https://LoveXWen.github.io/2019/07/17/ce-shi-ye-mian/"/>
-    <id>https://LoveXWen.github.io/2019/07/17/ce-shi-ye-mian/</id>
-    <published>2019-07-17T03:17:36.000Z</published>
-    <updated>2019-07-17T03:20:34.906Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;测试页面&quot;&gt;&lt;a href=&quot;#测试页面&quot; class=&quot;headerlink&quot; title=&quot;测试页面&quot;&gt;&lt;/a&gt;测试页面&lt;/h1&gt;&lt;h2 id=&quot;我的第一个页面&quot;&gt;&lt;a href=&quot;#我的第一个页面&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="测试" scheme="https://LoveXWen.github.io/categories/%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="测试" scheme="https://LoveXWen.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-      <category term="第一个页面" scheme="https://LoveXWen.github.io/tags/%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%A1%B5%E9%9D%A2/"/>
+      <category term="绿色开发软件" scheme="https://wwblog.github.io/tags/%E7%BB%BF%E8%89%B2%E5%BC%80%E5%8F%91%E8%BD%AF%E4%BB%B6/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="https://LoveXWen.github.io/2019/07/17/hello-world/"/>
-    <id>https://LoveXWen.github.io/2019/07/17/hello-world/</id>
+    <link href="https://wwblog.github.io/2019/07/17/hello-world/"/>
+    <id>https://wwblog.github.io/2019/07/17/hello-world/</id>
     <published>2019-07-17T03:17:36.000Z</published>
     <updated>2019-07-19T10:21:23.143Z</updated>
     
@@ -155,12 +139,12 @@
     
     </summary>
     
-      <category term="测试" scheme="https://LoveXWen.github.io/categories/%E6%B5%8B%E8%AF%95/"/>
+      <category term="测试" scheme="https://wwblog.github.io/categories/%E6%B5%8B%E8%AF%95/"/>
     
     
-      <category term="测试" scheme="https://LoveXWen.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+      <category term="测试" scheme="https://wwblog.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
     
-      <category term="第一个页面" scheme="https://LoveXWen.github.io/tags/%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%A1%B5%E9%9D%A2/"/>
+      <category term="第一个页面" scheme="https://wwblog.github.io/tags/%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%A1%B5%E9%9D%A2/"/>
     
   </entry>
   
