@@ -1,0 +1,1705 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="python运维工具之SFTP上传服务器, Changing Learning Drawing">
+    <meta name="description" content="一、需求说明1.设计桌面程序，封装好链接，通过SFTP协议上传本地文件至服务器
+2.检测本地文件的格式
+3.获取服务器文件列表，下载至本地
+二、总体思路整理1.使用pyqt库设计，使用QT designer （.ui文件)设计程序元素
+2.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>python运维工具之SFTP上传服务器 | ソーナンス</title>
+    <link rel="icon" type="image/jpeg" href="/medias/favicon.jpg">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body >
+<div class="contentleft">
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/favicon.jpg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">ソーナンス</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags/" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories/" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives/" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about/" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends/" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/favicon.jpg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">ソーナンス</div>
+        <div class="logo-desc">
+            
+            Changing Learning Drawing
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/wwblog" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/wwblog" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+</div>
+<div class="contentMain">
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        python运维工具之SFTP上传服务器
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/python/" target="_blank">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                            <a href="/tags/运维/" target="_blank">
+                                <span class="chip bg-color">运维</span>
+                            </a>
+                        
+                            <a href="/tags/SFTP/" target="_blank">
+                                <span class="chip bg-color">SFTP</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/python/" class="post-category" target="_blank">
+                                python
+                            </a>
+                        
+                            <a href="/categories/python/运维/" class="post-category" target="_blank">
+                                运维
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2024-07-22
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        4.4k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        21 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="一、需求说明"><a href="#一、需求说明" class="headerlink" title="一、需求说明"></a>一、需求说明</h2><p>1.设计桌面程序，封装好链接，通过SFTP协议上传本地文件至服务器</p>
+<p>2.检测本地文件的格式</p>
+<p>3.获取服务器文件列表，下载至本地</p>
+<h2 id="二、总体思路整理"><a href="#二、总体思路整理" class="headerlink" title="二、总体思路整理"></a>二、总体思路整理</h2><p>1.使用pyqt库设计，使用QT designer （.ui文件)设计程序元素</p>
+<p>2.py引入ui文件，获取各个控件，绑定事件（获取文件地址、检测文件格式、上传服务器、获取服务器文件列表、下载文件），所有绑定事件内需要写入日志</p>
+<h3 id="2-1程序ui"><a href="#2-1程序ui" class="headerlink" title="2.1程序ui"></a>2.1程序ui</h3><p><img src="/2024/07/22/python-yun-wei-gong-ju-zhi-sftp-shang-chuan-fu-wu-qi/ui%E8%AE%BE%E8%AE%A1.jpg" alt="ui设计"></p>
+<p>先小后大：先设计相关控件位置，再添加父容器，确定之间的布局关系，使用layoutStretch确定大小。</p>
+<p>见名知意：控件设置名字</p>
+<h3 id="2-2-py程序"><a href="#2-2-py程序" class="headerlink" title="2.2 py程序"></a>2.2 py程序</h3><h4 id="2-2-1-引入模块"><a href="#2-2-1-引入模块" class="headerlink" title="2.2.1 引入模块"></a>2.2.1 引入模块</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> os<span class="token punctuation">.</span>path <span class="token comment" spellcheck="true"># 获取临时文件夹的路径</span>
+<span class="token keyword">import</span> sys    <span class="token comment" spellcheck="true">#pyqt5的QApplication 需要参数</span>
+<span class="token keyword">import</span> chardet <span class="token comment" spellcheck="true">#检测txt编码（utf-8,GB2312,...)</span>
+<span class="token keyword">import</span> paramiko <span class="token comment" spellcheck="true">#SFTP协议的封装上传</span>
+<span class="token keyword">from</span> PyQt5 <span class="token keyword">import</span> uic<span class="token punctuation">,</span> QtWidgets <span class="token comment" spellcheck="true">#解析QT Desinger 的ui文件</span>
+<span class="token keyword">from</span> PyQt5<span class="token punctuation">.</span>QtCore <span class="token keyword">import</span> QStringListModel <span class="token comment" spellcheck="true"># QStringListModel 用于处理字符串列表的数据模型，它可以作为 QListView 的数据模型，在界面上显示和编辑字符串列表。</span>
+<span class="token keyword">from</span> PyQt5<span class="token punctuation">.</span>QtWidgets <span class="token keyword">import</span> QMainWindow<span class="token punctuation">,</span> QApplication<span class="token punctuation">,</span> QFileDialog<span class="token punctuation">,</span> QPushButton<span class="token punctuation">,</span> QLineEdit<span class="token punctuation">,</span> QStatusBar<span class="token punctuation">,</span> QLabel<span class="token punctuation">,</span> QScrollArea<span class="token punctuation">,</span> QWidget<span class="token punctuation">,</span> QPlainTextEdit<span class="token punctuation">,</span> QRadioButton<span class="token punctuation">,</span> QListView<span class="token punctuation">,</span> QMessageBox <span class="token comment" spellcheck="true">#相关控件</span>
+<span class="token keyword">import</span> socket <span class="token comment" spellcheck="true"># 获取本机ip</span></code></pre>
+<h4 id="2-2-2-全局变量"><a href="#2-2-2-全局变量" class="headerlink" title="2.2.2 全局变量"></a>2.2.2 全局变量</h4><pre class=" language-python"><code class="language-python">BASE_DIR <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>dirname<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>abspath<span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">#获取临时文件夹的路径</span>
+<span class="token comment" spellcheck="true">#远程服务器链接信息</span>
+host <span class="token operator">=</span> <span class="token string">'xxxxxx'</span>
+port <span class="token operator">=</span> <span class="token number">22</span>
+username <span class="token operator">=</span> <span class="token string">'xxxx'</span>
+password <span class="token operator">=</span> <span class="token string">'xxxx'</span>
+remote <span class="token operator">=</span> <span class="token string">'/tmp/'</span>
+ip <span class="token operator">=</span> socket<span class="token punctuation">.</span>gethostbyname<span class="token punctuation">(</span>socket<span class="token punctuation">.</span>gethostname<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#获取运行电脑ip地址</span></code></pre>
+<h4 id="2-2-3-引入ui文件"><a href="#2-2-3-引入ui文件" class="headerlink" title="2.2.3 引入ui文件"></a>2.2.3 引入ui文件</h4><pre class=" language-python"><code class="language-python">app <span class="token operator">=</span> QApplication<span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">)</span>
+ui <span class="token operator">=</span> uic<span class="token punctuation">.</span>loadUi<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>BASE_DIR<span class="token punctuation">,</span> <span class="token string">'untitled5.ui'</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<h4 id="2-2-4-获取控件"><a href="#2-2-4-获取控件" class="headerlink" title="2.2.4 获取控件"></a>2.2.4 获取控件</h4><pre class=" language-python"><code class="language-python">select_button<span class="token punctuation">:</span> QPushButton <span class="token operator">=</span> ui<span class="token punctuation">.</span>find_address_button  <span class="token comment" spellcheck="true">#文件选择按钮</span>
+file_address_input<span class="token punctuation">:</span> QLineEdit <span class="token operator">=</span> ui<span class="token punctuation">.</span>file_address     <span class="token comment" spellcheck="true"># 显示文件地址输入框</span>
+code_label <span class="token operator">=</span> QLabel<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">#状态栏显示编码，新建一个label</span>
+dfgzRadio<span class="token punctuation">:</span> QRadioButton <span class="token operator">=</span> ui<span class="token punctuation">.</span>dfgz      <span class="token comment" spellcheck="true">#单选按钮，代发工资</span>
+szrmbRadio<span class="token punctuation">:</span> QRadioButton <span class="token operator">=</span> ui<span class="token punctuation">.</span>szrmb  <span class="token comment" spellcheck="true">#单选按钮，数字人民币</span>
+check_button<span class="token punctuation">:</span> QPushButton <span class="token operator">=</span> ui<span class="token punctuation">.</span>check_Button <span class="token comment" spellcheck="true">#检测按钮</span>
+my_download_remote_button<span class="token punctuation">:</span> QPushButton <span class="token operator">=</span> ui<span class="token punctuation">.</span>download_remote_button  <span class="token comment" spellcheck="true">#下载远程文件按钮</span>
+my_fetch_remote_lists_button<span class="token punctuation">:</span> QPushButton <span class="token operator">=</span> ui<span class="token punctuation">.</span>fetch_remote_lists_button <span class="token comment" spellcheck="true">#获取远程文件列表按钮</span>
+my_remote_list<span class="token punctuation">:</span> QListView <span class="token operator">=</span> ui<span class="token punctuation">.</span>remote_lists  <span class="token comment" spellcheck="true">#远程文件列表显示控制</span>
+log_content_area<span class="token punctuation">:</span> QPlainTextEdit <span class="token operator">=</span> ui<span class="token punctuation">.</span>log_content <span class="token comment" spellcheck="true">#日志显示区域控件</span>
+myupload_Button<span class="token punctuation">:</span> QPushButton <span class="token operator">=</span> ui<span class="token punctuation">.</span>upload_Button <span class="token comment" spellcheck="true"># 文件上传按钮</span>
+myStatusBar<span class="token punctuation">:</span> QStatusBar <span class="token operator">=</span> ui<span class="token punctuation">.</span>statusbar                <span class="token comment" spellcheck="true">#状态栏</span>
+<span class="token comment" spellcheck="true">#----状态栏显示ip开始----</span>
+ip_label <span class="token operator">=</span> QLabel<span class="token punctuation">(</span><span class="token punctuation">)</span>
+ip_info <span class="token operator">=</span> <span class="token string">'当前登录ip：'</span> <span class="token operator">+</span> ip
+ip_label<span class="token punctuation">.</span>setText<span class="token punctuation">(</span>ip_info<span class="token punctuation">)</span>
+myStatusBar<span class="token punctuation">.</span>addPermanentWidget<span class="token punctuation">(</span>ip_label<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#----状态栏显示ip结束----</span>
+log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'{ip_label.text()}'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">#日志区域添加当前ip信息</span></code></pre>
+<h4 id="2-2-5-获取文件地址，绑定-文件选择按钮（点击），回显至-文件地址输入框，并检测文件编码"><a href="#2-2-5-获取文件地址，绑定-文件选择按钮（点击），回显至-文件地址输入框，并检测文件编码" class="headerlink" title="2.2.5 获取文件地址，绑定 文件选择按钮（点击），回显至 文件地址输入框，并检测文件编码"></a>2.2.5 获取文件地址，绑定 文件选择按钮（点击），回显至 文件地址输入框，并检测文件编码</h4><h5 id="2-2-5-1-检测文件编码"><a href="#2-2-5-1-检测文件编码" class="headerlink" title="2.2.5.1 检测文件编码"></a>2.2.5.1 检测文件编码</h5><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">getTxtCode</span><span class="token punctuation">(</span>txt_path<span class="token punctuation">,</span> <span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        detector <span class="token operator">=</span> chardet<span class="token punctuation">.</span>UniversalDetector<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">with</span> open<span class="token punctuation">(</span>txt_path<span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+            <span class="token keyword">for</span> line <span class="token keyword">in</span> f<span class="token punctuation">:</span>
+                detector<span class="token punctuation">.</span>feed<span class="token punctuation">(</span>line<span class="token punctuation">)</span>
+                <span class="token keyword">if</span> detector<span class="token punctuation">.</span>done<span class="token punctuation">:</span>
+                    <span class="token keyword">break</span>
+            detector<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        f_charInfo<span class="token operator">=</span>detector<span class="token punctuation">.</span>result
+        txt_code<span class="token operator">=</span><span class="token string">'utf-8'</span>
+        <span class="token keyword">if</span> f_charInfo<span class="token punctuation">[</span><span class="token string">'encoding'</span><span class="token punctuation">]</span> <span class="token operator">==</span><span class="token string">'GB2312'</span><span class="token punctuation">:</span>
+            txt_code<span class="token operator">=</span><span class="token string">'GB18030'</span>
+        <span class="token keyword">if</span> f_charInfo<span class="token punctuation">[</span><span class="token string">'encoding'</span><span class="token punctuation">]</span> <span class="token keyword">is</span> <span class="token operator">not</span> None <span class="token operator">and</span> f_charInfo<span class="token punctuation">[</span><span class="token string">'encoding'</span><span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token string">'GB2312'</span><span class="token punctuation">:</span>
+            txt_code<span class="token operator">=</span>f_charInfo<span class="token punctuation">[</span><span class="token string">'encoding'</span><span class="token punctuation">]</span>
+        <span class="token keyword">if</span> f_charInfo<span class="token punctuation">[</span><span class="token string">'encoding'</span><span class="token punctuation">]</span> <span class="token keyword">is</span>  None <span class="token punctuation">:</span>
+            txt_code <span class="token operator">=</span> <span class="token string">'未知'</span>
+        <span class="token keyword">return</span> txt_code
+        <span class="token comment" spellcheck="true"># return f_charInfo['encoding'] if f_charInfo['encoding'] is not None else '未知'</span>
+    <span class="token keyword">except</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> f<span class="token punctuation">:</span>
+            f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'err'</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token string">'未知'</span></code></pre>
+<h5 id="2-2-5-2-选择文件"><a href="#2-2-5-2-选择文件" class="headerlink" title="2.2.5.2 选择文件"></a>2.2.5.2 选择文件</h5><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">selectFile</span><span class="token punctuation">(</span>file_address_input<span class="token punctuation">,</span> log_content_area<span class="token punctuation">,</span> code_label<span class="token punctuation">,</span> myStatusBar<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    fd <span class="token operator">=</span> QFileDialog<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    fd<span class="token punctuation">.</span>setFileMode<span class="token punctuation">(</span>QFileDialog<span class="token punctuation">.</span>FileMode<span class="token punctuation">.</span>ExistingFile<span class="token punctuation">)</span>
+    fd<span class="token punctuation">.</span>setDirectory<span class="token punctuation">(</span><span class="token string">'C:\\'</span><span class="token punctuation">)</span>
+    fd<span class="token punctuation">.</span>setNameFilter<span class="token punctuation">(</span><span class="token string">'*.txt'</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> fd<span class="token punctuation">.</span><span class="token keyword">exec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>fd<span class="token punctuation">.</span>selectedFiles<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        file_address_input<span class="token punctuation">.</span>setText<span class="token punctuation">(</span>fd<span class="token punctuation">.</span>selectedFiles<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'---读取待上传的文件地址成功---'</span><span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>fd<span class="token punctuation">.</span>selectedFiles<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        suffix <span class="token operator">=</span> fd<span class="token punctuation">.</span>selectedFiles<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'---读取待上传的文件后缀---'</span><span class="token punctuation">)</span>
+        suffix_content <span class="token operator">=</span> <span class="token string">'后缀为：'</span> <span class="token operator">+</span> suffix
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>suffix_content<span class="token punctuation">)</span>
+        code <span class="token operator">=</span> getTxtCode<span class="token punctuation">(</span>fd<span class="token punctuation">.</span>selectedFiles<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">#调用文件编码检测函数</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'---读取待上传的文件编码---'</span><span class="token punctuation">)</span>
+        code_content <span class="token operator">=</span> <span class="token string">'编码为：'</span> <span class="token operator">+</span> code
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>code_content<span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> code <span class="token operator">==</span> <span class="token string">'ascii'</span> <span class="token operator">or</span> code <span class="token operator">==</span> <span class="token string">'gb2312'</span> <span class="token operator">or</span> code <span class="token operator">==</span> <span class="token string">'gbk'</span> <span class="token operator">or</span> code <span class="token operator">==</span> <span class="token string">'GB2312'</span> <span class="token operator">or</span> code <span class="token operator">==</span> <span class="token string">'utf-8'</span><span class="token punctuation">:</span>
+            log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'文件编码符合规范'</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> code <span class="token operator">==</span> <span class="token string">'UTF-16'</span><span class="token punctuation">:</span>
+            log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'文件编码不符合规范，请检查文件编码'</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'文件编码未知'</span><span class="token punctuation">)</span>
+        code_label<span class="token punctuation">.</span>setText<span class="token punctuation">(</span>code<span class="token punctuation">)</span>
+        myStatusBar<span class="token punctuation">.</span>addPermanentWidget<span class="token punctuation">(</span>code_label<span class="token punctuation">)</span></code></pre>
+<h5 id="2-2-5-3-文件选择按钮的绑定文件选择函数"><a href="#2-2-5-3-文件选择按钮的绑定文件选择函数" class="headerlink" title="2.2.5.3 文件选择按钮的绑定文件选择函数"></a>2.2.5.3 文件选择按钮的绑定文件选择函数</h5><pre class=" language-python"><code class="language-python">select_button<span class="token punctuation">.</span>clicked<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> selectFile<span class="token punctuation">(</span>file_address_input<span class="token punctuation">,</span> log_content_area<span class="token punctuation">,</span> code_label<span class="token punctuation">,</span> myStatusBar<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<h4 id="2-2-6-检测文件格式"><a href="#2-2-6-检测文件格式" class="headerlink" title="2.2.6 检测文件格式"></a>2.2.6 检测文件格式</h4><h5 id="2-2-6-1-检测txt文件内容格式"><a href="#2-2-6-1-检测txt文件内容格式" class="headerlink" title="2.2.6.1 检测txt文件内容格式"></a>2.2.6.1 检测txt文件内容格式</h5><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">check_txt_content</span><span class="token punctuation">(</span>dfgzRadio<span class="token punctuation">,</span>pldbRadio<span class="token punctuation">,</span>szrmbRadio<span class="token punctuation">,</span>plxxwhRadio<span class="token punctuation">,</span>code<span class="token punctuation">,</span>file_address<span class="token punctuation">,</span> log_content_area<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token operator">not</span> dfgzRadio<span class="token punctuation">.</span>isChecked<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">and</span> <span class="token operator">not</span> pldbRadio<span class="token punctuation">.</span>isChecked<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">and</span> <span class="token operator">not</span> szrmbRadio<span class="token punctuation">.</span>isChecked<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">and</span> <span class="token operator">not</span> plxxwhRadio<span class="token punctuation">.</span>isChecked<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        msgBox <span class="token operator">=</span> QMessageBox<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        msgBox<span class="token punctuation">.</span>setText<span class="token punctuation">(</span><span class="token string">"请先选择检测类型！！"</span><span class="token punctuation">)</span>
+        msgBox<span class="token punctuation">.</span>exec_<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'请先选择检测类型！！'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span>
+    <span class="token keyword">if</span> <span class="token operator">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isfile<span class="token punctuation">(</span>file_address<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        msgBox <span class="token operator">=</span> QMessageBox<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        msgBox<span class="token punctuation">.</span>setText<span class="token punctuation">(</span><span class="token string">"选择的文件不存在，请检测文件地址"</span><span class="token punctuation">)</span>
+        msgBox<span class="token punctuation">.</span>exec_<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'选择的文件不存在，请检测文件地址'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span>
+    <span class="token comment" spellcheck="true">#代发工资检测---格式  1|6230662035xxxxxxxx|姓名|100.00</span>
+    <span class="token comment" spellcheck="true">##常见错误2   包含其他字符 如字符串符号、空格</span>
+    <span class="token comment" spellcheck="true">###常见错误2  行长度不足，使用|分割之后存在空白或者分割后的部分不足</span>
+    <span class="token comment" spellcheck="true">###常见错误3 金额未填写，或者未保留2位数字</span>
+    <span class="token comment" spellcheck="true">##常见错误4</span>
+    <span class="token keyword">if</span> dfgzRadio<span class="token punctuation">.</span>isChecked<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">with</span> open<span class="token punctuation">(</span>file_address<span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'r'</span><span class="token punctuation">,</span>encoding<span class="token operator">=</span>code<span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+            log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'代发工资开始检测'</span><span class="token punctuation">)</span>
+            fail_num<span class="token operator">=</span><span class="token number">0</span>
+            <span class="token keyword">for</span> i<span class="token punctuation">,</span> line <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">if</span> <span class="token string">"'"</span> <span class="token keyword">in</span> line <span class="token operator">or</span> <span class="token string">'"'</span> <span class="token keyword">in</span> line <span class="token operator">or</span> <span class="token string">" "</span> <span class="token keyword">in</span> line <span class="token operator">or</span> <span class="token string">"\t"</span> <span class="token keyword">in</span> line <span class="token operator">or</span> <span class="token string">" "</span> <span class="token keyword">in</span> line<span class="token punctuation">:</span>
+                    log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'第{i+1}行包含特殊字符：{line}'</span><span class="token punctuation">)</span>
+                    fail_num<span class="token operator">=</span>fail_num<span class="token operator">+</span><span class="token number">1</span>
+                <span class="token keyword">if</span> len<span class="token punctuation">(</span>line<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'|'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token number">4</span> <span class="token operator">or</span> len<span class="token punctuation">(</span>line<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'|'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token number">4</span><span class="token punctuation">:</span>
+                    log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'第{i + 1}行格式错误：{line}'</span><span class="token punctuation">)</span>
+                    fail_num <span class="token operator">=</span> fail_num <span class="token operator">+</span> <span class="token number">1</span>
+
+                <span class="token keyword">if</span> len<span class="token punctuation">(</span>line<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'|'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span><span class="token number">2</span> <span class="token operator">or</span> len<span class="token punctuation">(</span>line<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'|'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">></span><span class="token number">2</span><span class="token punctuation">:</span>
+                    log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'第{i + 1}行金额错误：{line}'</span><span class="token punctuation">)</span>
+                    fail_num <span class="token operator">=</span> fail_num <span class="token operator">+</span> <span class="token number">1</span>
+            log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'代发工资文件检测结束,共发现{fail_num}处错误'</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 数字人民币代发检测 格式：1|009102xxxxxx|100.00|TR05|C213|TF99|姓名|钱包名|1</span>
+    <span class="token keyword">if</span> szrmbRadio<span class="token punctuation">.</span>isChecked<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">with</span> open<span class="token punctuation">(</span>file_address<span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'r'</span><span class="token punctuation">,</span>encoding<span class="token operator">=</span>code<span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+            fail_num_szrmb <span class="token operator">=</span> <span class="token number">0</span>
+            <span class="token keyword">for</span> i<span class="token punctuation">,</span> line <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">if</span> <span class="token string">"'"</span> <span class="token keyword">in</span> line <span class="token operator">or</span> <span class="token string">'"'</span> <span class="token keyword">in</span> line <span class="token operator">or</span> <span class="token string">" "</span> <span class="token keyword">in</span> line <span class="token operator">or</span> <span class="token string">"\t"</span> <span class="token keyword">in</span> line <span class="token operator">or</span> <span class="token string">" "</span> <span class="token keyword">in</span> line<span class="token punctuation">:</span>
+                    log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'第{i + 1}行包含特殊字符:{line}'</span><span class="token punctuation">)</span>
+                    fail_num_szrmb<span class="token operator">=</span>fail_num_szrmb<span class="token operator">+</span><span class="token number">1</span>
+                    <span class="token keyword">continue</span>
+                <span class="token keyword">if</span> len<span class="token punctuation">(</span>line<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'|'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">12</span> <span class="token operator">or</span> len<span class="token punctuation">(</span>line<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'|'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">12</span><span class="token punctuation">:</span>
+                    <span class="token keyword">print</span><span class="token punctuation">(</span>len<span class="token punctuation">(</span>line<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'|'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'第{i + 1}行格式错误：{line}'</span><span class="token punctuation">)</span>
+                    fail_num_szrmb <span class="token operator">=</span> fail_num_szrmb <span class="token operator">+</span> <span class="token number">1</span>
+                    <span class="token keyword">continue</span>
+                <span class="token keyword">if</span> len<span class="token punctuation">(</span>line<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'|'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">2</span> <span class="token operator">or</span> len<span class="token punctuation">(</span>
+                        line<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'|'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">:</span>
+                    log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'第{i + 1}行金额错误：{line}'</span><span class="token punctuation">)</span>
+                    fail_num_szrmb <span class="token operator">=</span> fail_num_szrmb <span class="token operator">+</span> <span class="token number">1</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'数字人民币代发文件检测结束,共发现{fail_num_szrmb}处错误'</span><span class="token punctuation">)</span>
+</code></pre>
+<h5 id="2-2-6-1-检测按钮绑定内容格式函数"><a href="#2-2-6-1-检测按钮绑定内容格式函数" class="headerlink" title="2.2.6.1 检测按钮绑定内容格式函数"></a>2.2.6.1 检测按钮绑定内容格式函数</h5><pre class=" language-python"><code class="language-python">check_button<span class="token punctuation">.</span>clicked<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> check_txt_content<span class="token punctuation">(</span>dfgzRadio<span class="token punctuation">,</span>pldbRadio<span class="token punctuation">,</span>szrmbRadio<span class="token punctuation">,</span>plxxwhRadio<span class="token punctuation">,</span>code_label<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>file_address_input<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>log_content_area<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<h4 id="2-2-7-上传文件"><a href="#2-2-7-上传文件" class="headerlink" title="2.2.7 上传文件"></a>2.2.7 上传文件</h4><h5 id="2-2-7-1-SFTP连接函数"><a href="#2-2-7-1-SFTP连接函数" class="headerlink" title="2.2.7.1 SFTP连接函数"></a>2.2.7.1 SFTP连接函数</h5><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">connect_to_sftp</span><span class="token punctuation">(</span>hostname<span class="token punctuation">,</span> port<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span>log_content_area<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 创建SSHClient对象</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        ssh <span class="token operator">=</span> paramiko<span class="token punctuation">.</span>SSHClient<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 设置自动添加主机密钥</span>
+        ssh<span class="token punctuation">.</span>set_missing_host_key_policy<span class="token punctuation">(</span>paramiko<span class="token punctuation">.</span>AutoAddPolicy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 连接到服务器</span>
+        ssh<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>hostname<span class="token operator">=</span>hostname<span class="token punctuation">,</span> port<span class="token operator">=</span>port<span class="token punctuation">,</span> username<span class="token operator">=</span>username<span class="token punctuation">,</span> password<span class="token operator">=</span>password<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 创建SFTP对象</span>
+        sftp <span class="token operator">=</span> ssh<span class="token punctuation">.</span>open_sftp<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 返回SFTP对象</span>
+        <span class="token keyword">return</span> sftp
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'upload exception:'</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'连接服务器失败，连接尝试失败'</span><span class="token punctuation">)</span>
+        msgBox <span class="token operator">=</span> QMessageBox<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        msgBox<span class="token punctuation">.</span>setText<span class="token punctuation">(</span><span class="token string">"连接服务器失败，连接尝试失败。！！"</span><span class="token punctuation">)</span>
+        msgBox<span class="token punctuation">.</span>exec_<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h5 id="2-2-7-2-SFTP上传函数"><a href="#2-2-7-2-SFTP上传函数" class="headerlink" title="2.2.7.2 SFTP上传函数"></a>2.2.7.2 SFTP上传函数</h5><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sftp_upload</span><span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span> local<span class="token punctuation">,</span> remote<span class="token punctuation">,</span> log_content_area<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    local_name <span class="token operator">=</span> local<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true"># 获取文件名</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        remote_file_path <span class="token operator">=</span> remote <span class="token operator">+</span>  local_name
+        <span class="token comment" spellcheck="true"># remote_file_path = os.path.join(remote , local_name)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>remote_file_path<span class="token punctuation">)</span>
+        sftp<span class="token operator">=</span>connect_to_sftp<span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span>log_content_area<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#SFTP连接远程服务器</span>
+        <span class="token comment" spellcheck="true"># 获取本地文件大小</span>
+        local_file_size <span class="token operator">=</span> os<span class="token punctuation">.</span>stat<span class="token punctuation">(</span>local<span class="token punctuation">)</span><span class="token punctuation">.</span>st_size
+        <span class="token keyword">print</span><span class="token punctuation">(</span>local_file_size<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"local_file_size:{}"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>local_file_size<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 打印上传进度</span>
+        <span class="token keyword">with</span> open<span class="token punctuation">(</span>local<span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+            <span class="token keyword">def</span> <span class="token function">callback</span><span class="token punctuation">(</span>transferred<span class="token punctuation">,</span> local_file_size<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                percent <span class="token operator">=</span> float<span class="token punctuation">(</span>transferred<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">100</span> <span class="token operator">/</span> local_file_size
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"上传了 %.2f%% "</span> <span class="token operator">%</span> percent<span class="token punctuation">)</span>
+                log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">"上传了 %.2f%% "</span> <span class="token operator">%</span> percent<span class="token punctuation">)</span>
+
+            <span class="token comment" spellcheck="true"># transfer 32768 bytes as SSH slice, put local file to remote</span>
+            sftp<span class="token punctuation">.</span>putfo<span class="token punctuation">(</span>f<span class="token punctuation">,</span> remote_file_path<span class="token punctuation">,</span> local_file_size<span class="token punctuation">,</span> callback<span class="token operator">=</span>callback<span class="token punctuation">)</span>
+        sftp<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'上传成功'</span><span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'---文件上传成功---'</span><span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'---文件上传至'</span> <span class="token operator">+</span> remote_file_path <span class="token operator">+</span> <span class="token string">'----'</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'upload exception:'</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span>
+        fail_content <span class="token operator">=</span> <span class="token string">'upload exception:'</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>fail_content<span class="token punctuation">)</span></code></pre>
+<h5 id="2-2-7-3-上传按钮绑定SFTP上传函数"><a href="#2-2-7-3-上传按钮绑定SFTP上传函数" class="headerlink" title="2.2.7.3 上传按钮绑定SFTP上传函数"></a>2.2.7.3 上传按钮绑定SFTP上传函数</h5><pre class=" language-python"><code class="language-python">myupload_Button<span class="token punctuation">.</span>clicked<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>
+    <span class="token keyword">lambda</span><span class="token punctuation">:</span> sftp_upload<span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span> file_address_input<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> remote<span class="token punctuation">,</span> log_content_area<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<h4 id="2-2-8-获取服务器文件列表"><a href="#2-2-8-获取服务器文件列表" class="headerlink" title="2.2.8 获取服务器文件列表"></a>2.2.8 获取服务器文件列表</h4><h5 id="2-2-8-1-获取远程文件列表按钮"><a href="#2-2-8-1-获取远程文件列表按钮" class="headerlink" title="2.2.8.1 获取远程文件列表按钮"></a>2.2.8.1 获取远程文件列表按钮</h5><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fecth_remote_list</span><span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span>remote<span class="token punctuation">,</span>my_remote_list<span class="token punctuation">,</span>log_content_area<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'开始获取远程报表服务器下txt文件'</span><span class="token punctuation">)</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        sftp <span class="token operator">=</span> connect_to_sftp<span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span> log_content_area<span class="token punctuation">)</span>
+        files<span class="token operator">=</span><span class="token punctuation">[</span>x<span class="token punctuation">.</span>filename <span class="token keyword">for</span> x <span class="token keyword">in</span> sorted<span class="token punctuation">(</span>sftp<span class="token punctuation">.</span>listdir_attr<span class="token punctuation">(</span>remote<span class="token punctuation">)</span><span class="token punctuation">,</span> key<span class="token operator">=</span><span class="token keyword">lambda</span> f<span class="token punctuation">:</span> f<span class="token punctuation">.</span>st_mtime<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true"># 按修改时间排序</span>
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'upload exception:'</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'获取远程文件列表失败'</span><span class="token punctuation">)</span>
+    file_txts <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> file <span class="token keyword">in</span> files<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> file<span class="token punctuation">.</span>endswith<span class="token punctuation">(</span><span class="token string">'.txt'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+         file_txts<span class="token punctuation">.</span>append<span class="token punctuation">(</span>file<span class="token punctuation">)</span>
+    slm <span class="token operator">=</span> QStringListModel<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 创建model</span>
+    slm<span class="token punctuation">.</span>setStringList<span class="token punctuation">(</span>file_txts<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 将数据设置到model</span>
+    my_remote_list<span class="token punctuation">.</span>setModel<span class="token punctuation">(</span>slm<span class="token punctuation">)</span></code></pre>
+<h5 id="2-2-8-1-获取远程文件列表按钮-绑定-获取远程文件列表按钮"><a href="#2-2-8-1-获取远程文件列表按钮-绑定-获取远程文件列表按钮" class="headerlink" title="2.2.8.1 获取远程文件列表按钮 绑定 获取远程文件列表按钮"></a>2.2.8.1 获取远程文件列表按钮 绑定 获取远程文件列表按钮</h5><pre class=" language-python"><code class="language-python">my_fetch_remote_lists_button<span class="token punctuation">.</span>clicked<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> fecth_remote_list<span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span>remote<span class="token punctuation">,</span>my_remote_list<span class="token punctuation">,</span>log_content_area<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<h4 id="2-2-9-下载远程文件"><a href="#2-2-9-下载远程文件" class="headerlink" title="2.2.9 下载远程文件"></a>2.2.9 下载远程文件</h4><h5 id="2-2-9-1-下载文件函数"><a href="#2-2-9-1-下载文件函数" class="headerlink" title="2.2.9.1 下载文件函数"></a>2.2.9.1 下载文件函数</h5><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">download_remote_list</span><span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span>remote<span class="token punctuation">,</span>my_remote_list<span class="token punctuation">,</span>log_content_area<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    selected <span class="token operator">=</span> my_remote_list<span class="token punctuation">.</span>currentIndex<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>data<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">#获取选中的远程服务器文件名称</span>
+    <span class="token keyword">if</span> selected <span class="token keyword">is</span>  None<span class="token punctuation">:</span>
+        msgBox <span class="token operator">=</span> QMessageBox<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        msgBox<span class="token punctuation">.</span>setText<span class="token punctuation">(</span><span class="token string">"请先获取远程文件列表，并选择其中一项！！"</span><span class="token punctuation">)</span>
+        msgBox<span class="token punctuation">.</span>exec_<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'未选择远程报表服务器上任何文件，请先选择'</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'选择远程报表服务器文件：{selected}'</span><span class="token punctuation">)</span>
+        selected_file_path<span class="token operator">=</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>remote<span class="token punctuation">,</span> selected<span class="token punctuation">)</span>
+        sftp <span class="token operator">=</span> connect_to_sftp<span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span>log_content_area<span class="token punctuation">)</span>
+        directory <span class="token operator">=</span> QFileDialog<span class="token punctuation">.</span>getExistingDirectory<span class="token punctuation">(</span>None<span class="token punctuation">,</span> <span class="token string">"选取文件夹"</span><span class="token punctuation">,</span> <span class="token string">"C:/"</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 起始路径</span>
+        local_path<span class="token operator">=</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>directory<span class="token punctuation">,</span>selected<span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'选择本地保持路径：{directory}，开始下载{selected}'</span><span class="token punctuation">)</span>
+        remote_file_size <span class="token operator">=</span> sftp<span class="token punctuation">.</span>stat<span class="token punctuation">(</span>selected_file_path<span class="token punctuation">)</span><span class="token punctuation">.</span>st_size      <span class="token comment" spellcheck="true"># 获得远程文件大小</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"remote_file_size:{}"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>remote_file_size<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"local_path:{}"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>local_path<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 打印下载进程</span>
+        <span class="token keyword">with</span> open<span class="token punctuation">(</span>local_path<span class="token punctuation">,</span> <span class="token string">'wb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+            <span class="token keyword">def</span> <span class="token function">callback</span><span class="token punctuation">(</span>transferred<span class="token punctuation">,</span> remote_file_size<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'local_path:--------'</span><span class="token punctuation">)</span>
+                percent <span class="token operator">=</span> float<span class="token punctuation">(</span>transferred<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">100</span> <span class="token operator">/</span> remote_file_size
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"下载了 %.2f%% "</span> <span class="token operator">%</span> percent<span class="token punctuation">)</span>
+                log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">"下载了 %.2f%% "</span> <span class="token operator">%</span> percent<span class="token punctuation">)</span>
+            <span class="token comment" spellcheck="true"># transfer 32768 bytes as SSH slice, get remote file to local</span>
+            sftp<span class="token punctuation">.</span>getfo<span class="token punctuation">(</span>selected_file_path<span class="token punctuation">,</span> f<span class="token punctuation">,</span> callback<span class="token operator">=</span>callback<span class="token punctuation">)</span></code></pre>
+<h5 id="2-2-9-1-下载文件按钮-绑定-下载文件函数"><a href="#2-2-9-1-下载文件按钮-绑定-下载文件函数" class="headerlink" title="2.2.9.1 下载文件按钮 绑定 下载文件函数"></a>2.2.9.1 下载文件按钮 绑定 下载文件函数</h5><pre class=" language-python"><code class="language-python">my_download_remote_button<span class="token punctuation">.</span>clicked<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> download_remote_list<span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span>remote<span class="token punctuation">,</span>my_remote_list<span class="token punctuation">,</span>log_content_area<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<h2 id="三、全部代码"><a href="#三、全部代码" class="headerlink" title="三、全部代码"></a>三、全部代码</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> os<span class="token punctuation">.</span>path
+<span class="token keyword">import</span> sys
+
+<span class="token keyword">import</span> chardet
+<span class="token keyword">import</span> paramiko
+<span class="token keyword">from</span> PyQt5 <span class="token keyword">import</span> uic
+<span class="token keyword">from</span> PyQt5<span class="token punctuation">.</span>QtCore <span class="token keyword">import</span> QStringListModel
+<span class="token keyword">from</span> PyQt5<span class="token punctuation">.</span>QtWidgets <span class="token keyword">import</span>  QApplication<span class="token punctuation">,</span> QFileDialog<span class="token punctuation">,</span> QPushButton<span class="token punctuation">,</span> QLineEdit<span class="token punctuation">,</span> QStatusBar<span class="token punctuation">,</span> QLabel<span class="token punctuation">,</span> QPlainTextEdit<span class="token punctuation">,</span> QRadioButton<span class="token punctuation">,</span> QListView<span class="token punctuation">,</span> QMessageBox
+<span class="token keyword">import</span> socket
+BASE_DIR <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>dirname<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>abspath<span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">)</span>
+host <span class="token operator">=</span> <span class="token string">'xxxxxx'</span>
+port <span class="token operator">=</span> <span class="token number">22</span>
+username <span class="token operator">=</span> <span class="token string">'xxxx'</span>
+password <span class="token operator">=</span> <span class="token string">'xxxx'</span>
+remote <span class="token operator">=</span> <span class="token string">'/tmp/'</span>
+<span class="token comment" spellcheck="true"># host='127.0.0.1'</span>
+<span class="token comment" spellcheck="true"># port = 26</span>
+<span class="token comment" spellcheck="true"># username = '0841'</span>
+<span class="token comment" spellcheck="true"># password = 'WW'</span>
+<span class="token comment" spellcheck="true"># local = ''</span>
+<span class="token comment" spellcheck="true"># remote ='/ping/'</span>
+<span class="token keyword">def</span> <span class="token function">getIp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 函数 gethostname() 返回当前正在执行 Python 的系统主机名</span>
+    res <span class="token operator">=</span> socket<span class="token punctuation">.</span>gethostbyname<span class="token punctuation">(</span>socket<span class="token punctuation">.</span>gethostname<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> res
+<span class="token keyword">def</span> <span class="token function">getTxtCode</span><span class="token punctuation">(</span>txt_path<span class="token punctuation">,</span> <span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        detector <span class="token operator">=</span> chardet<span class="token punctuation">.</span>UniversalDetector<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">with</span> open<span class="token punctuation">(</span>txt_path<span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+            <span class="token keyword">for</span> line <span class="token keyword">in</span> f<span class="token punctuation">:</span>
+                detector<span class="token punctuation">.</span>feed<span class="token punctuation">(</span>line<span class="token punctuation">)</span>
+                <span class="token keyword">if</span> detector<span class="token punctuation">.</span>done<span class="token punctuation">:</span>
+                    <span class="token keyword">break</span>
+            detector<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        f_charInfo<span class="token operator">=</span>detector<span class="token punctuation">.</span>result
+        txt_code<span class="token operator">=</span><span class="token string">'utf-8'</span>
+        <span class="token keyword">if</span> f_charInfo<span class="token punctuation">[</span><span class="token string">'encoding'</span><span class="token punctuation">]</span> <span class="token operator">==</span><span class="token string">'GB2312'</span><span class="token punctuation">:</span>
+            txt_code<span class="token operator">=</span><span class="token string">'GB18030'</span>
+        <span class="token keyword">if</span> f_charInfo<span class="token punctuation">[</span><span class="token string">'encoding'</span><span class="token punctuation">]</span> <span class="token keyword">is</span> <span class="token operator">not</span> None <span class="token operator">and</span> f_charInfo<span class="token punctuation">[</span><span class="token string">'encoding'</span><span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token string">'GB2312'</span><span class="token punctuation">:</span>
+            txt_code<span class="token operator">=</span>f_charInfo<span class="token punctuation">[</span><span class="token string">'encoding'</span><span class="token punctuation">]</span>
+        <span class="token keyword">if</span> f_charInfo<span class="token punctuation">[</span><span class="token string">'encoding'</span><span class="token punctuation">]</span> <span class="token keyword">is</span>  None <span class="token punctuation">:</span>
+            txt_code <span class="token operator">=</span> <span class="token string">'未知'</span>
+        <span class="token keyword">return</span> txt_code
+        <span class="token comment" spellcheck="true"># return f_charInfo['encoding'] if f_charInfo['encoding'] is not None else '未知'</span>
+    <span class="token keyword">except</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> f<span class="token punctuation">:</span>
+            f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'err'</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token string">'未知'</span>
+<span class="token keyword">def</span> <span class="token function">check_txt_content</span><span class="token punctuation">(</span>dfgzRadio<span class="token punctuation">,</span>pldbRadio<span class="token punctuation">,</span>szrmbRadio<span class="token punctuation">,</span>plxxwhRadio<span class="token punctuation">,</span>code<span class="token punctuation">,</span>file_address<span class="token punctuation">,</span>log_content_area<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token operator">not</span> dfgzRadio<span class="token punctuation">.</span>isChecked<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">and</span> <span class="token operator">not</span> pldbRadio<span class="token punctuation">.</span>isChecked<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">and</span> <span class="token operator">not</span> szrmbRadio<span class="token punctuation">.</span>isChecked<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">and</span> <span class="token operator">not</span> plxxwhRadio<span class="token punctuation">.</span>isChecked<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        msgBox <span class="token operator">=</span> QMessageBox<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        msgBox<span class="token punctuation">.</span>setText<span class="token punctuation">(</span><span class="token string">"请先选择检测类型！！"</span><span class="token punctuation">)</span>
+        msgBox<span class="token punctuation">.</span>exec_<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'请先选择检测类型！！'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span>
+    <span class="token keyword">if</span> <span class="token operator">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isfile<span class="token punctuation">(</span>file_address<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        msgBox <span class="token operator">=</span> QMessageBox<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        msgBox<span class="token punctuation">.</span>setText<span class="token punctuation">(</span><span class="token string">"选择的文件不存在，请检测文件地址"</span><span class="token punctuation">)</span>
+        msgBox<span class="token punctuation">.</span>exec_<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'选择的文件不存在，请检测文件地址'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span>
+    <span class="token comment" spellcheck="true">#代发工资检测---格式  1|6230662035xxxxxxxx|姓名|100.00</span>
+    <span class="token comment" spellcheck="true">##常见错误2   包含其他字符 如字符串符号、空格</span>
+    <span class="token comment" spellcheck="true">###常见错误2  行长度不足，使用|分割之后存在空白或者分割后的部分不足</span>
+    <span class="token comment" spellcheck="true">###常见错误3 金额未填写，或者未保留2位数字</span>
+    <span class="token comment" spellcheck="true">##常见错误4</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'开始检测文件内容'</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> dfgzRadio<span class="token punctuation">.</span>isChecked<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'代发工资开始检测'</span><span class="token punctuation">)</span>
+        <span class="token keyword">with</span> open<span class="token punctuation">(</span>file_address<span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'r'</span><span class="token punctuation">,</span>encoding<span class="token operator">=</span>code<span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+
+            log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'代发工资开始检测'</span><span class="token punctuation">)</span>
+            fail_num<span class="token operator">=</span><span class="token number">0</span>
+            <span class="token keyword">for</span> i<span class="token punctuation">,</span> line <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">if</span> <span class="token string">"'"</span> <span class="token keyword">in</span> line <span class="token operator">or</span> <span class="token string">'"'</span> <span class="token keyword">in</span> line <span class="token operator">or</span> <span class="token string">" "</span> <span class="token keyword">in</span> line <span class="token operator">or</span> <span class="token string">"\t"</span> <span class="token keyword">in</span> line <span class="token operator">or</span> <span class="token string">" "</span> <span class="token keyword">in</span> line<span class="token punctuation">:</span>
+                    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'第{i+1}行包含特殊字符：{line}'</span><span class="token punctuation">)</span>
+                    log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'第{i+1}行包含特殊字符：{line}'</span><span class="token punctuation">)</span>
+                    fail_num<span class="token operator">=</span>fail_num<span class="token operator">+</span><span class="token number">1</span>
+                <span class="token keyword">if</span> len<span class="token punctuation">(</span>line<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'|'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token number">4</span> <span class="token operator">or</span> len<span class="token punctuation">(</span>line<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'|'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token number">4</span><span class="token punctuation">:</span>
+                    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'第{i + 1}行格式错误：{line}'</span><span class="token punctuation">)</span>
+                    log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'第{i + 1}行格式错误：{line}'</span><span class="token punctuation">)</span>
+                    fail_num <span class="token operator">=</span> fail_num <span class="token operator">+</span> <span class="token number">1</span>
+
+                <span class="token keyword">if</span> len<span class="token punctuation">(</span>line<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'|'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span><span class="token number">2</span> <span class="token operator">or</span> len<span class="token punctuation">(</span>line<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'|'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">></span><span class="token number">2</span><span class="token punctuation">:</span>
+                    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'第{i + 1}行金额错误：{line}'</span><span class="token punctuation">)</span>
+                    log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'第{i + 1}行金额错误：{line}'</span><span class="token punctuation">)</span>
+                    fail_num <span class="token operator">=</span> fail_num <span class="token operator">+</span> <span class="token number">1</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'代发工资文件检测结束'</span><span class="token punctuation">)</span>
+            log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'代发工资文件检测结束,共发现{fail_num}处错误'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">#----------批量调拨检测-----------</span>
+    <span class="token keyword">if</span> pldbRadio<span class="token punctuation">.</span>isChecked<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">with</span> open<span class="token punctuation">(</span>file_address<span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'r'</span><span class="token punctuation">,</span>encoding<span class="token operator">=</span><span class="token string">'GB18030'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+                <span class="token keyword">pass</span>
+    <span class="token comment" spellcheck="true"># 数字人民币代发检测 格式：1|009102xxxxxx|100.00|TR05|C213|TF99|姓名|钱包名|1</span>
+    <span class="token keyword">if</span> szrmbRadio<span class="token punctuation">.</span>isChecked<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'数字人民币代发检测'</span><span class="token punctuation">)</span>
+        <span class="token keyword">with</span> open<span class="token punctuation">(</span>file_address<span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'r'</span><span class="token punctuation">,</span>encoding<span class="token operator">=</span>code<span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+            fail_num_szrmb <span class="token operator">=</span> <span class="token number">0</span>
+            <span class="token keyword">for</span> i<span class="token punctuation">,</span> line <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">if</span> <span class="token string">"'"</span> <span class="token keyword">in</span> line <span class="token operator">or</span> <span class="token string">'"'</span> <span class="token keyword">in</span> line <span class="token operator">or</span> <span class="token string">" "</span> <span class="token keyword">in</span> line <span class="token operator">or</span> <span class="token string">"\t"</span> <span class="token keyword">in</span> line <span class="token operator">or</span> <span class="token string">" "</span> <span class="token keyword">in</span> line<span class="token punctuation">:</span>
+                    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'第{i + 1}行包含特殊字符：{line}'</span><span class="token punctuation">)</span>
+                    log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'第{i + 1}行包含特殊字符:{line}'</span><span class="token punctuation">)</span>
+                    fail_num_szrmb<span class="token operator">=</span>fail_num_szrmb<span class="token operator">+</span><span class="token number">1</span>
+                    <span class="token keyword">continue</span>
+                <span class="token keyword">if</span> len<span class="token punctuation">(</span>line<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'|'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">12</span> <span class="token operator">or</span> len<span class="token punctuation">(</span>line<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'|'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">12</span><span class="token punctuation">:</span>
+                    <span class="token keyword">print</span><span class="token punctuation">(</span>len<span class="token punctuation">(</span>line<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'|'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'第{i + 1}行格式错误：{line}'</span><span class="token punctuation">)</span>
+                    log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'第{i + 1}行格式错误：{line}'</span><span class="token punctuation">)</span>
+                    fail_num_szrmb <span class="token operator">=</span> fail_num_szrmb <span class="token operator">+</span> <span class="token number">1</span>
+                    <span class="token keyword">continue</span>
+
+                <span class="token keyword">if</span> len<span class="token punctuation">(</span>line<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'|'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">2</span> <span class="token operator">or</span> len<span class="token punctuation">(</span>
+                        line<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'|'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">:</span>
+                    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'第{i + 1}行金额错误：{line}'</span><span class="token punctuation">)</span>
+                    log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'第{i + 1}行金额错误：{line}'</span><span class="token punctuation">)</span>
+                    fail_num_szrmb <span class="token operator">=</span> fail_num_szrmb <span class="token operator">+</span> <span class="token number">1</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'数字人民币代发文件检测结束'</span><span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'数字人民币代发文件检测结束,共发现{fail_num_szrmb}处错误'</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true">#批量信息维护检测</span>
+    <span class="token keyword">if</span> plxxwhRadio<span class="token punctuation">.</span>isChecked<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">with</span> open<span class="token punctuation">(</span>file_address<span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'r'</span><span class="token punctuation">,</span>encoding<span class="token operator">=</span>code<span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+            <span class="token keyword">pass</span>
+<span class="token comment" spellcheck="true"># 连接到SFTP服务器</span>
+<span class="token keyword">def</span> <span class="token function">connect_to_sftp</span><span class="token punctuation">(</span>hostname<span class="token punctuation">,</span> port<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span>log_content_area<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 创建SSHClient对象</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        ssh <span class="token operator">=</span> paramiko<span class="token punctuation">.</span>SSHClient<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 设置自动添加主机密钥</span>
+        ssh<span class="token punctuation">.</span>set_missing_host_key_policy<span class="token punctuation">(</span>paramiko<span class="token punctuation">.</span>AutoAddPolicy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 连接到服务器</span>
+        ssh<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>hostname<span class="token operator">=</span>hostname<span class="token punctuation">,</span> port<span class="token operator">=</span>port<span class="token punctuation">,</span> username<span class="token operator">=</span>username<span class="token punctuation">,</span> password<span class="token operator">=</span>password<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 创建SFTP对象</span>
+        sftp <span class="token operator">=</span> ssh<span class="token punctuation">.</span>open_sftp<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 返回SFTP对象</span>
+        <span class="token keyword">return</span> sftp
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'upload exception:'</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'连接服务器失败，连接尝试失败'</span><span class="token punctuation">)</span>
+        msgBox <span class="token operator">=</span> QMessageBox<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        msgBox<span class="token punctuation">.</span>setText<span class="token punctuation">(</span><span class="token string">"连接服务器失败，连接尝试失败。！！"</span><span class="token punctuation">)</span>
+        msgBox<span class="token punctuation">.</span>exec_<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">fecth_remote_list</span><span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span>remote<span class="token punctuation">,</span>my_remote_list<span class="token punctuation">,</span>log_content_area<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'------------'</span><span class="token punctuation">)</span>
+    log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'开始获取远程报表服务器下txt文件'</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'-=-=-=-=-=-='</span><span class="token punctuation">)</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        sftp <span class="token operator">=</span> connect_to_sftp<span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span> log_content_area<span class="token punctuation">)</span>
+        files<span class="token operator">=</span><span class="token punctuation">[</span>x<span class="token punctuation">.</span>filename <span class="token keyword">for</span> x <span class="token keyword">in</span> sorted<span class="token punctuation">(</span>sftp<span class="token punctuation">.</span>listdir_attr<span class="token punctuation">(</span>remote<span class="token punctuation">)</span><span class="token punctuation">,</span> key<span class="token operator">=</span><span class="token keyword">lambda</span> f<span class="token punctuation">:</span> f<span class="token punctuation">.</span>st_mtime<span class="token punctuation">)</span><span class="token punctuation">]</span>
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'upload exception:'</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'获取远程文件列表失败'</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>files<span class="token punctuation">)</span>
+    file_txts <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> file <span class="token keyword">in</span> files<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> file<span class="token punctuation">.</span>endswith<span class="token punctuation">(</span><span class="token string">'.txt'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+         <span class="token comment" spellcheck="true"># filepath =os.path.join(remote, file)</span>
+         <span class="token comment" spellcheck="true"># file_txts.append(filepath)</span>
+         file_txts<span class="token punctuation">.</span>append<span class="token punctuation">(</span>file<span class="token punctuation">)</span>
+    slm <span class="token operator">=</span> QStringListModel<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 创建model</span>
+    slm<span class="token punctuation">.</span>setStringList<span class="token punctuation">(</span>file_txts<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 将数据设置到model</span>
+    my_remote_list<span class="token punctuation">.</span>setModel<span class="token punctuation">(</span>slm<span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">download_remote_list</span><span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span>remote<span class="token punctuation">,</span>my_remote_list<span class="token punctuation">,</span>log_content_area<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    selected <span class="token operator">=</span> my_remote_list<span class="token punctuation">.</span>currentIndex<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>data<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>selected<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> selected <span class="token keyword">is</span>  None<span class="token punctuation">:</span>
+        msgBox <span class="token operator">=</span> QMessageBox<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        msgBox<span class="token punctuation">.</span>setText<span class="token punctuation">(</span><span class="token string">"请先获取远程文件列表，并选择其中一项！！"</span><span class="token punctuation">)</span>
+        msgBox<span class="token punctuation">.</span>exec_<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'未选择远程报表服务器上任何文件，请先选择'</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'选择远程报表服务器文件：{selected}'</span><span class="token punctuation">)</span>
+        selected_file_path<span class="token operator">=</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>remote<span class="token punctuation">,</span> selected<span class="token punctuation">)</span>
+        sftp <span class="token operator">=</span> connect_to_sftp<span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span>log_content_area<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># item = my_remote_list[selected]</span>
+        <span class="token comment" spellcheck="true"># print(selected)</span>
+        <span class="token comment" spellcheck="true"># file_name=selected.split('/')[-1]</span>
+        directory <span class="token operator">=</span> QFileDialog<span class="token punctuation">.</span>getExistingDirectory<span class="token punctuation">(</span>None<span class="token punctuation">,</span> <span class="token string">"选取文件夹"</span><span class="token punctuation">,</span> <span class="token string">"C:/"</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 起始路径</span>
+        local_path<span class="token operator">=</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>directory<span class="token punctuation">,</span>selected<span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'选择本地保持路径：{directory}，开始下载{selected}'</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># get remote file size</span>
+        remote_file_size <span class="token operator">=</span> sftp<span class="token punctuation">.</span>stat<span class="token punctuation">(</span>selected_file_path<span class="token punctuation">)</span><span class="token punctuation">.</span>st_size
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"remote_file_size:{}"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>remote_file_size<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"local_path:{}"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>local_path<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># print progress</span>
+        <span class="token keyword">with</span> open<span class="token punctuation">(</span>local_path<span class="token punctuation">,</span> <span class="token string">'wb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+            <span class="token keyword">def</span> <span class="token function">callback</span><span class="token punctuation">(</span>transferred<span class="token punctuation">,</span> remote_file_size<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'local_path:--------'</span><span class="token punctuation">)</span>
+                percent <span class="token operator">=</span> float<span class="token punctuation">(</span>transferred<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">100</span> <span class="token operator">/</span> remote_file_size
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Download %.2f%% of the file."</span> <span class="token operator">%</span> percent<span class="token punctuation">)</span>
+                log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">"下载了 %.2f%% "</span> <span class="token operator">%</span> percent<span class="token punctuation">)</span>
+
+            <span class="token comment" spellcheck="true"># transfer 32768 bytes as SSH slice, get remote file to local</span>
+            sftp<span class="token punctuation">.</span>getfo<span class="token punctuation">(</span>selected_file_path<span class="token punctuation">,</span> f<span class="token punctuation">,</span> callback<span class="token operator">=</span>callback<span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">sftp_upload</span><span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span> local<span class="token punctuation">,</span> remote<span class="token punctuation">,</span> log_content_area<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    local_name <span class="token operator">=</span> local<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        remote_file_path <span class="token operator">=</span> remote <span class="token operator">+</span>  local_name
+        <span class="token comment" spellcheck="true"># remote_file_path = os.path.join(remote , local_name)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>remote_file_path<span class="token punctuation">)</span>
+        sftp<span class="token operator">=</span>connect_to_sftp<span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span>log_content_area<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># get local file size</span>
+        local_file_size <span class="token operator">=</span> os<span class="token punctuation">.</span>stat<span class="token punctuation">(</span>local<span class="token punctuation">)</span><span class="token punctuation">.</span>st_size
+        <span class="token keyword">print</span><span class="token punctuation">(</span>local_file_size<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"local_file_size:{}"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>local_file_size<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># print progress</span>
+        <span class="token keyword">with</span> open<span class="token punctuation">(</span>local<span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+            <span class="token keyword">def</span> <span class="token function">callback</span><span class="token punctuation">(</span>transferred<span class="token punctuation">,</span> local_file_size<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                percent <span class="token operator">=</span> float<span class="token punctuation">(</span>transferred<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">100</span> <span class="token operator">/</span> local_file_size
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Upload %.2f%% of the file."</span> <span class="token operator">%</span> percent<span class="token punctuation">)</span>
+                log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">"Upload %.2f%% of the file."</span> <span class="token operator">%</span> percent<span class="token punctuation">)</span>
+            <span class="token comment" spellcheck="true"># transfer 32768 bytes as SSH slice, put local file to remote</span>
+            sftp<span class="token punctuation">.</span>putfo<span class="token punctuation">(</span>f<span class="token punctuation">,</span> remote_file_path<span class="token punctuation">,</span> local_file_size<span class="token punctuation">,</span> callback<span class="token operator">=</span>callback<span class="token punctuation">)</span>
+        sftp<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'上传成功'</span><span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'---文件上传成功---'</span><span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'---文件上传至'</span> <span class="token operator">+</span> remote_file_path <span class="token operator">+</span> <span class="token string">'----'</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'upload exception:'</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span>
+        fail_content <span class="token operator">=</span> <span class="token string">'upload exception:'</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>fail_content<span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">romote_file_list</span><span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span> local<span class="token punctuation">,</span> remote<span class="token punctuation">,</span> log_content_area<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    local_name <span class="token operator">=</span> local<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        sf <span class="token operator">=</span> paramiko<span class="token punctuation">.</span>Transport<span class="token punctuation">(</span><span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        sf<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>username<span class="token operator">=</span>username<span class="token punctuation">,</span> password<span class="token operator">=</span>password<span class="token punctuation">)</span>
+        sftp <span class="token operator">=</span> paramiko<span class="token punctuation">.</span>SFTPClient<span class="token punctuation">.</span>from_transport<span class="token punctuation">(</span>sf<span class="token punctuation">)</span>
+
+        sftp<span class="token punctuation">.</span>put<span class="token punctuation">(</span>local<span class="token punctuation">,</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>remote<span class="token punctuation">,</span> local_name<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 上传文件</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'上传成功'</span><span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'---文件上传成功---'</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'upload exception:'</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">selectFile</span><span class="token punctuation">(</span>file_address_input<span class="token punctuation">,</span> log_content_area<span class="token punctuation">,</span> code_label<span class="token punctuation">,</span> myStatusBar<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    fd <span class="token operator">=</span> QFileDialog<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    fd<span class="token punctuation">.</span>setFileMode<span class="token punctuation">(</span>QFileDialog<span class="token punctuation">.</span>FileMode<span class="token punctuation">.</span>ExistingFile<span class="token punctuation">)</span>
+    fd<span class="token punctuation">.</span>setDirectory<span class="token punctuation">(</span><span class="token string">'C:\\'</span><span class="token punctuation">)</span>
+    fd<span class="token punctuation">.</span>setNameFilter<span class="token punctuation">(</span><span class="token string">'*.txt'</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> fd<span class="token punctuation">.</span><span class="token keyword">exec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>fd<span class="token punctuation">.</span>selectedFiles<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        file_address_input<span class="token punctuation">.</span>setText<span class="token punctuation">(</span>fd<span class="token punctuation">.</span>selectedFiles<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'---读取待上传的文件地址成功---'</span><span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>fd<span class="token punctuation">.</span>selectedFiles<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        suffix <span class="token operator">=</span> fd<span class="token punctuation">.</span>selectedFiles<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'---读取待上传的文件后缀---'</span><span class="token punctuation">)</span>
+        suffix_content <span class="token operator">=</span> <span class="token string">'后缀为：'</span> <span class="token operator">+</span> suffix
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>suffix_content<span class="token punctuation">)</span>
+        code <span class="token operator">=</span> getTxtCode<span class="token punctuation">(</span>fd<span class="token punctuation">.</span>selectedFiles<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'---读取待上传的文件编码---'</span><span class="token punctuation">)</span>
+        code_content <span class="token operator">=</span> <span class="token string">'编码为：'</span> <span class="token operator">+</span> code
+        log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>code_content<span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> code <span class="token operator">==</span> <span class="token string">'ascii'</span> <span class="token operator">or</span> code <span class="token operator">==</span> <span class="token string">'gb2312'</span> <span class="token operator">or</span> code <span class="token operator">==</span> <span class="token string">'gbk'</span> <span class="token operator">or</span> code <span class="token operator">==</span> <span class="token string">'GB2312'</span> <span class="token operator">or</span> code <span class="token operator">==</span> <span class="token string">'utf-8'</span><span class="token punctuation">:</span>
+            log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'文件编码符合规范'</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> code <span class="token operator">==</span> <span class="token string">'UTF-16'</span><span class="token punctuation">:</span>
+            log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'文件编码不符合规范，请检查文件编码'</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span><span class="token string">'文件编码未知'</span><span class="token punctuation">)</span>
+        code_label<span class="token punctuation">.</span>setText<span class="token punctuation">(</span>code<span class="token punctuation">)</span>
+        myStatusBar<span class="token punctuation">.</span>addPermanentWidget<span class="token punctuation">(</span>code_label<span class="token punctuation">)</span>
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    app <span class="token operator">=</span> QApplication<span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">)</span>
+    ui <span class="token operator">=</span> uic<span class="token punctuation">.</span>loadUi<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>BASE_DIR<span class="token punctuation">,</span> <span class="token string">'untitled5.ui'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    select_button<span class="token punctuation">:</span> QPushButton <span class="token operator">=</span> ui<span class="token punctuation">.</span>find_address_button
+    file_address_input<span class="token punctuation">:</span> QLineEdit <span class="token operator">=</span> ui<span class="token punctuation">.</span>file_address
+    myStatusBar<span class="token punctuation">:</span> QStatusBar <span class="token operator">=</span> ui<span class="token punctuation">.</span>statusbar
+    ip_label <span class="token operator">=</span> QLabel<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    ip_info <span class="token operator">=</span> <span class="token string">'当前登录ip：'</span> <span class="token operator">+</span> getIp<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    ip_label<span class="token punctuation">.</span>setText<span class="token punctuation">(</span>ip_info<span class="token punctuation">)</span>
+    code_label <span class="token operator">=</span> QLabel<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    dfgzRadio<span class="token punctuation">:</span> QRadioButton <span class="token operator">=</span> ui<span class="token punctuation">.</span>dfgz
+    pldbRadio<span class="token punctuation">:</span> QRadioButton <span class="token operator">=</span> ui<span class="token punctuation">.</span>pldb
+    plxxwhRadio<span class="token punctuation">:</span> QRadioButton <span class="token operator">=</span> ui<span class="token punctuation">.</span>plxxwh
+    szrmbRadio<span class="token punctuation">:</span> QRadioButton <span class="token operator">=</span> ui<span class="token punctuation">.</span>szrmb
+    pldbRadio<span class="token punctuation">.</span>hide<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    plxxwhRadio<span class="token punctuation">.</span>hide<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    check_button<span class="token punctuation">:</span> QPushButton <span class="token operator">=</span> ui<span class="token punctuation">.</span>check_Button
+    <span class="token comment" spellcheck="true"># my_download_checkfail_Button: QPushButton=ui.download_checkfail_Button</span>
+    <span class="token comment" spellcheck="true"># my_download_report_button: QPushButton = ui.download_report_button</span>
+    <span class="token comment" spellcheck="true"># my_download_checkfail_Button.hide()</span>
+    <span class="token comment" spellcheck="true"># my_download_report_button.hide()</span>
+
+
+    my_download_remote_button<span class="token punctuation">:</span> QPushButton <span class="token operator">=</span> ui<span class="token punctuation">.</span>download_remote_button
+
+    my_fetch_remote_lists_button<span class="token punctuation">:</span> QPushButton <span class="token operator">=</span> ui<span class="token punctuation">.</span>fetch_remote_lists_button
+    my_remote_list<span class="token punctuation">:</span> QListView <span class="token operator">=</span> ui<span class="token punctuation">.</span>remote_lists
+    myStatusBar<span class="token punctuation">.</span>addPermanentWidget<span class="token punctuation">(</span>ip_label<span class="token punctuation">)</span>
+    log_content_area<span class="token punctuation">:</span> QPlainTextEdit <span class="token operator">=</span> ui<span class="token punctuation">.</span>log_content
+    log_content_area<span class="token punctuation">.</span>appendPlainText<span class="token punctuation">(</span>f<span class="token string">'{ip_label.text()}'</span><span class="token punctuation">)</span>
+    myupload_Button<span class="token punctuation">:</span> QPushButton <span class="token operator">=</span> ui<span class="token punctuation">.</span>upload_Button
+    select_button<span class="token punctuation">.</span>clicked<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> selectFile<span class="token punctuation">(</span>file_address_input<span class="token punctuation">,</span> log_content_area<span class="token punctuation">,</span> code_label<span class="token punctuation">,</span> myStatusBar<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    my_fetch_remote_lists_button<span class="token punctuation">.</span>clicked<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> fecth_remote_list<span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span>remote<span class="token punctuation">,</span>my_remote_list<span class="token punctuation">,</span>log_content_area<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    myupload_Button<span class="token punctuation">.</span>clicked<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>
+        <span class="token keyword">lambda</span><span class="token punctuation">:</span> sftp_upload<span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span> file_address_input<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> remote<span class="token punctuation">,</span> log_content_area<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    check_button<span class="token punctuation">.</span>clicked<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> check_txt_content<span class="token punctuation">(</span>dfgzRadio<span class="token punctuation">,</span>pldbRadio<span class="token punctuation">,</span>szrmbRadio<span class="token punctuation">,</span>plxxwhRadio<span class="token punctuation">,</span>code_label<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>file_address_input<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>log_content_area<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    my_download_remote_button<span class="token punctuation">.</span>clicked<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> download_remote_list<span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span>remote<span class="token punctuation">,</span>my_remote_list<span class="token punctuation">,</span>log_content_area<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    ui<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span>app<span class="token punctuation">.</span><span class="token keyword">exec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<h2 id="四、打包"><a href="#四、打包" class="headerlink" title="四、打包"></a>四、打包</h2><h3 id="4-1-前置说明"><a href="#4-1-前置说明" class="headerlink" title="4.1  前置说明"></a>4.1  前置说明</h3><h4 id="4-1-1文件列表"><a href="#4-1-1文件列表" class="headerlink" title="4.1.1文件列表"></a>4.1.1文件列表</h4><ul>
+<li><input disabled type="checkbox"> hx_fenlei2.py</li>
+<li><input disabled type="checkbox"> untitled5.ui</li>
+</ul>
+<h4 id="4-1-2-安装pyinstaller"><a href="#4-1-2-安装pyinstaller" class="headerlink" title="4.1.2 安装pyinstaller"></a>4.1.2 安装pyinstaller</h4><pre class=" language-bash"><code class="language-bash">pip <span class="token function">install</span> pyinstaller</code></pre>
+<h3 id="4-2-打包生成-spec文件"><a href="#4-2-打包生成-spec文件" class="headerlink" title="4.2 打包生成.spec文件"></a>4.2 打包生成.spec文件</h3><pre class=" language-bash"><code class="language-bash">pyinstaller -F hx_fenlei2.py</code></pre>
+<p>说明：1.生成hx_fenlei2.spec文件</p>
+<p>2.pyinstaller常用打包参数</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-D, –onedir</td>
+<td>打包成一个文件夹</td>
+</tr>
+<tr>
+<td>-F, –onefile</td>
+<td>打包成一个可执行文件(exe)</td>
+</tr>
+</tbody></table>
+<h3 id="4-3-使用-spec文件打包"><a href="#4-3-使用-spec文件打包" class="headerlink" title="4.3 使用.spec文件打包"></a>4.3 使用.spec文件打包</h3><pre class=" language-python"><code class="language-python">a <span class="token operator">=</span> Analysis<span class="token punctuation">(</span>
+    <span class="token punctuation">[</span><span class="token string">'hx_fenlei2.py'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    pathex<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    binaries<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    datas<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">'untitled5.ui'</span><span class="token punctuation">,</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    hiddenimports<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    hookspath<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    hooksconfig<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    runtime_hooks<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    excludes<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    noarchive<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+    optimize<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
+pyz <span class="token operator">=</span> PYZ<span class="token punctuation">(</span>a<span class="token punctuation">.</span>pure<span class="token punctuation">)</span>
+
+exe <span class="token operator">=</span> EXE<span class="token punctuation">(</span>
+    pyz<span class="token punctuation">,</span>
+    a<span class="token punctuation">.</span>scripts<span class="token punctuation">,</span>
+    a<span class="token punctuation">.</span>binaries<span class="token punctuation">,</span>
+    a<span class="token punctuation">.</span>datas<span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+    name<span class="token operator">=</span><span class="token string">'hx_fenlei2'</span><span class="token punctuation">,</span>
+    debug<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+    bootloader_ignore_signals<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+    strip<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+    upx<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+    console<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+    upx_exclude<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    runtime_tmpdir<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    disable_windowed_traceback<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+    argv_emulation<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+    target_arch<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    codesign_identity<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    entitlements_file<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    icon<span class="token operator">=</span><span class="token string">'C:\\Users\\ww\\Desktop\\upload_df\\pythonProject4\\hx.ico'</span>
+<span class="token punctuation">)</span></code></pre>
+<p>主要修改说明：</p>
+<p>修改<code>datas=[(&#39;上联地址.txt&#39;,&#39;.&#39;),(&#39;电话号码.txt&#39;,&#39;.&#39;),(&#39;ips_template.txt&#39;,&#39;.&#39;),(&#39;tels_template.txt&#39;,&#39;.&#39;)],</code></p>
+<p>注意：存放位置为 ’ . ’ 时，表示为程序运行目录（windows：C:\Users\Administrator\AppData\Local\Temp_MEI190322，单文件模式运行时会自动解压到该目录) </p>
+<p><code>console=False,</code>    cmd窗口不显示</p>
+<p> <code>runtime_tmpdir=None,</code>            单文件模式</p>
+<p><code>icon=&#39;C:\\Users\\ww\\Desktop\\ping\\pythonProject2\\PING.ico&#39;</code>        打包exe文件的图标地址</p>
+<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><p>1.pyqt设计代码框架</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> os<span class="token punctuation">.</span>path
+<span class="token keyword">from</span> PyQt5 <span class="token keyword">import</span> uic<span class="token punctuation">,</span> QtWidgets
+BASE_DIR <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>dirname<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>abspath<span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    app <span class="token operator">=</span> QApplication<span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">)</span>
+    ui <span class="token operator">=</span> uic<span class="token punctuation">.</span>loadUi<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>BASE_DIR<span class="token punctuation">,</span> <span class="token string">'untitled5.ui'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token triple-quoted-string string">'''
+    获取ui控件，设置事件
+
+    '''</span>
+    ui<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span>app<span class="token punctuation">.</span><span class="token keyword">exec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>2.兼容性问题</p>
+<p>python 3.8.10之后不支持win7</p>
+<p>PyQt5                     5.15.9</p>
+<p>pyqt5-tools               5.15.9.3.3</p>
+<p>Python             3.8.8   win32</p>
+<p>pyinstaller               6.9.0</p>
+<p>3.参考文献</p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《python运维工具之SFTP上传服务器》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2024/07/22/python-yun-wei-gong-ju-zhi-sftp-shang-chuan-fu-wu-qi/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                WangWei
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+    <div class="livere-card card" data-aos="fade-up">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" class="card-content" data-id="city" data-uid="MTAyMC80NTQ1Ny8yMTk2OQ==">
+        <script type="text/javascript">
+            (function (d, s) {
+                let j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') {
+                    return;
+                }
+
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript。</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</div>
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2024/07/22/python-yun-wei-gong-ju-zhi-sftp-shang-chuan-fu-wu-qi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="python运维工具之SFTP上传服务器">
+                        
+                        <span class="card-title">python运维工具之SFTP上传服务器</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            一、需求说明1.设计桌面程序，封装好链接，通过SFTP协议上传本地文件至服务器
+2.检测本地文件的格式
+3.获取服务器文件列表，下载至本地
+二、总体思路整理1.使用pyqt库设计，使用QT designer （.ui文件)设计程序元素
+2.
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-07-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/python/" class="post-category" target="_blank">
+                                    python
+                                </a>
+                            
+                            <a href="/categories/python/运维/" class="post-category" target="_blank">
+                                    运维
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/" target="_blank">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/运维/" target="_blank">
+                        <span class="chip bg-color">运维</span>
+                    </a>
+                    
+                    <a href="/tags/SFTP/" target="_blank">
+                        <span class="chip bg-color">SFTP</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/07/21/python-yun-wei-gong-ju-zhi-jiao-huan-ji-wang-luo-zhuang-tai/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="python运维工具之交换机网络状态">
+                        
+                        <span class="card-title">python运维工具之交换机网络状态</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            一、需求1.检测交换机网络状态，当离线、恢复、不稳定时可以发送短信
+2.生成日志，保留每次检测结果
+3.可以传入自己配置的交换机地址、发送短信的手机号
+二、具体开发思路2.1 主要思路1.读取文件获取ip地址池与手机号列表
+2.初始化所有交
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-07-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/运维/" class="post-category" target="_blank">
+                                    运维
+                                </a>
+                            
+                            <a href="/categories/运维/python/" class="post-category" target="_blank">
+                                    python
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/" target="_blank">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/运维/" target="_blank">
+                        <span class="chip bg-color">运维</span>
+                    </a>
+                    
+                    <a href="/tags/ping/" target="_blank">
+                        <span class="chip bg-color">ping</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+</div>
+<div class="contentleft">
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">WangWei</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">12.6k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/wwblog" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:3349208308@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3349208308" class="tooltipped" data-tooltip="QQ联系我: 3349208308" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+<script src="https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-144201146-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-144201146-1');
+</script>
+
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+ 
+                        
+
+<link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<div class="music-player contentleft">
+    
+    <div class="row">
+        <div class="col l8 offset-l2 m10 offset-m1 s12">
+            <div id="aplayer" class="music"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script>
+$(function () {
+    new APlayer({
+        container: document.getElementById('aplayer'),
+        fixed: 'true' === 'true',
+        autoplay: 'false' === 'true',
+        theme: '#42b983',
+        loop: 'all',
+        order: 'list',
+        preload: 'auto',
+        volume: Number('0.7'),
+        listFolded: 'false' === 'true',
+        listMaxHeight: '5',
+        audio: JSON.parse('[{"name":"陈洁丽 - 诺言","artist":"陈洁丽","url":"/medias/music/陈洁丽 - 诺言.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"RAM WIRE - 僕らの手には何もないけど、","artist":"RAM WIRE","url":"/medias/music/RAM WIRE - 僕らの手には何もないけど、.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"陈洁丽  - 茶之花","artist":"陈洁丽","url":"/medias/music/陈洁丽  - 茶之花.mp3","cover":"http://xxx.com/music-cover1.png"},{"name":"陈洁丽 - 绿色的旋律(Live) - live","artist":"陈洁丽","url":"/medias/music/陈洁丽 - 绿色的旋律(Live) - live.mp3","cover":"http://xxx.com/music-cover1.png"},{"name":"相思","artist":"毛阿敏","url":"/medias/music/相思.mp3","cover":"/medias/music/cover2.png"},{"name":"S.H.E - 恋人未满","artist":"S.H.E","url":"/medias/music/S.H.E - 恋人未满.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"莫文蔚 - 外面的世界","artist":"莫文蔚","url":"/medias/music/莫文蔚 - 外面的世界.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"コアラモード. - 七色シンフォニー","artist":"コアラモード","url":"/medias/music/コアラモード. - 七色シンフォニー.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"S.H.E-你曾是少年(电影《少年班》主题曲)","artist":"S.H.E","url":"/medias/music/S.H.E-你曾是少年(电影《少年班》主题曲).mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"潘广益-凌晨两点半","artist":"潘广益","url":"/medias/music/潘广益-凌晨两点半.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"咖啡因乐队 - 成长的路口","artist":"咖啡因乐队","url":"/medias/music/咖啡因乐队 - 成长的路口.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"7!! - オレンジ","artist":"7!!","url":"/medias/music/7!! - オレンジ.mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"西野カナ-トリセツ  ","artist":"西野カナ","url":"/medias/music/西野カナ-トリセツ  .mp3","cover":"http://xxx.com/music-cover3.png"},{"name":"杨宗纬 - 一场恋爱","artist":"杨宗纬","url":"/medias/music/杨宗纬 - 一场恋爱.mp3","cover":"http://xxx.com/music-cover3.png"}]')
+    });
+      $(document).pjax('a[target!=_blank]', '#contentleft', {fragment:'#contentleft', timeout:8000});
+      $(document).pjax('a[target!=_blank]', '.contentleft', {fragment:'.contentleft', timeout:8000});
+
+    
+    
+});
+</script>
+                    
+                    
+    
+
+</body>
+  <script>                 $(document).pjax('a[target!=_blank]', '.contentMain', {fragment:'.contentMain', timeout:8000});
+
+      </script>
+
+</html>

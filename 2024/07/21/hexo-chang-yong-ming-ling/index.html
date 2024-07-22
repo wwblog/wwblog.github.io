@@ -5,18 +5,10 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="hexo博客编写常用命令, Changing Learning Drawing">
-    <meta name="description" content="
-
-  
-  
-    Please enter the password to read.
-    
-  
-
-Incorrect Password!
-No content to display!
-
-U2FsdGVkX19gzrizsL6k">
+    <meta name="description" content="一、hexo安装与部署1.1环境准备官网：Hexo         3.9.0         hexo-cli  2.0.0
+安装 Node.js      8.17.0    
+安装Git        
+1.2 本地博客安装步骤1.2">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -196,7 +188,7 @@ U2FsdGVkX19gzrizsL6k">
         
         <li><div class="divider"></div></li>
         <li>
-            <a href="https://github.com/LoveXWen" class="waves-effect waves-light" target="_blank">
+            <a href="https://github.com/wwblog" class="waves-effect waves-light" target="_blank">
                 <i class="fa fa-github-square fa-fw"></i>Fork Me
             </a>
         </li>
@@ -252,7 +244,7 @@ U2FsdGVkX19gzrizsL6k">
     }
 </style>
 
-<a href="https://github.com/LoveXWen" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+<a href="https://github.com/wwblog" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
    data-tooltip="Fork Me" data-position="left" data-delay="50">
     <svg viewBox="0 0 250 250" aria-hidden="true">
         <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -412,14 +404,14 @@ U2FsdGVkX19gzrizsL6k">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        311
+                        465
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        2 分
                     </div>
                     
                 
@@ -435,20 +427,42 @@ U2FsdGVkX19gzrizsL6k">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<div id="hbe-security">
-  <div class="hbe-input-container">
-  <input type="password" class="hbe-form-control" id="pass" placeholder="Please enter the password to read." />
-    <label for="pass">Please enter the password to read.</label>
-    <div class="bottom-line"></div>
-  </div>
-</div>
-<div id="decryptionError" style="display: none;">Incorrect Password!</div>
-<div id="noContentError" style="display: none;">No content to display!</div>
-<div id="encrypt-blog" style="display:none">
-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
-</div>
-<script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
+                <h1 id="一、hexo安装与部署"><a href="#一、hexo安装与部署" class="headerlink" title="一、hexo安装与部署"></a>一、hexo安装与部署</h1><h2 id="1-1环境准备"><a href="#1-1环境准备" class="headerlink" title="1.1环境准备"></a>1.1环境准备</h2><p>官网：<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a>         3.9.0         hexo-cli  2.0.0</p>
+<p>安装 <a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a>      8.17.0    </p>
+<p>安装<a href="http://git-scm.com/" target="_blank" rel="noopener">Git</a>        </p>
+<h2 id="1-2-本地博客安装步骤"><a href="#1-2-本地博客安装步骤" class="headerlink" title="1.2 本地博客安装步骤"></a>1.2 本地博客安装步骤</h2><h3 id="1-2-1-博客初始化"><a href="#1-2-1-博客初始化" class="headerlink" title="1.2.1 博客初始化"></a>1.2.1 博客初始化</h3><pre class=" language-bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span> hexo-cli -g</code></pre>
+<p>注：全局安装hexo脚手架，注意hexo脚手架与nodejs的兼容性问题</p>
+<pre class=" language-bash"><code class="language-bash">$ hexo init <span class="token operator">&lt;</span>folder<span class="token operator">></span>
+$ <span class="token function">cd</span> <span class="token operator">&lt;</span>folder<span class="token operator">></span>
+$ <span class="token function">npm</span> <span class="token function">install</span></code></pre>
+<h3 id="1-2-2-博客主题下载与应用"><a href="#1-2-2-博客主题下载与应用" class="headerlink" title="1.2.2 博客主题下载与应用"></a>1.2.2 博客主题下载与应用</h3><p>hexo 主题网站<a href="https://www.hexothemes.com/theme/" target="_blank" rel="noopener">Latest Hexo Themes | Hexo Themes</a> </p>
+<p>使用git clone下载github/gitee主题</p>
+<pre class=" language-bash"><code class="language-bash">$ <span class="token function">git</span> clone https://gitee.com/immyw/hexo-theme-butterfly.git</code></pre>
+<p>下载至<code>&lt;folder&gt;</code>/themes</p>
+<p>打开<code>&lt;folder&gt;</code>下hexo的配置文件  _config.yml 文件，修改：</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">theme</span><span class="token punctuation">:</span> hexo<span class="token punctuation">-</span>theme<span class="token punctuation">-</span>butterfly</code></pre>
+<h4 id="1-2-3-本地执行"><a href="#1-2-3-本地执行" class="headerlink" title="1.2.3 本地执行"></a>1.2.3 本地执行</h4><pre class=" language-bash"><code class="language-bash">hexo clean <span class="token operator">&amp;</span> hexo generate <span class="token operator">&amp;</span> hexo server -p 5000 </code></pre>
+<h3 id="1-3-本地blog推送至github"><a href="#1-3-本地blog推送至github" class="headerlink" title="1.3 本地blog推送至github"></a>1.3 本地blog推送至github</h3><h4 id="1-3-1-lt-folder-gt-下-config-yml-文件配置"><a href="#1-3-1-lt-folder-gt-下-config-yml-文件配置" class="headerlink" title="1.3.1 &lt;folder&gt;下  _config.yml 文件配置"></a>1.3.1 <code>&lt;folder&gt;</code>下  _config.yml 文件配置</h4><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> git
+  <span class="token key atrule">repo</span><span class="token punctuation">:</span> &lt;你的Github仓库的SSH地址<span class="token punctuation">></span>
+  <span class="token key atrule">branch</span><span class="token punctuation">:</span> master</code></pre>
+<h4 id="1-3-2-Github仓库创建并且配置SSH-keys"><a href="#1-3-2-Github仓库创建并且配置SSH-keys" class="headerlink" title="1.3.2 Github仓库创建并且配置SSH keys"></a>1.3.2 Github仓库创建并且配置SSH keys</h4><p><a href="https://tech.yemengstar.com/hexo-tutorial-deploy-githubpages-beginner/" target="_blank" rel="noopener">HEXO系列教程 | 使用GitHub部署静态博客HEXO | 小白向教程 – 夜梦星尘の折腾日记 (yemengstar.com)</a> </p>
+<p><a href="https://blog.csdn.net/2202_75780138/article/details/132112279" target="_blank" rel="noopener">https://blog.csdn.net/2202_75780138/article/details/132112279</a></p>
+<h4 id="1-3-3-执行远程部署命令"><a href="#1-3-3-执行远程部署命令" class="headerlink" title="1.3.3 执行远程部署命令"></a>1.3.3 执行远程部署命令</h4><p>cd至 <code>&lt;folder&gt;</code>下</p>
+<pre class=" language-bash"><code class="language-bash">hexo c <span class="token operator">&amp;</span> hexo g <span class="token operator">&amp;</span> hexo d</code></pre>
+<h3 id="1-4-本地博客机器迁移"><a href="#1-4-本地博客机器迁移" class="headerlink" title="1.4 本地博客机器迁移"></a>1.4 本地博客机器迁移</h3><p>1.将便携版 <a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a>  、<a href="http://git-scm.com/" target="_blank" rel="noopener">Git</a>、blog文件夹复制，配置nodejs环境变量</p>
+<p>注：注意版本冲突问题（已经搭建环境： Node.js（node-v8.17.0-win-x64），hexo-cli(v2.0.0)，hexo(3.9.0)</p>
+<p>2.重新生成SSH key</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> config --global user.name <span class="token string">"你的 GitHub 用户名"</span>
+<span class="token function">git</span> config --global user.email <span class="token string">"你的 GitHub 邮箱"</span>
+ssh-keygen -t rsa -C <span class="token string">"你的 GitHub 邮箱"</span></code></pre>
+<p>例如：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> config --global user.name <span class="token string">"wwblog"</span>
+<span class="token function">git</span> config --global user.email <span class="token string">"3349208308@qq.com"</span>
+ssh-keygen -t rsa -C <span class="token string">"3349208308@qq.com"</span></code></pre>
+<p>然后我们进入 <code>C:\Users\ 用户名 \.ssh</code> 目录 ,我们<strong>用记事本</strong>打开<code>id_rsa.pub</code>并<strong>复制里面的内容</strong>,在 GitHub 中添加 SSH 密钥。</p>
+<h2 id="二、博客编写"><a href="#二、博客编写" class="headerlink" title="二、博客编写"></a>二、博客编写</h2><h3 id="2-1-新文章"><a href="#2-1-新文章" class="headerlink" title="2.1 新文章"></a>2.1 新文章</h3><pre class=" language-bash"><code class="language-bash"> hexo new  <span class="token string">"文章名字"</span></code></pre>
+
             </div>
             <hr/>
 
@@ -670,55 +684,62 @@ U2FsdGVkX19gzrizsL6kRZWVu9U8kCUvZ6AA2UaT71yZP59FO5FQfQ1EVgVWefIqTEUvCsOCvxKLRvwW
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/07/21/hexo-chang-yong-ming-ling/">
+                <a href="/2024/07/21/python-yun-wei-gong-ju-zhi-jiao-huan-ji-wang-luo-zhuang-tai/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="hexo博客编写常用命令">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="python运维工具之交换机网络状态">
                         
-                        <span class="card-title">hexo博客编写常用命令</span>
+                        <span class="card-title">python运维工具之交换机网络状态</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-  
-  
-    Please enter the password to read.
-    
-  
-
-Incorrect Password!
-No content to display!
-
-U2FsdGVkX19gzrizsL6k
+                            一、需求1.检测交换机网络状态，当离线、恢复、不稳定时可以发送短信
+2.生成日志，保留每次检测结果
+3.可以传入自己配置的交换机地址、发送短信的手机号
+二、具体开发思路2.1 主要思路1.读取文件获取ip地址池与手机号列表
+2.初始化所有交
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-07-21
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2024-07-21
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            WangWei
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/运维/" class="post-category" target="_blank">
+                                    运维
+                                </a>
+                            
+                            <a href="/categories/运维/python/" class="post-category" target="_blank">
+                                    python
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/hexo/" target="_blank">
-                        <span class="chip bg-color">hexo</span>
+                    <a href="/tags/python/" target="_blank">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/运维/" target="_blank">
+                        <span class="chip bg-color">运维</span>
+                    </a>
+                    
+                    <a href="/tags/ping/" target="_blank">
+                        <span class="chip bg-color">ping</span>
                     </a>
                     
                 </div>
@@ -901,7 +922,7 @@ U2FsdGVkX19gzrizsL6k
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">3.8k</span>
+                <span class="white-color">12.6k</span>
             
 
             
@@ -922,19 +943,19 @@ U2FsdGVkX19gzrizsL6k
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/LoveXWen" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/wwblog" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fa fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:3289605396@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:3349208308@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fa fa-envelope-open"></i>
     </a>
 
 
 
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3289605396" class="tooltipped" data-tooltip="QQ联系我: 3289605396" data-position="top" data-delay="50">
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3349208308" class="tooltipped" data-tooltip="QQ联系我: 3349208308" data-position="top" data-delay="50">
         <i class="fa fa-qq"></i>
     </a>
 
