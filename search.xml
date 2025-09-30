@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>python实现网站证书安装并HOST自动配置</title>
+      <link href="/2025/09/30/python-shi-xian-wang-zhan-zheng-shu-an-zhuang-bing-host-zi-dong-pei-zhi/"/>
+      <url>/2025/09/30/python-shi-xian-wang-zhan-zheng-shu-an-zhuang-bing-host-zi-dong-pei-zhi/</url>
+      
+        <content type="html"><![CDATA[<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><div id="hbe-security">  <div class="hbe-input-container">  <input type="password" class="hbe-form-control" id="pass" placeholder="Please enter the password to read.">    <label for="pass">Please enter the password to read.</label>    <div class="bottom-line"></div>  </div></div><div id="decryptionError" style="display: none;">Incorrect Password!</div><div id="noContentError" style="display: none;">No content to display!</div><div id="encrypt-blog" style="display:none">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</div><script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> pyhon </tag>
+            
+            <tag> 运维 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>python运维工具之批量备份交换机配置</title>
       <link href="/2024/07/29/python-yun-wei-gong-ju-zhi-pi-liang-bei-fen-jiao-huan-ji-pei-zhi/"/>
       <url>/2024/07/29/python-yun-wei-gong-ju-zhi-pi-liang-bei-fen-jiao-huan-ji-pei-zhi/</url>
@@ -22,9 +49,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> 运维 </tag>
+            
+            <tag> python </tag>
             
             <tag> 交换机 </tag>
             
@@ -53,9 +80,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> 运维 </tag>
+            
+            <tag> python </tag>
             
             <tag> SFTP </tag>
             
@@ -84,9 +111,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> 运维 </tag>
+            
+            <tag> python </tag>
             
             <tag> ping </tag>
             

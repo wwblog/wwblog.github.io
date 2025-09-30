@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wwblog.github.io/"/>
-  <updated>2024-07-29T12:50:04.826Z</updated>
+  <updated>2025-09-30T10:58:04.000Z</updated>
   <id>https://wwblog.github.io/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>python实现网站证书安装并HOST自动配置</title>
+    <link href="https://wwblog.github.io/2025/09/30/python-shi-xian-wang-zhan-zheng-shu-an-zhuang-bing-host-zi-dong-pei-zhi/"/>
+    <id>https://wwblog.github.io/2025/09/30/python-shi-xian-wang-zhan-zheng-shu-an-zhuang-bing-host-zi-dong-pei-zhi/</id>
+    <published>2025-09-30T08:28:43.000Z</published>
+    <updated>2025-09-30T10:58:04.000Z</updated>
+    
+    <summary type="html">
+    
+      the content has been encrypted, enter the password to read.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="python" scheme="https://wwblog.github.io/categories/python/"/>
+    
+    
+      <category term="pyhon" scheme="https://wwblog.github.io/tags/pyhon/"/>
+    
+      <category term="运维" scheme="https://wwblog.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+  </entry>
+  
+  <entry>
     <title>python运维工具之批量备份交换机配置</title>
     <link href="https://wwblog.github.io/2024/07/29/python-yun-wei-gong-ju-zhi-pi-liang-bei-fen-jiao-huan-ji-pei-zhi/"/>
     <id>https://wwblog.github.io/2024/07/29/python-yun-wei-gong-ju-zhi-pi-liang-bei-fen-jiao-huan-ji-pei-zhi/</id>
     <published>2024-07-29T09:45:27.000Z</published>
-    <updated>2024-07-29T12:50:04.826Z</updated>
+    <updated>2024-07-29T12:50:06.000Z</updated>
     
     <summary type="html">
     
@@ -40,9 +62,9 @@
       <category term="运维" scheme="https://wwblog.github.io/categories/python/%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="python" scheme="https://wwblog.github.io/tags/python/"/>
-    
       <category term="运维" scheme="https://wwblog.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="python" scheme="https://wwblog.github.io/tags/python/"/>
     
       <category term="交换机" scheme="https://wwblog.github.io/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/"/>
     
@@ -53,7 +75,7 @@
     <link href="https://wwblog.github.io/2024/07/22/python-yun-wei-gong-ju-zhi-sftp-shang-chuan-fu-wu-qi/"/>
     <id>https://wwblog.github.io/2024/07/22/python-yun-wei-gong-ju-zhi-sftp-shang-chuan-fu-wu-qi/</id>
     <published>2024-07-22T02:54:11.000Z</published>
-    <updated>2024-07-22T11:31:37.261Z</updated>
+    <updated>2024-07-22T11:31:38.000Z</updated>
     
     <summary type="html">
     
@@ -72,9 +94,9 @@
       <category term="运维" scheme="https://wwblog.github.io/categories/python/%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="python" scheme="https://wwblog.github.io/tags/python/"/>
-    
       <category term="运维" scheme="https://wwblog.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="python" scheme="https://wwblog.github.io/tags/python/"/>
     
       <category term="SFTP" scheme="https://wwblog.github.io/tags/SFTP/"/>
     
@@ -85,7 +107,7 @@
     <link href="https://wwblog.github.io/2024/07/21/python-yun-wei-gong-ju-zhi-jiao-huan-ji-wang-luo-zhuang-tai/"/>
     <id>https://wwblog.github.io/2024/07/21/python-yun-wei-gong-ju-zhi-jiao-huan-ji-wang-luo-zhuang-tai/</id>
     <published>2024-07-21T13:00:08.000Z</published>
-    <updated>2024-07-22T09:29:56.705Z</updated>
+    <updated>2024-07-22T09:29:58.000Z</updated>
     
     <summary type="html">
     
@@ -104,9 +126,9 @@
       <category term="python" scheme="https://wwblog.github.io/categories/%E8%BF%90%E7%BB%B4/python/"/>
     
     
-      <category term="python" scheme="https://wwblog.github.io/tags/python/"/>
-    
       <category term="运维" scheme="https://wwblog.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="python" scheme="https://wwblog.github.io/tags/python/"/>
     
       <category term="ping" scheme="https://wwblog.github.io/tags/ping/"/>
     
@@ -117,7 +139,7 @@
     <link href="https://wwblog.github.io/2024/07/21/hexo-chang-yong-ming-ling/"/>
     <id>https://wwblog.github.io/2024/07/21/hexo-chang-yong-ming-ling/</id>
     <published>2024-07-21T01:50:00.000Z</published>
-    <updated>2024-07-22T09:51:28.967Z</updated>
+    <updated>2024-07-22T09:51:30.000Z</updated>
     
     <summary type="html">
     
@@ -141,7 +163,7 @@
     <link href="https://wwblog.github.io/2019/10/25/python-xue-xi-zhi-python-bian-cheng-gui-fan/"/>
     <id>https://wwblog.github.io/2019/10/25/python-xue-xi-zhi-python-bian-cheng-gui-fan/</id>
     <published>2019-10-25T08:40:19.000Z</published>
-    <updated>2019-10-26T05:16:50.697Z</updated>
+    <updated>2019-10-26T05:16:52.000Z</updated>
     
     <summary type="html">
     
@@ -169,7 +191,7 @@
     <link href="https://wwblog.github.io/2019/10/25/python-xue-xi-zhi-mo-kuai-yu-bao-de-dao-ru/"/>
     <id>https://wwblog.github.io/2019/10/25/python-xue-xi-zhi-mo-kuai-yu-bao-de-dao-ru/</id>
     <published>2019-10-25T08:14:10.000Z</published>
-    <updated>2019-10-26T05:20:56.719Z</updated>
+    <updated>2019-10-26T05:20:58.000Z</updated>
     
     <summary type="html">
     
@@ -199,7 +221,7 @@
     <link href="https://wwblog.github.io/2019/07/22/python-huan-jing-an-zhuang/"/>
     <id>https://wwblog.github.io/2019/07/22/python-huan-jing-an-zhuang/</id>
     <published>2019-07-22T00:59:43.000Z</published>
-    <updated>2019-07-23T07:50:27.153Z</updated>
+    <updated>2019-07-23T07:50:28.000Z</updated>
     
     <summary type="html">
     
@@ -227,7 +249,7 @@
     <link href="https://wwblog.github.io/2019/07/17/hello-world/"/>
     <id>https://wwblog.github.io/2019/07/17/hello-world/</id>
     <published>2019-07-17T03:17:36.000Z</published>
-    <updated>2019-07-19T10:21:23.143Z</updated>
+    <updated>2019-07-19T10:21:24.000Z</updated>
     
     <summary type="html">
     
